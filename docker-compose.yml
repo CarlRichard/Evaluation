@@ -1,0 +1,37 @@
+services:
+  # non service defini par nous
+  app:   
+    image: node:slim
+    # cle du docker-compose.yml on ne choisi pas 
+    working_dir: /usr/app
+    # partage du port 3000 de notre machine avec le port 3000 du container
+    ports:
+      - "3000:3000" 
+    # Partage du dossier actuel ( . ) avec le dossier /usr/app du container
+    volumes:
+      - .:/usr/app
+      # recup des variables d'environnement
+    env_file:
+      - .env
+      #commande a executer au lancement de mon container
+    command: ["bash","-c", "npm install && npm start"]
+  cli:
+    image: node:slim
+    working_dir: /usr/app
+    ports:
+      - 5173:5173
+    volumes:
+      - ./client:/usr/app
+    command: ["bash", "-c", "npm install && npm run dev"]
+
+  bdd:
+    image: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=mdp
+
+  adm:
+    image: phpmyadmin
+    ports:
+      - "8080:80"
+    environment:
+      - PMA_ARBITRARY=1

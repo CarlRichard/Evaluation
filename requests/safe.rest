@@ -1,0 +1,7 @@
+
+GET http://localhost:3000/safe
+
+###
+
+GET http://localhost:3000/safe
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJhZG1pbiIsImlhdCI6MTczOTI4MzY3NCwiZXhwIjoxNzM5Mjg3Mjc0fQ.gKQB5hVj8TNyLYoK4vx9zHRyc1XjyT8dfyDB7WijL-4
