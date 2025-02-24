@@ -2,7 +2,7 @@ import cors from 'cors';
 import express from 'express';
 import cookieParser from 'cookie-parser';
 import { authentication } from './routes/auth.route.js';
-const { getStats } = require('./statsService');
+import { sequelize } from './database.js';
 
 const app = express();
 
@@ -16,8 +16,13 @@ app.use(cookieParser());
 //middlewares authentication
 app.use('/auth', authentication)
 
+
 const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-});
+sequelize.sync({ alter: true }) 
+.then(()=> {
+    app.listen(PORT, () => {
+        console.log(`Server is running on port ${PORT}`);
+    })
+})
+.catch(console.error)

@@ -1,4 +1,15 @@
 import jsonwebtoken from 'jsonwebtoken';
+import { User } from '../models/user.model.js';
+
+export const register = async ( req, res) => {
+    //ajouter un try catch
+    const { username, password } = req.body;
+    const user = await User.create({ 
+        username , 
+        password 
+    });
+    res.json(user);
+}
 
 export const login = (req, res) => {
     const { username, password } = req.body;
