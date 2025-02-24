@@ -2,6 +2,7 @@ import cors from 'cors';
 import express from 'express';
 import cookieParser from 'cookie-parser';
 import { authentication } from './routes/auth.route.js';
+const { getStats } = require('./statsService');
 
 const app = express();
 
