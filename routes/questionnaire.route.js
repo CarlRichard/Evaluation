@@ -6,12 +6,12 @@ import { createQuestionnaire, getQuestionnaire } from '../controllers/questionna
 export const questionnaire = Router();
 
 // Création d'un questionnaire (route protégée, nécessite un token)
-questionnaire.post('/questionnaire', verifyToken, createQuestionnaire);
+questionnaire.post('/', verifyToken, createQuestionnaire);
 
 // Lecture d'un questionnaire 
-questionnaire.get('/questionnaire', verifyToken, getQuestionnaire);
-questionnaire.get('/questionnaire/:id', verifyToken, getQuestionnaire);
+questionnaire.get('/', verifyToken, getQuestionnaire);
+questionnaire.get('/:id', verifyToken, getQuestionnaire);
 
 // Les routes de mise à jour et de suppression 
-// questionnaire.put('/questionnaire/:id', verifyToken, updateQuestionnaire);
-// questionnaire.delete('/questionnaire/:id', verifyToken, deleteQuestionnaire);
+// questionnaire.put('/:id', verifyToken, updateQuestionnaire);
+// questionnaire.delete('/:id', verifyToken, deleteQuestionnaire);

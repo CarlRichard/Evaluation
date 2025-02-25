@@ -1,0 +1,19 @@
+
+GET http://localhost:3000/questionnaire
+
+###
+
+GET http://localhost:3000/questionnaire
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJjYXJsIiwiaWF0IjoxNzQwNDA4NDY0LCJleHAiOjE3NDA0MDkzNjR9.iNel28lifiRmlXjms0-PB-khne3iJpr1LEfGFhM8GkQ
+
+####
+POST http://localhost:3000/questionnaire
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJjYXJsIiwiaWF0IjoxNzQwNDA4NDY0LCJleHAiOjE3NDA0MDkzNjR9.iNel28lifiRmlXjms0-PB-khne3iJpr1LEfGFhM8GkQ
+
+{
+  "titre": "quizz 1",
+  "description": "test" 
+}
+
+###
