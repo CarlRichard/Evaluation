@@ -4,8 +4,8 @@ import { useNavigate } from "react-router-dom";
 export const Login = ({setAuthenticated}) => {
     //variables boutons
     const [inputs, setInputs] = useState({ 
-        username: "",
-        password: ""
+        email: "",
+        mot_de_passe: ""
     });
 
     const navigate = useNavigate(); 
@@ -54,17 +54,17 @@ const handleSubmit = async e => {
     return (
         <form onSubmit={handleSubmit}>
             <input 
-                name="username" 
+                name="email" 
                 type="text" 
                 required
-                placeholder="Username" 
+                placeholder="votre email" 
                 onChange={handleInput} 
             />
             <input 
-                name="password" 
+                name="mot_de_passe" 
                 type="password" 
                 required
-                placeholder="Password" 
+                placeholder="votre mot de passe" 
                 onChange={handleInput} 
             />
             <button type="submit" >Connection</button>

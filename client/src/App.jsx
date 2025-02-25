@@ -11,7 +11,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Restricted authenticated={authenticated} setAuthenticated={setAuthenticated} />} />
-        <Route path="/sign-in" element={<Login setAuthenticated={setAuthenticated} />} />
+        <Route path="/connexion" element={<Login setAuthenticated={setAuthenticated} />} />
       </Routes>
     </BrowserRouter>
   );
