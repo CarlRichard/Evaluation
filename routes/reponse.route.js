@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { verifyToken } from '../middlewares/verifyToken.js';
-import { createReponse, getReponse, putReponse, deleteReponse} from '../controllers/reponse.controller.js';
+import { createReponse, getReponse,getAllReponse, putReponse, deleteReponse} from '../controllers/reponse.controller.js';
 
 export const reponse = Router();
 
@@ -8,7 +8,7 @@ export const reponse = Router();
 reponse.post('/', verifyToken, createReponse);
 
 // Lecture Reponse
-reponse.get('/', verifyToken, getReponse);
+reponse.get('/', verifyToken, getAllReponse);
 reponse.get('/:id', verifyToken, getReponse);
 
 //update Reponse

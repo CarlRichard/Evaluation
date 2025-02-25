@@ -1,19 +1,20 @@
-import { Router } from 'express';
-import { verifyToken } from '../middlewares/verifyToken.js';
-import { createEvaluation, getEvaluation, putEvaluation, deleteEvaluation } from '../controllers/question.controller.js';
+import { Router } from "express";
+import { verifyToken } from "../middlewares/verifyToken.js"; 
+import { createEvaluation, getAllEvaluations, getEvaluationById, updateEvaluation, deleteEvaluation } from "../controllers/evaluation.controller.js";
 
 export const evaluation = Router();
 
-// Création question
-evaluation.post('/', verifyToken, createEvaluation);
+// Création d'une évaluation
+evaluation.post("/", verifyToken, createEvaluation);
 
-// Lecture question
-evaluation.get('/', verifyToken, getEvaluation);
-evaluation.get('/:id', verifyToken, getEvaluation);
+// Récupérer toutes les évaluations
+evaluation.get("/", verifyToken, getAllEvaluations);
 
-//update question
-evaluation.put('/:id', verifyToken , putEvaluation);
+// Récupérer une évaluation par ID
+evaluation.get("/:id", verifyToken, getEvaluationById);
 
-//delete question
-evaluation.delete('/:id', verifyToken , deleteEvaluation);
+// Mise à jour d'une évaluation
+evaluation.put("/:id", verifyToken, updateEvaluation);
 
+// Suppression d'une évaluation
+evaluation.delete("/:id", verifyToken, deleteEvaluation);

@@ -1,76 +1,89 @@
-import Questionnaire from '../models/questionnaire.model.js';
+import Questionnaire from "../models/questionnaire.model.js";
 
-// Création d'un questionnaire
 export const createQuestionnaire = async (req, res) => {
   try {
-    const { title, description } = req.body;
-    const questionnaire = await Questionnaire.create({ title, description });
+    const { title, description, id_utilisateur } = req.body;
+
+    // Créer le questionnaire
+    const questionnaire = await Questionnaire.create({
+      title,
+      description,
+      id_utilisateur,
+    });
+
     res.status(201).json({ message: "Questionnaire créé avec succès", questionnaire });
   } catch (error) {
-    res.status(500).json({ message: "Erreur lors de la création", error });
+    console.error(error);
+    res.status(500).json({ message: "Erreur lors de la création du questionnaire", error: error.message });
   }
 };
-
-// Lecture de tous les questionnaires ou un seul
-export const getQuestionnaire = async (req, res) => {
+export const getAllQuestionnaire = async (req, res) => {
   try {
-    if (req.params.id) {
-      const questionnaire = await Questionnaire.findByPk(req.params.id);
+    const questionnaires = await Questionnaire.findAll({
+      include: [{ model: Utilisateur, attributes: ['name', 'email'] }], // Inclure l'utilisateur qui a créé le questionnaire
+    });
 
-      if (!questionnaire) {
-        return res.status(404).json({ message: 'Questionnaire non trouvé' });
-      }
-
-      return res.status(200).json({ questionnaire });
-    } else {
-      const questionnaires = await Questionnaire.findAll();
-      return res.status(200).json({ questionnaires });
-    }
+    res.status(200).json({ questionnaires });
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ message: 'Erreur lors de la récupération des questionnaires', error: error.message });
+    res.status(500).json({ message: "Erreur lors de la récupération des questionnaires", error: error.message });
   }
 };
+export const getQuestionnaire = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const questionnaire = await Questionnaire.findByPk(id, {
+      include: [{ model: Utilisateur, attributes: ['name', 'email'] }], // Inclure l'utilisateur qui a créé le questionnaire
+    });
 
-// Mise à jour d'un questionnaire
+    if (!questionnaire) {
+      return res.status(404).json({ message: "Questionnaire non trouvé" });
+    }
+
+    res.status(200).json({ questionnaire });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Erreur lors de la récupération du questionnaire", error: error.message });
+  }
+};
 export const updateQuestionnaire = async (req, res) => {
   try {
-    const { title, description } = req.body;
     const { id } = req.params;
+    const { title, description, id_utilisateur } = req.body;
 
     const questionnaire = await Questionnaire.findByPk(id);
 
     if (!questionnaire) {
-      return res.status(404).json({ message: 'Questionnaire non trouvé' });
+      return res.status(404).json({ message: "Questionnaire non trouvé" });
     }
 
-    // Mise à jour
-    await questionnaire.update({ title, description });
+    // Mettre à jour les informations du questionnaire
+    questionnaire.title = title;
+    questionnaire.description = description;
+    questionnaire.id_utilisateur = id_utilisateur;
 
-    return res.status(200).json({ message: 'Questionnaire mis à jour avec succès', questionnaire });
+    await questionnaire.save();
+
+    res.status(200).json({ message: "Questionnaire mis à jour avec succès", questionnaire });
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ message: 'Erreur lors de la mise à jour', error: error.message });
+    res.status(500).json({ message: "Erreur lors de la mise à jour du questionnaire", error: error.message });
   }
 };
-
-// Suppression d'un questionnaire
 export const deleteQuestionnaire = async (req, res) => {
   try {
     const { id } = req.params;
-
     const questionnaire = await Questionnaire.findByPk(id);
 
     if (!questionnaire) {
-      return res.status(404).json({ message: 'Questionnaire non trouvé' });
+      return res.status(404).json({ message: "Questionnaire non trouvé" });
     }
 
-    // Suppression
     await questionnaire.destroy();
 
-    return res.status(200).json({ message: 'Questionnaire supprimé avec succès' });
+    res.status(200).json({ message: "Questionnaire supprimé avec succès" });
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ message: 'Erreur lors de la suppression', error: error.message });
+    res.status(500).json({ message: "Erreur lors de la suppression du questionnaire", error: error.message });
   }
 };
