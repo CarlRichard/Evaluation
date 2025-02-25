@@ -1,5 +1,6 @@
 import Questionnaire from "../models/questionnaire.model.js";
 
+// post
 export const createQuestionnaire = async (req, res) => {
   try {
     const { title, description, id_utilisateur } = req.body;
@@ -17,6 +18,8 @@ export const createQuestionnaire = async (req, res) => {
     res.status(500).json({ message: "Erreur lors de la création du questionnaire", error: error.message });
   }
 };
+
+//get
 export const getAllQuestionnaire = async (req, res) => {
   try {
     const questionnaires = await Questionnaire.findAll({
@@ -29,6 +32,8 @@ export const getAllQuestionnaire = async (req, res) => {
     res.status(500).json({ message: "Erreur lors de la récupération des questionnaires", error: error.message });
   }
 };
+
+//get id
 export const getQuestionnaire = async (req, res) => {
   try {
     const { id } = req.params;
@@ -46,6 +51,8 @@ export const getQuestionnaire = async (req, res) => {
     res.status(500).json({ message: "Erreur lors de la récupération du questionnaire", error: error.message });
   }
 };
+
+//put
 export const updateQuestionnaire = async (req, res) => {
   try {
     const { id } = req.params;
@@ -70,6 +77,8 @@ export const updateQuestionnaire = async (req, res) => {
     res.status(500).json({ message: "Erreur lors de la mise à jour du questionnaire", error: error.message });
   }
 };
+
+//delete
 export const deleteQuestionnaire = async (req, res) => {
   try {
     const { id } = req.params;

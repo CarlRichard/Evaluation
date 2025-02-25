@@ -1,5 +1,7 @@
 import Reponse from "../models/reponse.model.js";
 
+
+//POST
 export const createReponse = async (req, res) => {
   try {
     const { texte, id_question, id_evaluation } = req.body;
@@ -17,6 +19,8 @@ export const createReponse = async (req, res) => {
     res.status(500).json({ message: "Erreur lors de la création de la réponse", error: error.message });
   }
 };
+
+//GEt
 export const getAllReponse = async (req, res) => {
     try {
       const reponses = await Reponse.findAll({
@@ -32,6 +36,8 @@ export const getAllReponse = async (req, res) => {
       res.status(500).json({ message: "Erreur lors de la récupération des réponses", error: error.message });
     }
   };
+
+  //Get id
   export const getReponse = async (req, res) => {
     try {
       const { id } = req.params;
@@ -52,6 +58,8 @@ export const getAllReponse = async (req, res) => {
       res.status(500).json({ message: "Erreur lors de la récupération de la réponse", error: error.message });
     }
   };
+
+  //put
   export const putReponse = async (req, res) => {
     try {
       const { id } = req.params;
@@ -76,6 +84,8 @@ export const getAllReponse = async (req, res) => {
       res.status(500).json({ message: "Erreur lors de la mise à jour de la réponse", error: error.message });
     }
   };
+
+  //Supp
   export const deleteReponse = async (req, res) => {
     try {
       const { id } = req.params;
