@@ -1,19 +1,37 @@
+### Définir une variable globale pour le token
+@token = ''
 
-GET http://localhost:3000/questionnaire
+### ================== Questionnaires ==================
 
-###
-
-GET http://localhost:3000/questionnaire
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJjYXJsIiwiaWF0IjoxNzQwNDA4NDY0LCJleHAiOjE3NDA0MDkzNjR9.iNel28lifiRmlXjms0-PB-khne3iJpr1LEfGFhM8GkQ
-
-####
-POST http://localhost:3000/questionnaire
+### Création d'un questionnaire
+POST http://localhost:3000/api/questionnaire
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJjYXJsIiwiaWF0IjoxNzQwNDA4NDY0LCJleHAiOjE3NDA0MDkzNjR9.iNel28lifiRmlXjms0-PB-khne3iJpr1LEfGFhM8GkQ
+Authorization: Bearer {{token}}
 
 {
-  "titre": "quizz 1",
-  "description": "test" 
+  "title": "Nouveau Questionnaire",
+  "description": "Description du questionnaire."
 }
 
-###
+### Récupérer tous les questionnaires
+GET http://localhost:3000/api/questionnaire
+Authorization: Bearer {{token}}
+
+### Récupérer un questionnaire par ID
+GET http://localhost:3000/api/questionnaire/1
+Authorization: Bearer {{token}}
+
+### Mise à jour d'un questionnaire
+PUT http://localhost:3000/api/questionnaire/1
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "title": "Questionnaire Mis à Jour",
+  "description": "Nouvelle description."
+}
+
+### Supprimer un questionnaire
+DELETE http://localhost:3000/api/questionnaire/1
+Authorization: Bearer {{token}}
+

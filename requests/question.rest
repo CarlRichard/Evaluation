@@ -1,0 +1,35 @@
+### Définir une variable globale pour le token
+@token = ''
+
+### Création d'une question
+POST http://localhost:3000/api/question
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "title": "Comment vous sentez vous sur JS ?",
+  "description": "Une question sur JS.",
+  "id_questionnaire": 1
+}
+
+### Récupérer toutes les questions
+GET http://localhost:3000/api/question
+Authorization: Bearer {{token}}
+
+### Récupérer une question par ID
+GET http://localhost:3000/api/question/1
+Authorization: Bearer {{token}}
+
+### Mise à jour d'une question
+PUT http://localhost:3000/api/question/1
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "title": "Pourquoi avoir choisi REACT ?",
+  "description": "Question modifier pour react."
+}
+
+### Supprimer une question
+DELETE http://localhost:3000/api/question/1
+Authorization: Bearer {{token}}

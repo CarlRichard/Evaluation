@@ -16,4 +16,3 @@ question.put('/:id', verifyToken , putQuestion);
 
 //delete question
 question.delete('/:id', verifyToken , deleteQuestion);
-

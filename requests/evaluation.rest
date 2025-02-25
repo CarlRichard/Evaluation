@@ -1,0 +1,35 @@
+### Définir une variable globale pour le token
+@token = ''
+
+### Création d'une évaluation
+POST http://localhost:3000/api/evaluation
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "id_utilisateur": 1,
+  "score": 85
+}
+
+### Récupérer toutes les évaluations
+GET http://localhost:3000/api/evaluation
+Authorization: Bearer {{token}}
+
+### Récupérer une évaluation par ID
+GET http://localhost:3000/api/evaluation/1
+Authorization: Bearer {{token}}
+
+### Mise à jour d'une évaluation
+PUT http://localhost:3000/api/evaluation/1
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "id_utilisateur": 1,
+  "score": 90
+}
+
+### Supprimer une évaluation
+DELETE http://localhost:3000/api/evaluation/1
+Authorization: Bearer {{token}}
+

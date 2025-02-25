@@ -1,0 +1,36 @@
+### Définir une variable globale pour le token
+@token = ''
+
+### Création d'une réponse
+POST http://localhost:3000/api/reponse
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "texte": "C'est ma réponse.",
+  "id_question": 1,
+  "id_evaluation": 1
+}
+
+### Récupérer toutes les réponses
+GET http://localhost:3000/api/reponse
+Authorization: Bearer {{token}}
+
+### Récupérer une réponse par ID
+GET http://localhost:3000/api/reponse/1
+Authorization: Bearer {{token}}
+
+### Mise à jour d'une réponse
+PUT http://localhost:3000/api/reponse/1
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "texte": "Réponse mise à jour.",
+  "id_question": 2,
+  "id_evaluation": 2
+}
+
+### Supprimer une réponse
+DELETE http://localhost:3000/api/reponse/1
+Authorization: Bearer {{token}}
