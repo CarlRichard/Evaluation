@@ -8,7 +8,7 @@ const Evaluation = sequelize.define("Evaluation", {
     autoIncrement: true,
     primaryKey: true,
   },
-  id_evaluateur: {
+  id_evaluateur: { // Clé étrangère
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {
@@ -17,7 +17,7 @@ const Evaluation = sequelize.define("Evaluation", {
     },
     onDelete: "CASCADE",
   },
-  id_evalue: {
+  id_evalue: { // Clé étrangère
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {

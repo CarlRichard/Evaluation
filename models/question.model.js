@@ -16,7 +16,7 @@ const Question = sequelize.define("Question", {
     type: DataTypes.TEXT,
     allowNull: true,
   },
-  id_questionnaire: {
+  id_questionnaire: { // Clé étrangère
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {

@@ -13,7 +13,7 @@ const Reponse = sequelize.define("Reponse", {
     type: DataTypes.TEXT,
     allowNull: false,
   },
-  id_question: {
+  id_question: { // Clé étrangère
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {
@@ -22,7 +22,7 @@ const Reponse = sequelize.define("Reponse", {
     },
     onDelete: "CASCADE",
   },
-  id_evaluation: {
+  id_evaluation: { // Clé étrangère
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {

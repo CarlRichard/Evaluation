@@ -20,10 +20,10 @@ const Questionnaire = sequelize.define("Questionnaire", {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {
-      model: Utilisateur, // Référence au modèle User
+      model: Utilisateur, 
       key: "id",
     },
-    onDelete: "CASCADE", // Si l'utilisateur est supprimé, ses questionnaires le sont aussi
+    onDelete: "CASCADE", 
   }
 }, {
   tableName: "questionnaire",
