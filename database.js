@@ -1,26 +1,51 @@
 import { Sequelize } from "sequelize";
+import mysql from "mysql2/promise"; // Import pour gérer la création de la base
 
+const DB_NAME = "Eval_db";
+const DB_USER = "root";
+const DB_PASSWORD = "mdp";
+const DB_HOST = "bdd";
 
-//creation d'une connexion a la bdd
-export const sequelize = new Sequelize(
-    "Eval_db",
-    "root",
-    "mdp",
-    {
-        host: 'bdd',
-        dialect: 'mysql',
-        logging: true
+// Fonction pour créer la base si elle n'existe pas
+const createDatabaseIfNotExists = async () => {
+    try {
+        const connection = await mysql.createConnection({
+            host: DB_HOST,
+            user: DB_USER,
+            password: DB_PASSWORD,
+        });
+
+        await connection.query(`CREATE DATABASE IF NOT EXISTS \`${DB_NAME}\`;`);
+        console.log(`✅ Base de données '${DB_NAME}' vérifiée/créée.`);
+
+        await connection.end();
+    } catch (error) {
+        console.error("❌ Erreur lors de la création de la base :", error);
     }
-)
+};
 
-// test de connexion
-const testConnection = async () => {
+// Création de la connexion à la base de données
+export const sequelize = new Sequelize(DB_NAME, DB_USER, DB_PASSWORD, {
+    host: DB_HOST,
+    dialect: "mysql",
+    logging: true, // Active les logs des requêtes SQL
+});
+
+// Test de connexion et création de la base si besoin
+export const initDB = async () => {
+    await createDatabaseIfNotExists(); // Vérifie et crée la base si besoin
+
     try {
         await sequelize.authenticate();
-    } catch (err) {
-        console.error(err);
-    }
-}
+        console.log("✅ Connexion à la base de données réussie.");
 
-//appel de la fonction
-testConnection();
+        // Synchronisation des modèles (ajuste sans tout supprimer)
+        await sequelize.sync({ alter: true });
+        console.log("✅ Base de données synchronisée.");
+    } catch (error) {
+        console.error("❌ Erreur lors de l'initialisation de la base :", error);
+    }
+};
+
+// Appel automatique de l'initialisation
+initDB();

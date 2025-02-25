@@ -25,7 +25,7 @@ export const Restricted = ({ authenticated, setAuthenticated }) => {
 
     // deconnexion 
     const handleOut = () => {
-        fetch ('http://localhost:3000/auth/sign-out', {
+        fetch ('http://localhost:3000/auth/deconnexion', {
             credentials: 'include'
         })
         .then(res => {
@@ -37,7 +37,7 @@ export const Restricted = ({ authenticated, setAuthenticated }) => {
     };
 
     //redirection si token manquant ou périmé
-    return !authenticated ? <Navigate to={'/sign-in'} /> : <>
+    return !authenticated ? <Navigate to={'/connexion'} /> : <>
         <button onClick={handleOut}>Logout</button>
         <h1>hello</h1>;
     </>
