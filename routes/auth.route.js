@@ -5,13 +5,13 @@ import { verifyToken } from "../middlewares/verifyToken.js";
 export const authentication = Router();
 
 //crée un user
-authentication.post( '/sign-up', register );
+authentication.post( '/enrengistrement', register );
 
 //login
-authentication.post( '/sign-in', login );
+authentication.post( '/connexion', login );
 
 //deconnexion
-authentication.get( '/sign-out', logout );
+authentication.get( '/deconnexion', logout );
 
 //veriftoken
 authentication.get( '/authenticated', [verifyToken], authenticated);
