@@ -1,9 +1,12 @@
 import { useEffect } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 
+
+// test de page proteger par le token ( correspond a la page d'accueil )
 export const Restricted = ({ authenticated, setAuthenticated }) => {
     const location = useLocation();
 
+    // token qui se refresh sur le cookie toute les heures 
     useEffect(() => {
         fetch('http://localhost:3000/auth/authenticated', {
             credentials: 'include',
@@ -19,6 +22,8 @@ export const Restricted = ({ authenticated, setAuthenticated }) => {
         });
     }, [location]);
 
+
+    // deconnexion 
     const handleOut = () => {
         fetch ('http://localhost:3000/auth/sign-out', {
             credentials: 'include'
@@ -31,8 +36,9 @@ export const Restricted = ({ authenticated, setAuthenticated }) => {
         })
     };
 
+    //redirection si token manquant ou périmé
     return !authenticated ? <Navigate to={'/sign-in'} /> : <>
         <button onClick={handleOut}>Logout</button>
-        <h1>Coucou</h1>;
+        <h1>hello</h1>;
     </>
 };

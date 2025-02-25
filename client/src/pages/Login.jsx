@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export const Login = ({setAuthenticated}) => {
+    //variables boutons
     const [inputs, setInputs] = useState({ 
         username: "",
         password: ""
@@ -9,6 +10,7 @@ export const Login = ({setAuthenticated}) => {
 
     const navigate = useNavigate(); 
 
+    //recup input
     const handleInput = (e) => {
         /*
         current = { username: "", password: "" }
@@ -18,6 +20,8 @@ export const Login = ({setAuthenticated}) => {
         setInputs((current) => ({ ...current, [e.target.name]: e.target.value }));
     };
 
+
+//login submit ( avec token et cookie )
 const handleSubmit = async e => {
     e.preventDefault();
     try {
@@ -36,15 +40,15 @@ const handleSubmit = async e => {
                navigate("/");
            
             } else {
-                alert("Token is missing or invalid.");
+                console.log("Token is missing or invalid.");
             }
         } else {
             const error = await res.json(); 
-            alert(error.message || "Invalid credentials");
+            console.log(error.message || "Invalid credentials");
         }
     } catch (err) {
         console.error("Error during login:", err);
-        alert("Something went wrong, please try again.");
+        console.log("Something went wrong, please try again.");
     }
 };
     return (
