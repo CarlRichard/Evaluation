@@ -1,3 +1,6 @@
+import { Request, Response } from 'express';
+import { Utilisateur } from '../models/utilisateur.model.js';
+
 function getUserProfile(req, res) {
     // Exemple de récupération du profil utilisateur
     const userProfile = {
