@@ -1,6 +1,6 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../database.js";
-import Utilisateur from "./Utilisateur.model.js";
+import Utilisateur from "./utilisateur.model.js";
 
 const Evaluation = sequelize.define("Evaluation", {
   id: {
@@ -8,7 +8,7 @@ const Evaluation = sequelize.define("Evaluation", {
     autoIncrement: true,
     primaryKey: true,
   },
-  id_utilisateur: {
+  id_evaluateur: {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {
@@ -17,17 +17,29 @@ const Evaluation = sequelize.define("Evaluation", {
     },
     onDelete: "CASCADE",
   },
-  score: {
+  id_evalue: {
     type: DataTypes.INTEGER,
     allowNull: false,
-  }
+    references: {
+      model: Utilisateur,
+      key: "id",
+    },
+    onDelete: "CASCADE",
+  },
+  commentaire: {
+    type: DataTypes.TEXT,
+    allowNull: false,
+  },
 }, {
   tableName: "evaluation",
   timestamps: true
 });
 
 // Définition des relations
-User.hasMany(Evaluation, { foreignKey: "id_utilisateur", onDelete: "CASCADE" });
-Evaluation.belongsTo(Utilisateur, { foreignKey: "id_utilisateur" });
+Utilisateur.hasMany(Evaluation, { foreignKey: "id_evaluateur", onDelete: "CASCADE" });
+Evaluation.belongsTo(Utilisateur, { foreignKey: "id_evaluateur", as: "evaluateur" });
+
+Utilisateur.hasMany(Evaluation, { foreignKey: "id_evalue", onDelete: "CASCADE" });
+Evaluation.belongsTo(Utilisateur, { foreignKey: "id_evalue", as: "evalue" });
 
 export default Evaluation;

@@ -3,11 +3,11 @@ import Questionnaire from "../models/questionnaire.model.js";
 // post
 export const createQuestionnaire = async (req, res) => {
   try {
-    const { title, description, id_utilisateur } = req.body;
+    const { titre, description, id_utilisateur } = req.body;
 
     // Créer le questionnaire
     const questionnaire = await Questionnaire.create({
-      title,
+      titre,
       description,
       id_utilisateur,
     });
@@ -56,7 +56,7 @@ export const getQuestionnaire = async (req, res) => {
 export const updateQuestionnaire = async (req, res) => {
   try {
     const { id } = req.params;
-    const { title, description, id_utilisateur } = req.body;
+    const { titre, description, id_utilisateur } = req.body;
 
     const questionnaire = await Questionnaire.findByPk(id);
 
@@ -65,7 +65,7 @@ export const updateQuestionnaire = async (req, res) => {
     }
 
     // Mettre à jour les informations du questionnaire
-    questionnaire.title = title;
+    questionnaire.titre = titre;
     questionnaire.description = description;
     questionnaire.id_utilisateur = id_utilisateur;
 

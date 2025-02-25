@@ -1,16 +1,17 @@
+### deconnexion
 POST http://localhost:3000/auth/sign-up
 Content-Type: application/json
 
 {
-  "username": "carl",
-  "password": "mdp" 
+  "username": "test",
+  "password": "password" 
 }
 
-####
+### login
 POST http://localhost:3000/auth/sign-in
 Content-Type: application/json
 
 {
-  "username": "carl",
-  "password": "mdp" 
+  "username": "test",
+  "password": "password" 
 }

@@ -8,7 +8,7 @@ const Question = sequelize.define("Question", {
     autoIncrement: true,
     primaryKey: true,
   },
-  title: {
+  titre: {
     type: DataTypes.STRING(255),
     allowNull: false,
   },

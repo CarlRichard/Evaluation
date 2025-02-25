@@ -7,7 +7,7 @@ Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-  "title": "Comment vous sentez vous sur JS ?",
+  "titre": "Comment vous sentez vous sur JS ?",
   "description": "Une question sur JS.",
   "id_questionnaire": 1
 }
@@ -26,7 +26,7 @@ Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-  "title": "Pourquoi avoir choisi REACT ?",
+  "titre": "Pourquoi avoir choisi REACT ?",
   "description": "Question modifier pour react."
 }
 

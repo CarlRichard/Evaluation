@@ -2,34 +2,33 @@
 @token = ''
 
 ### Création d'une évaluation
-POST http://localhost:3000/api/evaluation
+POST http://localhost:3000/api/evaluation HTTP/1.1
 Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-  "id_utilisateur": 1,
-  "score": 85
+  "id_evaluateur": 1, 
+  "id_evalue": 2,
+  "commentaire": "Très bien !"
 }
 
 ### Récupérer toutes les évaluations
-GET http://localhost:3000/api/evaluation
+GET http://localhost:3000/api/evaluation HTTP/1.1
 Authorization: Bearer {{token}}
 
 ### Récupérer une évaluation par ID
-GET http://localhost:3000/api/evaluation/1
+GET http://localhost:3000/api/evaluation/1 HTTP/1.1
 Authorization: Bearer {{token}}
 
-### Mise à jour d'une évaluation
-PUT http://localhost:3000/api/evaluation/1
+### Mettre à jour une évaluation
+PUT http://localhost:3000/api/evaluation/1 HTTP/1.1
 Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-  "id_utilisateur": 1,
-  "score": 90
+  "commentaire": "Excellent !"
 }
 
 ### Supprimer une évaluation
-DELETE http://localhost:3000/api/evaluation/1
+DELETE http://localhost:3000/api/evaluation/1 HTTP/1.1
 Authorization: Bearer {{token}}
-

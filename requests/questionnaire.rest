@@ -9,7 +9,7 @@ Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-  "title": "Nouveau Questionnaire",
+  "titre": "Nouveau Questionnaire",
   "description": "Description du questionnaire."
 }
 
@@ -27,7 +27,7 @@ Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-  "title": "Questionnaire Mis à Jour",
+  "titre": "Questionnaire Mis à Jour",
   "description": "Nouvelle description."
 }
 

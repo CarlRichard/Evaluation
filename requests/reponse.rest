@@ -7,7 +7,7 @@ Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-  "texte": "C'est ma réponse.",
+  "rep": "C'est ma réponse.",
   "id_question": 1,
   "id_evaluation": 1
 }
@@ -26,7 +26,7 @@ Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-  "texte": "Réponse mise à jour.",
+  "rep": "Réponse mise à jour.",
   "id_question": 2,
   "id_evaluation": 2
 }

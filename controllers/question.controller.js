@@ -3,10 +3,10 @@ import Question from "../models/question.model.js";
 //post
 export const createQuestion = async (req, res) => {
     try {
-        const { title, description, id_questionnaire } = req.body;
+        const { titre, description, id_questionnaire } = req.body;
 
         // Créer la question
-        const question = await Question.create({ title, description, id_questionnaire });
+        const question = await Question.create({ titre, description, id_questionnaire });
 
         res.status(201).json({ message: "Question créée avec succès", question });
     } catch (error) {
@@ -19,7 +19,7 @@ export const createQuestion = async (req, res) => {
 export const getAllQuestion = async (req, res) => {
     try {
         const questions = await Question.findAll({
-            include: [{ model: Questionnaire, attributes: ['title'] }], // Inclure le questionnaire lié
+            include: [{ model: Questionnaire, attributes: ['titre'] }], // Inclure le questionnaire lié
         });
 
         res.status(200).json({ questions });
@@ -34,7 +34,7 @@ export const getQuestion = async (req, res) => {
     try {
         const { id } = req.params;
         const question = await Question.findByPk(id, {
-            include: [{ model: Questionnaire, attributes: ['title'] }], // Inclure le questionnaire lié
+            include: [{ model: Questionnaire, attributes: ['titre'] }], // Inclure le questionnaire lié
         });
 
         if (!question) {
@@ -52,7 +52,7 @@ export const getQuestion = async (req, res) => {
 export const putQuestion = async (req, res) => {
     try {
         const { id } = req.params;
-        const { title, description, id_questionnaire } = req.body;
+        const { titre, description, id_questionnaire } = req.body;
 
         const question = await Question.findByPk(id);
 
@@ -61,7 +61,7 @@ export const putQuestion = async (req, res) => {
         }
 
         // Mettre à jour la question
-        question.title = title;
+        question.titre = titre;
         question.description = description;
         question.id_questionnaire = id_questionnaire;
 

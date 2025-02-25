@@ -4,11 +4,11 @@ import Reponse from "../models/reponse.model.js";
 //POST
 export const createReponse = async (req, res) => {
   try {
-    const { texte, id_question, id_evaluation } = req.body;
+    const { rep, id_question, id_evaluation } = req.body;
 
     // Créer une nouvelle réponse
     const reponse = await Reponse.create({
-      texte,
+      rep,
       id_question,
       id_evaluation,
     });
@@ -63,7 +63,7 @@ export const getAllReponse = async (req, res) => {
   export const putReponse = async (req, res) => {
     try {
       const { id } = req.params;
-      const { texte, id_question, id_evaluation } = req.body;
+      const { rep, id_question, id_evaluation } = req.body;
   
       const reponse = await Reponse.findByPk(id);
   
@@ -72,7 +72,7 @@ export const getAllReponse = async (req, res) => {
       }
   
       // Mettre à jour la réponse
-      reponse.texte = texte;
+      reponse.rep = rep;
       reponse.id_question = id_question;
       reponse.id_evaluation = id_evaluation;
   

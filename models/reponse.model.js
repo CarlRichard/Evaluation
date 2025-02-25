@@ -9,7 +9,7 @@ const Reponse = sequelize.define("Reponse", {
     autoIncrement: true,
     primaryKey: true,
   },
-  texte: {
+  rep: {
     type: DataTypes.TEXT,
     allowNull: false,
   },
