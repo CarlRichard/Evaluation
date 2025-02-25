@@ -1,6 +1,8 @@
+
+
 function checkRole(req, res, next) {
     // Exemple de vérification de rôle
-    if (req.user && req.user.role) {
+    if (req.utilisateur && req.utilisateur.role) {
         next();
     } else {
         res.status(403).json({ message: 'Accès refusé : rôle non autorisé' });
@@ -10,7 +12,7 @@ function checkRole(req, res, next) {
 function checkPermission(permission) {
     return (req, res, next) => {
         // Exemple de vérification de permission
-        if (req.user && req.user.permissions && req.user.permissions.includes(permission)) {
+        if (req.utilisatuer && req.utilisateur.permissions && req.utilisateur.permissions.includes(permission)) {
             next();
         } else {
             res.status(403).json({ message: `Accès refusé : permission '${permission}' non accordée` });
