@@ -25,7 +25,7 @@ export const Login = ({setAuthenticated}) => {
 const handleSubmit = async e => {
     e.preventDefault();
     try {
-        const res = await fetch("http://localhost:3000/auth/sign-in", {
+        const res = await fetch("http://localhost:3000/auth/connexion", {
             credentials: "include",
             method: "POST",
             headers: { "Content-Type": "application/json" },
