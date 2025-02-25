@@ -1,11 +1,12 @@
 function getUserProfile(req, res) {
     // Exemple de récupération du profil utilisateur
     const userProfile = {
-        id: req.user.id,
-        name: req.user.nom,
-        email: req.user.email,
-        role: req.user.role,
-        permissions: req.user.permissions
+        id: req.utilisateur.id,
+        nom: req.utilisateur.nom,
+        prenom: req.utilisateur.prenom,
+        email: req.utilisateur.email,
+        role: req.utilisateur.role,
+        permissions: req.utilisateur.permissions
     };
     res.json(userProfile);
 }
@@ -13,7 +14,8 @@ function getUserProfile(req, res) {
 function updateUserProfile(req, res) {
     // Exemple de mise à jour du profil utilisateur
     const updatedProfile = {
-        name: req.body.name,
+        nom: req.body.nom,
+        prenom: req.body.prenom,
         email: req.body.email
     };
     // Logique pour mettre à jour le profil dans la base de données
