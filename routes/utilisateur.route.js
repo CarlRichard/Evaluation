@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const { checkRole, checkPermission } = require('../middlewares/auth');
-const { getUserProfile, updateUserProfile } = require('../controllers/userController');
+const { checkRole, checkPermission } = require('../middlewares/auth.js');
+const { getUserProfile, updateUserProfile } = require('../controllers/utilisateur.controller.js');
 
 // Middleware pour vérifier le rôle de l'utilisateur
 router.use(checkRole);
