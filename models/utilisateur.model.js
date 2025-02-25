@@ -1,6 +1,6 @@
 import { sequelize } from "../database.js";
 import { DataTypes } from "sequelize";
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs'; 
 
 export const Utilisateur = sequelize.define('utilisateur', {
     id: {
@@ -9,7 +9,7 @@ export const Utilisateur = sequelize.define('utilisateur', {
         primaryKey: true
     },
     nom: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING, 
         allowNull: false
     },
     prenom: {
@@ -48,3 +48,5 @@ export const Utilisateur = sequelize.define('utilisateur', {
         }
     }
 });
+
+export default Utilisateur;  // Export par défaut ici
