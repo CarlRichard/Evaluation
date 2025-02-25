@@ -1,5 +1,6 @@
 
 
+
 // function checkRole(req, res, next) {
 //     // Exemple de vérification de rôle
 //     if (req.utilisateur && req.utilisateur.role) {
