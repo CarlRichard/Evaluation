@@ -1,7 +1,7 @@
 // routes/questionnaire.js
 import { Router } from 'express';
 import { verifyToken } from '../middlewares/verifyToken.js';
-import { createQuestionnaire, getQuestionnaire } from '../controllers/questionnaire.controller.js';
+import { createQuestionnaire, getQuestionnaire , updateQuestionnaire, deleteQuestionnaire } from '../controllers/questionnaire.controller.js';
 
 export const questionnaire = Router();
 
@@ -13,5 +13,5 @@ questionnaire.get('/', verifyToken, getQuestionnaire);
 questionnaire.get('/:id', verifyToken, getQuestionnaire);
 
 // Les routes de mise à jour et de suppression 
-// questionnaire.put('/:id', verifyToken, updateQuestionnaire);
-// questionnaire.delete('/:id', verifyToken, deleteQuestionnaire);
+questionnaire.put('/:id', verifyToken, updateQuestionnaire);
+questionnaire.delete('/:id', verifyToken, deleteQuestionnaire);

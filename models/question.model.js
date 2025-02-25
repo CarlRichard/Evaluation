@@ -16,7 +16,7 @@ const Question = sequelize.define("Question", {
     type: DataTypes.TEXT,
     allowNull: true,
   },
-  questionnaireId: {
+  id_questionnaire: {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {
@@ -31,7 +31,7 @@ const Question = sequelize.define("Question", {
 });
 
 // Définir la relation
-Question.belongsTo(Questionnaire, { foreignKey: 'questionnaireId' });
-Questionnaire.hasMany(Question, { foreignKey: 'questionnaireId' });
+Question.belongsTo(Questionnaire, { foreignKey: 'id_questionnaire' });
+Questionnaire.hasMany(Question, { foreignKey: 'id_questionnaire' });
 
 export default Question;

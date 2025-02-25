@@ -1,5 +1,5 @@
 import cors from 'cors';
-import express from 'express';
+import express, { Router } from 'express';
 import cookieParser from 'cookie-parser';
 import { authentication } from './routes/auth.route.js';
 import { sequelize } from './database.js';
@@ -7,9 +7,6 @@ import { questionnaire } from './routes/questionnaire.route.js';
 import { question } from './routes/question.route.js';
 import { reponse } from './routes/reponse.route.js';
 import { evaluation } from './routes/evaluation.route.js';
-
-
-
 
 const app = express();
 
@@ -23,11 +20,15 @@ app.use(cookieParser());
 //middlewares authentication
 app.use('/auth', authentication);
 
+//mise en place d'un routeur API
+const apiRouter = Router();
+app.use('/api', apiRouter);
+
 // Utilisation des routes 
-app.use('/api/questionnaire', questionnaire);
-app.use('/api/question', question);
-app.use('/api/reponse', reponse);
-app.use('/api/reponse', evaluation);
+apiRouter.use('/questionnaire', questionnaire);
+apiRouter.use('/question', question);
+apiRouter.use('/reponse', reponse);
+apiRouter.use('/evaluation', evaluation);
 
 const PORT = process.env.PORT || 3000;
 
