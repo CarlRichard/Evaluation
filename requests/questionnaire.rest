@@ -1,7 +1,6 @@
 ### Définir une variable globale pour le token
-@token = ''
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJqb2huLmRvZUB1cGRhdGUuY29tIiwiaWF0IjoxNzQwNTY4NzMwLCJleHAiOjE3NDA1NzIzMzB9.t9siLGoEGAA-h_l48OHXnsy8XxPeXWw7XZ5zEqybofM
 
-### ================== Questionnaires ==================
 
 ### Création d'un questionnaire
 POST http://localhost:3000/api/questionnaire
