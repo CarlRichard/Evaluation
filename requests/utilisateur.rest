@@ -10,6 +10,7 @@ Content-Type: application/json
     "prenom": "John",
     "mail": "john.doe@example.com",
     "role": 1,
+    "formation": "CDA",
     "mot_de_passe": "monpassword123"
 }
 
@@ -22,7 +23,7 @@ GET {{baseUrl}}/utilisateur/1
 Authorization: {{token}}
 
 ### 🔹 Modifier un utilisateur (ex: changer l'email)
-PUT {{baseUrl}}/utilisateur/1
+PATCH {{baseUrl}}/utilisateur/1
 Authorization: {{token}}
 Content-Type: application/json
 
@@ -31,7 +32,7 @@ Content-Type: application/json
 }
 
 ### 🔹 Modifier le mot de passe d'un utilisateur
-PUT {{baseUrl}}/utilisateur/1
+PATCH {{baseUrl}}/utilisateur/1
 Authorization: {{token}}
 Content-Type: application/json
 

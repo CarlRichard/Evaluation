@@ -3,13 +3,14 @@ import Utilisateur from "../models/utilisateur.model.js";
 // POST - Créer un utilisateur
 export const createUtilisateur = async (req, res) => {
   try {
-    const { nom, prenom, mail, role, mot_de_passe } = req.body;
+    const { nom, prenom, mail, role, formation, mot_de_passe } = req.body;
 
     const utilisateur = await Utilisateur.create({
       nom,
       prenom,
       mail,
       role,
+      formation,
       mot_de_passe,
     });
 
@@ -20,38 +21,45 @@ export const createUtilisateur = async (req, res) => {
   }
 };
 
-// GET - Récupérer tous les utilisateurs
+// Récupérer tous les utilisateurs sans afficher les mots de passe
 export const getAllUtilisateur = async (req, res) => {
-  try {
-    const utilisateurs = await Utilisateur.findAll();
+    try {
+        const utilisateurs = await Utilisateur.findAll({
+            attributes: { exclude: ['mot_de_passe'] } // Exclure le mot de passe
+        });
 
-    res.status(200).json({ utilisateurs });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: "Erreur lors de la récupération des utilisateurs", error: error.message });
-  }
-};
-export const getUtilisateur = async (req, res) => {
-  try {
-    const { id } = req.params;
-    const utilisateur = await Utilisateur.findByPk(id);
-
-    if (!utilisateur) {
-      return res.status(404).json({ message: "Utilisateur non trouvé" });
+        res.status(200).json({ utilisateurs });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Erreur lors de la récupération des utilisateurs", error: error.message });
     }
-
-    res.status(200).json({ utilisateur });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: "Erreur lors de la récupération de l'utilisateur", error: error.message });
-  }
 };
+
+// Récupérer un utilisateur par ID sans afficher le mot de passe
+export const getUtilisateur = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const utilisateur = await Utilisateur.findByPk(id, {
+            attributes: { exclude: ['mot_de_passe'] } // Exclure le mot de passe
+        });
+
+        if (!utilisateur) {
+            return res.status(404).json({ message: "Utilisateur non trouvé" });
+        }
+
+        res.status(200).json({ utilisateur });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Erreur lors de la récupération de l'utilisateur", error: error.message });
+    }
+};
+
 
 // PUT - Mettre à jour un utilisateur
 export const updateUtilisateur = async (req, res) => {
   try {
     const { id } = req.params;
-    const { nom, prenom, mail, role, mot_de_passe } = req.body;
+    const { nom, prenom, mail, role,formation,  mot_de_passe } = req.body;
 
     const utilisateur = await Utilisateur.findByPk(id);
 
@@ -64,6 +72,7 @@ export const updateUtilisateur = async (req, res) => {
     utilisateur.mail = mail;
     utilisateur.role = role;
     utilisateur.mot_de_passe = mot_de_passe;
+    utilisateur.formation = formation;
 
     await utilisateur.save();
 
@@ -100,6 +109,7 @@ export const deleteUtilisateur = async (req, res) => {
 //         nom: req.utilisateur.nom,
 //         prenom: req.utilisateur.prenom,
 //         email: req.utilisateur.email,
+//          formation: req.utilisateur.formation,
 //         role: req.utilisateur.role,
 //         permissions: req.utilisateur.permissions
 //     };
