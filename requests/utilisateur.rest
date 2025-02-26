@@ -1,0 +1,44 @@
+@baseUrl = http://localhost:3000/api
+@token = Bearer VOTRE_JETON_ICI
+
+### 🔹 Créer un utilisateur
+POST {{baseUrl}}/utilisateur
+Content-Type: application/json
+
+{
+    "nom": "Doe",
+    "prenom": "John",
+    "mail": "john.doe@example.com",
+    "role": 1,
+    "mot_de_passe": "monpassword123"
+}
+
+### 🔹 Obtenir tous les utilisateur (nécessite un token)
+GET {{baseUrl}}/utilisateur
+Authorization: {{token}}
+
+### 🔹 Obtenir un utilisateur par ID
+GET {{baseUrl}}/utilisateur/1
+Authorization: {{token}}
+
+### 🔹 Modifier un utilisateur (ex: changer l'email)
+PUT {{baseUrl}}/utilisateur/1
+Authorization: {{token}}
+Content-Type: application/json
+
+{
+    "mail": "john.doe@update.com"
+}
+
+### 🔹 Modifier le mot de passe d'un utilisateur
+PUT {{baseUrl}}/utilisateur/1
+Authorization: {{token}}
+Content-Type: application/json
+
+{
+    "mot_de_passe": "nouveaupassword123"
+}
+
+### 🔹 Supprimer un utilisateur
+DELETE {{baseUrl}}/utilisateur/1
+Authorization: {{token}}
