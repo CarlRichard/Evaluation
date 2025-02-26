@@ -7,7 +7,6 @@ POST {{baseUrl}}/utilisateur
 Content-Type: application/json
 
 {
-
     "nom": "Doe",
     "prenom": "John",
     "mail": "john.doe@example.com",
@@ -17,23 +16,23 @@ Content-Type: application/json
 
 ### 🔹 Obtenir tous les utilisateur (nécessite un token)
 GET {{baseUrl}}/utilisateur
-Authorization: Bearer {{token}}
+Authorization: {{token}}
 
 ### 🔹 Obtenir un utilisateur par ID
-GET {{baseUrl}}/utilisateur/4
-Authorization: Bearer {{token}}
+GET {{baseUrl}}/utilisateur/1
+Authorization: {{token}}
 
 ### 🔹 Modifier un utilisateur (ex: changer l'email)
-PATCH {{baseUrl}}/utilisateur/4
+PUT {{baseUrl}}/utilisateur/1
 Authorization: {{token}}
 Content-Type: application/json
 
 {
-    "email": "john.doe@update.com"
+    "mail": "john.doe@update.com"
 }
 
 ### 🔹 Modifier le mot de passe d'un utilisateur
-PATCH {{baseUrl}}/utilisateur/4
+PUT {{baseUrl}}/utilisateur/1
 Authorization: {{token}}
 Content-Type: application/json
 
