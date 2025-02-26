@@ -25,7 +25,7 @@ utilisateur.get('/', verifyToken, getAllUtilisateur);
 utilisateur.get('/:id', verifyToken, getUtilisateur);
 
 //update Reponse
-utilisateur.put('/:id', verifyToken , updateUtilisateur);
+utilisateur.patch('/:id', verifyToken , updateUtilisateur);
 
 //delete Reponse
 utilisateur.delete('/:id', verifyToken , deleteUtilisateur);

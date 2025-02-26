@@ -3,12 +3,12 @@ import Utilisateur from "../models/utilisateur.model.js";
 // POST - Créer un utilisateur
 export const createUtilisateur = async (req, res) => {
   try {
-    const { nom, prenom, mail, role, formation, mot_de_passe } = req.body;
+    const { nom, prenom, email, role, formation, mot_de_passe } = req.body;
 
     const utilisateur = await Utilisateur.create({
       nom,
       prenom,
-      mail,
+      email,
       role,
       formation,
       mot_de_passe,
@@ -55,33 +55,35 @@ export const getUtilisateur = async (req, res) => {
 };
 
 
-// PUT - Mettre à jour un utilisateur
+// Patch - Mettre à jour un utilisateur
 export const updateUtilisateur = async (req, res) => {
+  const { id } = req.params;
+  const { email, mot_de_passe } = req.body;
+  
   try {
-    const { id } = req.params;
-    const { nom, prenom, mail, role,formation,  mot_de_passe } = req.body;
-
     const utilisateur = await Utilisateur.findByPk(id);
 
     if (!utilisateur) {
-      return res.status(404).json({ message: "Utilisateur non trouvé" });
+      return res.status(404).json({ message: 'Utilisateur non trouvé' });
     }
 
-    utilisateur.nom = nom;
-    utilisateur.prenom = prenom;
-    utilisateur.mail = mail;
-    utilisateur.role = role;
-    utilisateur.mot_de_passe = mot_de_passe;
-    utilisateur.formation = formation;
+    // Mettre à jour uniquement les champs fournis dans la requête
+    if (email) {
+      utilisateur.email = email;
+    }
+    
+    if (mot_de_passe) {
+      utilisateur.mot_de_passe = mot_de_passe;
+    }
 
     await utilisateur.save();
-
-    res.status(200).json({ message: "Utilisateur mis à jour avec succès", utilisateur });
+    res.status(200).json({ message: 'Utilisateur mis à jour avec succès' });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: "Erreur lors de la mise à jour de l'utilisateur", error: error.message });
+    res.status(500).json({ message: 'Erreur lors de la mise à jour de l\'utilisateur', error: error.message });
   }
 };
+
 
 // DELETE - Supprimer un utilisateur
 export const deleteUtilisateur = async (req, res) => {

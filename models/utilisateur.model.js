@@ -1,5 +1,5 @@
-import { sequelize } from "../database.js";
 import { DataTypes } from "sequelize";
+import { sequelize } from "../database.js";
 import bcrypt from 'bcryptjs'; 
 
 export const Utilisateur = sequelize.define('utilisateur', {
@@ -16,7 +16,7 @@ export const Utilisateur = sequelize.define('utilisateur', {
         type: DataTypes.STRING,
         allowNull: false
     },
-    mail: {
+    email: {
         type: DataTypes.STRING,
         allowNull: false,
         unique: true
