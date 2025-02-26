@@ -1,9 +1,0 @@
-### Définir une variable globale pour le token
-@token = ''
-###
-GET http://localhost:3000/safe
-
-###
-GET http://localhost:3000/safe
-Authorization: Bearer {{token}}
-
