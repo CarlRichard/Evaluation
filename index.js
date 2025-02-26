@@ -7,6 +7,8 @@ import { questionnaire } from './routes/questionnaire.route.js';
 import { question } from './routes/question.route.js';
 import { reponse } from './routes/reponse.route.js';
 import { evaluation } from './routes/evaluation.route.js';
+import { utilisateur } from './routes/utilisateur.route.js';
+
 
 const app = express();
 
@@ -25,6 +27,7 @@ const apiRouter = Router();
 app.use('/api', apiRouter);
 
 // Utilisation des routes 
+apiRouter.use('/utilisateur', utilisateur);
 apiRouter.use('/questionnaire', questionnaire);
 apiRouter.use('/question', question);
 apiRouter.use('/reponse', reponse);

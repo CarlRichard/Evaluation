@@ -1,15 +1,32 @@
-const express = require('express');
-const router = express.Router();
-const { checkRole, checkPermission } = require('../middlewares/auth.js');
-const { getUserProfile, updateUserProfile } = require('../controllers/utilisateur.controller.js');
+// routes/questionnaire.js
+import { Router } from 'express';
+import { verifyToken } from '../middlewares/verifyToken.js';
+// import { checkRole, checkPermission } from '../middlewares/auth.js';
+// import { getUserProfile, updateUserProfile } from '../controllers/utilisateur.controller.js';
+import { createUtilisateur, getUtilisateur, getAllUtilisateur , updateUtilisateur, deleteUtilisateur } from '../controllers/utilisateur.controller.js';
 
-// Middleware pour vérifier le rôle de l'utilisateur
-router.use(checkRole);
+export const utilisateur = Router();
 
-// Route pour obtenir le profil de l'utilisateur
-router.get('/profile', checkPermission('view_profile'), getUserProfile);
+// // Middleware pour vérifier le rôle de l'utilisateur
+// utilisateur.use(checkRole);
 
-// Route pour mettre à jour le profil de l'utilisateur
-router.put('/profile', checkPermission('edit_profile'), updateUserProfile);
+// // Route pour obtenir le profil de l'utilisateur
+// utilisateur.get('/profile', checkPermission('view_profile'), getUserProfile);
 
-module.exports = router;
+// // Route pour mettre à jour le profil de l'utilisateur
+// utilisateur.put('/profile', checkPermission('edit_profile'), updateUserProfile);
+
+
+// Création Reponse
+utilisateur.post('/', verifyToken, createUtilisateur);
+
+// Lecture Reponse
+utilisateur.get('/', verifyToken, getAllUtilisateur);
+utilisateur.get('/:id', verifyToken, getUtilisateur);
+
+//update Reponse
+utilisateur.put('/:id', verifyToken , updateUtilisateur);
+
+//delete Reponse
+utilisateur.delete('/:id', verifyToken , deleteUtilisateur);
+
