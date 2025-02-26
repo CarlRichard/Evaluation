@@ -25,7 +25,7 @@ export const Utilisateur = sequelize.define('utilisateur', {
         type: DataTypes.INTEGER,
         allowNull: false,
         validate: {
-            isIn: [[0, 1]], // Assure que la valeur soit 0 ou 1
+            isIn: [[0, 1]], //  0 = etudiant ou 1 = formateur
         }
     },
     mot_de_passe: {
@@ -49,4 +49,4 @@ export const Utilisateur = sequelize.define('utilisateur', {
     }
 });
 
-export default Utilisateur;  // Export par défaut ici
+export default Utilisateur;
