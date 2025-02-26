@@ -7,6 +7,7 @@ import { questionnaire } from './routes/questionnaire.route.js';
 import { question } from './routes/question.route.js';
 import { reponse } from './routes/reponse.route.js';
 import { evaluation } from './routes/evaluation.route.js';
+import { utilisateur } from './routes/utilisateur.route.js';
 
 const app = express();
 
@@ -29,6 +30,7 @@ apiRouter.use('/questionnaire', questionnaire);
 apiRouter.use('/question', question);
 apiRouter.use('/reponse', reponse);
 apiRouter.use('/evaluation', evaluation);
+apiRouter.use('/utilisateur', utilisateur);
 
 const PORT = process.env.PORT || 3000;
 
