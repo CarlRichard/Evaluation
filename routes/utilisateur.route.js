@@ -18,7 +18,7 @@ export const utilisateur = Router();
 
 
 // Création Reponse
-utilisateur.post('/', verifyToken, createUtilisateur);
+utilisateur.post('/', createUtilisateur);
 
 // Lecture Reponse
 utilisateur.get('/', verifyToken, getAllUtilisateur);

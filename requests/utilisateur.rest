@@ -1,5 +1,5 @@
 @baseUrl = http://localhost:3000/api
-@token = Bearer VOTRE_JETON_ICI
+@token = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ0ZXN0IiwiaWF0IjoxNzQwNTYxNzcwLCJleHAiOjE3NDA1NjUzNzB9.HMGrQ12Hq5RnU0VRJLAmsVHJJ38CLPfBb2F7PWea_rI
 
 ### 🔹 Créer un utilisateur
 POST {{baseUrl}}/utilisateur
@@ -15,7 +15,7 @@ Content-Type: application/json
 
 ### 🔹 Obtenir tous les utilisateur (nécessite un token)
 GET {{baseUrl}}/utilisateur
-Authorization: {{token}}
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ0ZXN0IiwiaWF0IjoxNzQwNTYxNzcwLCJleHAiOjE3NDA1NjUzNzB9.HMGrQ12Hq5RnU0VRJLAmsVHJJ38CLPfBb2F7PWea_rI
 
 ### 🔹 Obtenir un utilisateur par ID
 GET {{baseUrl}}/utilisateur/1

@@ -1,5 +1,5 @@
 ### deconnexion
-POST http://localhost:3000/auth/connexion
+POST http://localhost:3000/auth/deconnexion
 Content-Type: application/json
 
 {
@@ -8,7 +8,7 @@ Content-Type: application/json
 }
 
 ### login
-POST http://localhost:3000/auth/deconnexion
+POST http://localhost:3000/auth/connexion
 Content-Type: application/json
 
 {
