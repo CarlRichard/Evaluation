@@ -1,17 +1,17 @@
 ### deconnexion
-POST http://localhost:3000/auth/sign-up
+POST http://localhost:3000/auth/connexion
 Content-Type: application/json
 
 {
-  "username": "test",
-  "password": "password" 
+  "email": "test",
+  "mot_de_passe": "password" 
 }
 
 ### login
-POST http://localhost:3000/auth/sign-in
+POST http://localhost:3000/auth/deconnexion
 Content-Type: application/json
 
 {
-  "username": "test",
-  "password": "password" 
+  "email": "test",
+  "mot_de_passe": "password" 
 }
