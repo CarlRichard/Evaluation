@@ -8,8 +8,8 @@ Authorization: Bearer {{token}}
 
 {
   "rep": "C'est ma réponse.",
-  "id_question": 1,
-  "id_evaluation": 1
+  "id_question": 8,
+  "id_evaluation": 2
 }
 
 ### Récupérer toutes les réponses

@@ -37,10 +37,7 @@ const Reponse = sequelize.define("Reponse", {
 });
 
 // Définition des relations
-Question.hasMany(Reponse, { foreignKey: "id_question", onDelete: "CASCADE" });
 Reponse.belongsTo(Question, { foreignKey: "id_question" });
-
-Evaluation.hasMany(Reponse, { foreignKey: "id_evaluation", onDelete: "CASCADE" });
 Reponse.belongsTo(Evaluation, { foreignKey: "id_evaluation" });
 
 export default Reponse;
