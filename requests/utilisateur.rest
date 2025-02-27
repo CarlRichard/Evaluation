@@ -1,17 +1,17 @@
 @baseUrl = http://localhost:3000/api
-@token = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJqb2huLmRvZUB1cGRhdGUuY29tIiwiaWF0IjoxNzQwNTY4NzMwLCJleHAiOjE3NDA1NzIzMzB9.t9siLGoEGAA-h_l48OHXnsy8XxPeXWw7XZ5zEqybofM
+@token = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiZW1haWwiOiJqb2huLmRvZUB1cGRhdGUuY29tIiwiaWF0IjoxNzQwNjUwOTkzLCJleHAiOjE3NDA2NTQ1OTN9.e78DkCZElIHYaK7u-a1jhIKOSB7JDNjKgS9Shbb85YI
 
 ### 🔹 Créer un utilisateur
 POST {{baseUrl}}/utilisateur
 Content-Type: application/json
 
 {
-    "nom": "Doe",
-    "prenom": "John",
-    "email": "john.doe@example.com",
+    "nom": "R",
+    "prenom": "C",
+    "email": "carl@a.a",
     "role": 1,
     "formation": "CDA",
-    "mot_de_passe": "monpassword123"
+    "mot_de_passe": "123"
 }
 
 ### 🔹 Obtenir tous les utilisateur (nécessite un token)
@@ -41,5 +41,5 @@ Content-Type: application/json
 }
 
 ### 🔹 Supprimer un utilisateur
-DELETE {{baseUrl}}/utilisateur/3
+DELETE {{baseUrl}}/utilisateur/5
 Authorization: {{token}}

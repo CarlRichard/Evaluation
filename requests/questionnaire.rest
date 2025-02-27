@@ -1,6 +1,5 @@
 ### Définir une variable globale pour le token
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJqb2huLmRvZUB1cGRhdGUuY29tIiwiaWF0IjoxNzQwNTY4NzMwLCJleHAiOjE3NDA1NzIzMzB9.t9siLGoEGAA-h_l48OHXnsy8XxPeXWw7XZ5zEqybofM
-
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiZW1haWwiOiJqb2huLmRvZUB1cGRhdGUuY29tIiwiaWF0IjoxNzQwNjUwOTkzLCJleHAiOjE3NDA2NTQ1OTN9.e78DkCZElIHYaK7u-a1jhIKOSB7JDNjKgS9Shbb85YI
 
 ### Création d'un questionnaire
 POST http://localhost:3000/api/questionnaire
@@ -8,7 +7,7 @@ Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-  "titre": "Nouveau Questionnaire",
+  "titre": "Nouveau Questionnaire 16",
   "description": "Description du questionnaire."
 }
 
@@ -17,11 +16,11 @@ GET http://localhost:3000/api/questionnaire
 Authorization: Bearer {{token}}
 
 ### Récupérer un questionnaire par ID
-GET http://localhost:3000/api/questionnaire/1
+GET http://localhost:3000/api/questionnaire/16
 Authorization: Bearer {{token}}
 
 ### Mise à jour d'un questionnaire
-PUT http://localhost:3000/api/questionnaire/1
+PUT http://localhost:3000/api/questionnaire/5
 Content-Type: application/json
 Authorization: Bearer {{token}}
 
@@ -31,6 +30,6 @@ Authorization: Bearer {{token}}
 }
 
 ### Supprimer un questionnaire
-DELETE http://localhost:3000/api/questionnaire/1
+DELETE http://localhost:3000/api/questionnaire/3
 Authorization: Bearer {{token}}
 

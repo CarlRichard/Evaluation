@@ -1,8 +1,9 @@
+// utilisateur.model.js
 import { DataTypes } from "sequelize";
 import { sequelize } from "../database.js";
 import bcrypt from 'bcryptjs'; 
 
-export const Utilisateur = sequelize.define('utilisateur', {
+const Utilisateur = sequelize.define('utilisateur', {
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
@@ -19,13 +20,16 @@ export const Utilisateur = sequelize.define('utilisateur', {
     email: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: true
-    },
+        unique: {
+            args: true,
+            msg: 'L\'email doit être unique.'
+        }
+    },    
     role: {
         type: DataTypes.INTEGER,
         allowNull: false,
         validate: {
-            isIn: [[0, 1]], //  0 = etudiant ou 1 = formateur
+            isIn: [[0, 1]], //  0 = etudiant ou 1 = formateur 
         }
     },
     formation: {
@@ -40,7 +44,6 @@ export const Utilisateur = sequelize.define('utilisateur', {
     timestamps: true,
     hooks: {
         beforeCreate: async (utilisateur, options) => {
-            // Hacher le mot de passe avant la création de l'utilisateur
             const hashedPassword = await bcrypt.hash(utilisateur.mot_de_passe, 10);
             utilisateur.mot_de_passe = hashedPassword;
         },
@@ -53,4 +56,5 @@ export const Utilisateur = sequelize.define('utilisateur', {
     }
 });
 
+// Export par défaut du modèle
 export default Utilisateur;

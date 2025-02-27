@@ -1,5 +1,7 @@
 import jsonwebtoken from 'jsonwebtoken';
-import { Utilisateur } from '../models/utilisateur.model.js';
+// auth.controller.js
+import Utilisateur from '../models/utilisateur.model.js'; // Utilisation de l'export par défaut
+
 import e from 'express';
 
 import bcrypt from 'bcryptjs'; // Assurez-vous d'importer bcryptjs
