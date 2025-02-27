@@ -1,4 +1,5 @@
 import Question from "../models/question.model.js";
+import Questionnaire from "../models/questionnaire.model.js";
 
 //post
 export const createQuestion = async (req, res) => {

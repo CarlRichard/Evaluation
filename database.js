@@ -1,5 +1,6 @@
+import mysql from "mysql2/promise"; 
 import { Sequelize } from "sequelize";
-import mysql from "mysql2/promise"; // Import pour gérer la création de la base
+
 
 const DB_NAME = "Eval_db";
 const DB_USER = "root";

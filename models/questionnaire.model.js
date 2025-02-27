@@ -20,7 +20,7 @@ const Questionnaire = sequelize.define("Questionnaire", {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {
-      model: "utilisateurs", // Assure-toi que c'est bien le nom de la table utilisateurs dans la DB
+      model: "utilisateurs", 
       key: "id",
     },
     onDelete: "CASCADE",
@@ -30,9 +30,10 @@ const Questionnaire = sequelize.define("Questionnaire", {
   timestamps: true,
 });
 
-// Définir la relation après la définition du modèle
+// relation 
 Questionnaire.belongsTo(Utilisateur, { 
-  foreignKey: "id_utilisateur" 
+  foreignKey: "id_utilisateur" ,
+  targetKey: "id" 
 });
 
 export default Questionnaire;
