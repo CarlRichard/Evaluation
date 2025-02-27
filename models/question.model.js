@@ -1,5 +1,6 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../database.js";
+import Questionnaire from "./questionnaire.model.js";
 
 const Question = sequelize.define("Question", {
   id: {
@@ -27,6 +28,12 @@ const Question = sequelize.define("Question", {
 }, {
   tableName: "questions",
   timestamps: true,
+});
+
+// relation 
+Question.belongsTo(Questionnaire, { 
+  foreignKey: "id_questionnaire",
+  targetKey: "id" 
 });
 
 export default Question;

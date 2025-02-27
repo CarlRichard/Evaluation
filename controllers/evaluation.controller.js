@@ -1,4 +1,5 @@
 import Evaluation from '../models/evaluation.model.js';
+import Utilisateur from '../models/utilisateur.model.js';
 
 // Création d'une évaluation
 export const createEvaluation = async (req, res) => {

@@ -9,7 +9,7 @@ Authorization: Bearer {{token}}
 {
   "titre": "Comment vous sentez vous sur JS ?",
   "description": "Une question sur JS.",
-  "id_questionnaire": 4
+  "id_questionnaire": 1
 }
 
 ### Récupérer toutes les questions

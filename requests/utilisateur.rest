@@ -1,5 +1,5 @@
 @baseUrl = http://localhost:3000/api
-@token = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiZW1haWwiOiJqb2huLmRvZUB1cGRhdGUuY29tIiwiaWF0IjoxNzQwNjUwOTkzLCJleHAiOjE3NDA2NTQ1OTN9.e78DkCZElIHYaK7u-a1jhIKOSB7JDNjKgS9Shbb85YI
+@token = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiZW1haWwiOiJqb2huLmRvZUB1cGRhdGUuY29tIiwiaWFff0IjoxNzQwNjUwOTkzLCJleHAiOjE3NDA2NTQ1OTN9.e78DkCZElIHYaK7u-a1jhIKOSB7JDNjKgS9Shbb85YI
 
 ### 🔹 Créer un utilisateur
 POST {{baseUrl}}/utilisateur
@@ -8,7 +8,7 @@ Content-Type: application/json
 {
     "nom": "R",
     "prenom": "C",
-    "email": "carl@a.a",
+    "email": "carll@a.a",
     "role": 1,
     "formation": "CDA",
     "mot_de_passe": "123"

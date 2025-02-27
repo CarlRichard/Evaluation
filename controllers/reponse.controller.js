@@ -1,3 +1,5 @@
+import Evaluation from "../models/evaluation.model.js";
+import Question from "../models/question.model.js";
 import Reponse from "../models/reponse.model.js";
 
 

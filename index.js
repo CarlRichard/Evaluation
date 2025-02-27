@@ -1,8 +1,9 @@
 import cors from 'cors';
 import express, { Router } from 'express';
 import cookieParser from 'cookie-parser';
-import { authentication } from './routes/auth.route.js';
 import { sequelize } from './database.js';
+import { authentication } from './routes/auth.route.js';
+import { utilisateur } from './routes/utilisateur.route.js';
 import { questionnaire } from './routes/questionnaire.route.js';
 import { question } from './routes/question.route.js';
 import { reponse } from './routes/reponse.route.js';
@@ -10,6 +11,7 @@ import { evaluation } from './routes/evaluation.route.js';
 import { utilisateur } from './routes/utilisateur.route.js';
 
 
+import './models/association.js'; 
 const app = express();
 
 app.use(cors({
