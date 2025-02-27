@@ -1,4 +1,5 @@
 import Questionnaire from "../models/questionnaire.model.js";
+import Utilisateur from "../models/utilisateur.model.js";
 
 // post
 export const createQuestionnaire = async (req, res) => {
@@ -27,8 +28,10 @@ export const createQuestionnaire = async (req, res) => {
 export const getAllQuestionnaire = async (req, res) => {
   try {
     const questionnaires = await Questionnaire.findAll({
-      include: [{ model: Utilisateur, attributes: ['name', 'email'] }], // Inclure l'utilisateur qui a créé le questionnaire
+      include: [{ model: Utilisateur, attributes: ['nom', 'email'] }], // Inclure l'utilisateur qui a créé le questionnaire
     });
+
+    console.log(questionnaires); // Vérifier la structure des questionnaires
 
     res.status(200).json({ questionnaires }); 
   } catch (error) {
@@ -42,7 +45,7 @@ export const getQuestionnaire = async (req, res) => {
   try {
     const { id } = req.params;
     const questionnaire = await Questionnaire.findByPk(id, {
-      include: [{ model: Utilisateur, attributes: ['name', 'email'] }], // Inclure l'utilisateur qui a créé le questionnaire
+      include: [{ model: Utilisateur, attributes: ['nom', 'email'] }], // Inclure l'utilisateur qui a créé le questionnaire
     });
 
     if (!questionnaire) {
