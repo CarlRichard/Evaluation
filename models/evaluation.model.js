@@ -36,10 +36,7 @@ const Evaluation = sequelize.define("Evaluation", {
 });
 
 // Définition des relations
-Utilisateur.hasMany(Evaluation, { foreignKey: "id_evaluateur", onDelete: "CASCADE" });
 Evaluation.belongsTo(Utilisateur, { foreignKey: "id_evaluateur", as: "evaluateur" });
-
-Utilisateur.hasMany(Evaluation, { foreignKey: "id_evalue", onDelete: "CASCADE" });
 Evaluation.belongsTo(Utilisateur, { foreignKey: "id_evalue", as: "evalue" });
 
 export default Evaluation;

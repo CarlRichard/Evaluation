@@ -7,8 +7,8 @@ Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-  "id_evaluateur": 1, 
-  "id_evalue": 2,
+  "id_evaluateur":7, 
+  "id_evalue": 4,
   "commentaire": "Très bien !"
 }
 

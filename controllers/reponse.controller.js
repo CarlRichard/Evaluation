@@ -27,7 +27,7 @@ export const getAllReponse = async (req, res) => {
     try {
       const reponses = await Reponse.findAll({
         include: [
-          { model: Question, attributes: ['title'] },   // Inclure la question associée
+          { model: Question, attributes: ['titre'] },   // Inclure la question associée
           { model: Evaluation, attributes: ['score'] }   // Inclure l'évaluation associée
         ]
       });
