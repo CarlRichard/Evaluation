@@ -1,5 +1,5 @@
 ### Définir une variable globale pour le token
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiZW1haWwiOiJqb2huLmRvZUB1cGRhdGUuY29tIiwiaWF0IjoxNzQwNjUwOTkzLCJleHAiOjE3NDA2NTQ1OTN9.e78DkCZElIHYaK7u-a1jhIKOSB7JDNjKgS9Shbb85YI
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsImVtYWlsIjoicGllcnJlQGEuYSIsImlhdCI6MTc0MDY2MDg1NiwiZXhwIjoxNzQwNjY0NDU2fQ.fkuyDruY0qepJb-k7c0J5hMXXPY8XEa8ZJE8kmh88M0
 
 ### Création d'un questionnaire
 POST http://localhost:3000/api/questionnaire

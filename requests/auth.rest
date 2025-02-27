@@ -8,6 +8,6 @@ POST http://localhost:3000/auth/connexion
 Content-Type: application/json
 
 {
-  "email": "john.doe@update.com",
-  "mot_de_passe": "nouveaupassword123" 
+  "email": "pierre@a.a",
+  "mot_de_passe": "123" 
 }

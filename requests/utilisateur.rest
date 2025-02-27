@@ -6,11 +6,11 @@ POST {{baseUrl}}/utilisateur
 Content-Type: application/json
 
 {
-    "nom": "R",
-    "prenom": "C",
-    "email": "carll@a.a",
-    "role": 1,
-    "formation": "CDA",
+    "nom": "G",
+    "prenom": "P",
+    "email": "pierre@a.a",
+    "role": 0,
+    "formation": "POA",
     "mot_de_passe": "123"
 }
 
