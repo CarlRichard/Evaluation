@@ -21,16 +21,17 @@ const Reponse = sequelize.define("Reponse", {
       key: "id",
     },
     onDelete: "CASCADE",
-  },
-  id_evaluation: { // Clé étrangère
-    type: DataTypes.INTEGER,
-    allowNull: false,
-    references: {
-      model: Evaluation,
-      key: "id",
-    },
-    onDelete: "CASCADE",
   }
+  //,
+  // id_evaluation: { // Clé étrangère
+  //   type: DataTypes.INTEGER,
+  //   allowNull: false,
+  //   references: {
+  //     model: Evaluation,
+  //     key: "id",
+  //   },
+  //   onDelete: "CASCADE",
+  // }
 }, {
   tableName: "reponse",
   timestamps: true
@@ -38,6 +39,6 @@ const Reponse = sequelize.define("Reponse", {
 
 // Définition des relations
 Reponse.belongsTo(Question, { foreignKey: "id_question" });
-Reponse.belongsTo(Evaluation, { foreignKey: "id_evaluation" });
+// Reponse.belongsTo(Evaluation, { foreignKey: "id_evaluation" });
 
 export default Reponse;

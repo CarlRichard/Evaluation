@@ -1,3 +1,4 @@
+import Question from "../models/question.model.js";
 import Questionnaire from "../models/questionnaire.model.js";
 import Utilisateur from "../models/utilisateur.model.js";
 
@@ -29,6 +30,7 @@ export const getAllQuestionnaire = async (req, res) => {
   try {
     const questionnaires = await Questionnaire.findAll({
       include: [{ model: Utilisateur, attributes: ['nom', 'email'] }], // Inclure l'utilisateur qui a créé le questionnaire
+      include: [{ model: Question, attributes: ['titre', 'description'] }]
     });
 
     console.log(questionnaires); // Vérifier la structure des questionnaires

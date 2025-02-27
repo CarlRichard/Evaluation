@@ -7,9 +7,8 @@ Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-  "rep": "C'est ma réponse.",
-  "id_question": 8,
-  "id_evaluation": 2
+  "rep": "C'est ma réponse 88.",
+  "id_question": 8
 }
 
 ### Récupérer toutes les réponses
@@ -27,8 +26,7 @@ Authorization: Bearer {{token}}
 
 {
   "rep": "Réponse mise à jour.",
-  "id_question": 2,
-  "id_evaluation": 2
+  "id_question": 2
 }
 
 ### Supprimer une réponse
