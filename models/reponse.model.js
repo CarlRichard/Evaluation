@@ -10,8 +10,12 @@ const Reponse = sequelize.define("Reponse", {
     primaryKey: true,
   },
   rep: {
-    type: DataTypes.TEXT,
+    type: DataTypes.INTEGER,
     allowNull: false,
+    validate: {
+      min: 0,
+      max: 16
+    }
   },
   id_question: { // Clé étrangère
     type: DataTypes.INTEGER,
