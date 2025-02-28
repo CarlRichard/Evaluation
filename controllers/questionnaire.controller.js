@@ -14,7 +14,7 @@ export const createQuestionnaire = async (req, res) => {
     const questionnaire = await Questionnaire.create({
       titre,
       description,
-      id_utilisateur,
+      id_utilisateur
     });
 
     res.status(201).json({ message: "Questionnaire créé avec succès", questionnaire });
@@ -25,29 +25,44 @@ export const createQuestionnaire = async (req, res) => {
 };
 
 
-//get
+// get - Récupérer tous les questionnaires avec leurs questions et l'utilisateur qui les a créés
 export const getAllQuestionnaire = async (req, res) => {
   try {
     const questionnaires = await Questionnaire.findAll({
-      include: [{ model: Utilisateur, attributes: ['nom', 'email'] }], // Inclure l'utilisateur qui a créé le questionnaire
-      include: [{ model: Question, attributes: ['titre', 'description'] }]
+      include: [
+        { 
+          model: Utilisateur, 
+          attributes: ['nom','prenom', 'email'] // Inclure l'utilisateur qui a créé le questionnaire
+        },
+        { 
+          model: Question, 
+          attributes: ['titre', 'description'] // Inclure les questions liées au questionnaire
+        }
+      ]
     });
 
     console.log(questionnaires); // Vérifier la structure des questionnaires
 
-    res.status(200).json({ questionnaires }); 
+    res.status(200).json({ questionnaires });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Erreur lors de la récupération des questionnaires", error: error.message });
   }
 };
 
-//get id
+// get id - Récupérer un questionnaire par son ID avec l'utilisateur et ses questions
 export const getQuestionnaire = async (req, res) => {
   try {
     const { id } = req.params;
     const questionnaire = await Questionnaire.findByPk(id, {
-      include: [{ model: Utilisateur, attributes: ['nom', 'email'] }], // Inclure l'utilisateur qui a créé le questionnaire
+      include: [
+        {
+          model: Utilisateur, attributes: ['nom', 'prenom', 'email'] 
+        },
+        { 
+          model: Question, attributes: ['titre', 'description'] 
+        }
+      ]
     });
 
     if (!questionnaire) {
@@ -61,7 +76,7 @@ export const getQuestionnaire = async (req, res) => {
   }
 };
 
-// put
+// put - Mettre à jour un questionnaire
 export const updateQuestionnaire = async (req, res) => {
   try {
     const { id } = req.params;
@@ -93,7 +108,7 @@ export const updateQuestionnaire = async (req, res) => {
 };
 
 
-//delete
+// delete - Supprimer un questionnaire
 export const deleteQuestionnaire = async (req, res) => {
   try {
     const { id } = req.params;

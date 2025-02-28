@@ -1,4 +1,4 @@
-import mysql from "mysql2/promise"; 
+import mysql from "mysql2/promise";
 import { Sequelize } from "sequelize";
 
 
@@ -42,6 +42,10 @@ export const initDB = async () => {
 
         // Synchronisation des modèles (ajuste sans tout supprimer)
         await sequelize.sync({ alter: true });
+        
+        const tables = await sequelize.query("SHOW TABLES FROM Eval_db;", { type: sequelize.QueryTypes.SELECT });
+        console.log("📌 Tables disponibles :", tables);
+
         console.log("✅ Base de données synchronisée.");
     } catch (error) {
         console.error("❌ Erreur lors de l'initialisation de la base :", error);

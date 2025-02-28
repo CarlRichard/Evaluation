@@ -7,6 +7,7 @@ export const createQuestion = async (req, res) => {
         const { titre, description, id_questionnaire } = req.body;
 
         // Créer la question
+    
         const question = await Question.create({ titre, description, id_questionnaire });
 
         res.status(201).json({ message: "Question créée avec succès", question });

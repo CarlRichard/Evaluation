@@ -7,8 +7,8 @@ Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-  "rep": "C'est ma réponse 888.",
-  "id_question": 8
+  "rep": 11,
+  "id_question": 3
 }
 
 ### Récupérer toutes les réponses

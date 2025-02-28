@@ -39,6 +39,6 @@ const Evaluation = sequelize.define("Evaluation", {
 // Définition des relations
 Evaluation.belongsTo(Utilisateur, { foreignKey: "id_evaluateur", as: "evaluateur" });
 Evaluation.belongsTo(Utilisateur, { foreignKey: "id_evalue", as: "evalue" });
-Evaluation.belongsTo(Reponse, { foreignKey: "id_reponse" });
+Evaluation.belongsTo(Reponse, { foreignKey: "id_reponse", as: "reponse" });
 
 export default Evaluation;
