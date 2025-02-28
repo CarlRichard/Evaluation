@@ -2,7 +2,9 @@ import cors from 'cors';
 import express, { Router } from 'express';
 import cookieParser from 'cookie-parser';
 import { sequelize } from './database.js';
+import { sequelize } from './database.js';
 import { authentication } from './routes/auth.route.js';
+import { utilisateur } from './routes/utilisateur.route.js';
 import { utilisateur } from './routes/utilisateur.route.js';
 import { questionnaire } from './routes/questionnaire.route.js';
 import { question } from './routes/question.route.js';
@@ -31,10 +33,12 @@ app.use('/api', apiRouter);
 
 // Utilisation des routes 
 apiRouter.use('/utilisateur', utilisateur);
+apiRouter.use('/utilisateur', utilisateur);
 apiRouter.use('/questionnaire', questionnaire);
 apiRouter.use('/question', question);
 apiRouter.use('/reponse', reponse);
 apiRouter.use('/evaluation', evaluation);
+apiRouter.use('/utilisateur', utilisateur);
 
 const PORT = process.env.PORT || 3000;
 
