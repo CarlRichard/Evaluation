@@ -2,49 +2,178 @@
 
 ## Routes d'authentification
 
-| Route                    | Méthode | Corps de la requête                                       | Réponse                                                  |
-|--------------------------|---------|-----------------------------------------------------------|----------------------------------------------------------|
-| `/auth/register`         | POST    | ```json\n{ "email": "exemple@example.com", "mot_de_passe": "motdepasse123" }\n``` | ```json\n{ "id": 1, "email": "exemple@example.com" }\n``` |
-| `/auth/login`            | POST    | ```json\n{ "email": "exemple@example.com", "mot_de_passe": "motdepasse123" }\n``` | ```json\n{ "accessToken": "jwt_access_token" }\n``` |
-| `/auth/logout`           | POST    | Aucun corps de requête nécessaire.                         | ```json\n{ "message": "You have been logged out" }\n``` |
-| `/auth/authenticated`    | GET     | Aucun corps de requête nécessaire.                         | ```json\n{ "connected": true, "accessToken": "jwt_access_token" }\n``` |
+### `/auth/register` (POST)
+Enregistre un nouvel utilisateur dans le système.
+
+| Route                    | Méthode | Corps de la requête                                       |
+|--------------------------|---------|-----------------------------------------------------------|
+| `/auth/register`         | POST    | ```json\n{ "email": "exemple@example.com", "mot_de_passe": "motdepasse123" }\n``` |
+
+### `/auth/login` (POST)
+Permet à un utilisateur de se connecter en fournissant ses identifiants. Un token d'accès JWT est renvoyé pour les requêtes ultérieures.
+
+| Route                    | Méthode | Corps de la requête                                       |
+|--------------------------|---------|-----------------------------------------------------------|
+| `/auth/login`            | POST    | ```json\n{ "email": "exemple@example.com", "mot_de_passe": "motdepasse123" }\n``` |
+
+### `/auth/logout` (POST)
+Déconnecte l'utilisateur et supprime le `refreshToken` associé.
+
+| Route                    | Méthode | Corps de la requête                                       |
+|--------------------------|---------|-----------------------------------------------------------|
+| `/auth/logout`           | POST    | Aucun corps de requête nécessaire.                         |
+
+### `/auth/authenticated` (GET)
+Vérifie si l'utilisateur est authentifié et renvoie un nouvel `accessToken` si un `refreshToken` valide est fourni.
+
+| Route                    | Méthode | Corps de la requête                                       |
+|--------------------------|---------|-----------------------------------------------------------|
+| `/auth/authenticated`    | GET     | Aucun corps de requête nécessaire.                         |
 
 ## Routes des utilisateurs
 
-| Route                    | Méthode | Corps de la requête                                       | Réponse                                                  |
-|--------------------------|---------|-----------------------------------------------------------|----------------------------------------------------------|
-| `/api/utilisateur`       | POST    | ```json\n{ "nom": "Nom", "prenom": "Prenom", "email": "exemple@example.com", "role": "ROLE_ADMIN", "formation": "Informatique", "mot_de_passe": "motdepasse123" }\n``` | ```json\n{ "message": "Utilisateur créé avec succès", "utilisateur": { "id": 1, "nom": "Nom", "prenom": "Prenom", "email": "exemple@example.com" } }\n``` |
-| `/api/utilisateur`       | GET     | Aucun corps de requête nécessaire.                         | ```json\n{ "utilisateurs": [ { "id": 1, "nom": "Nom", "prenom": "Prenom", "email": "exemple@example.com" } ] }\n``` |
-| `/api/utilisateur/:id`   | GET     | Aucun corps de requête nécessaire.                         | ```json\n{ "id": 1, "nom": "Nom", "prenom": "Prenom", "email": "exemple@example.com" }\n``` |
-| `/api/utilisateur/:id`   | PUT     | ```json\n{ "nom": "NouveauNom", "prenom": "NouveauPrenom", "email": "nouveau@example.com" }\n``` | ```json\n{ "message": "Utilisateur mis à jour avec succès" }\n``` |
-| `/api/utilisateur/:id`   | DELETE  | Aucun corps de requête nécessaire.                         | ```json\n{ "message": "Utilisateur supprimé avec succès" }\n``` |
+### `/api/utilisateur` (POST)
+Crée un nouvel utilisateur avec les informations fournies. Utilisé lors de l'inscription d'un utilisateur.
+
+| Route                    | Méthode | Corps de la requête                                       |
+|--------------------------|---------|-----------------------------------------------------------|
+| `/api/utilisateur`       | POST    | ```json\n{ "nom": "Nom", "prenom": "Prenom", "email": "exemple@example.com", "role": "ROLE_ADMIN", "formation": "Informatique", "mot_de_passe": "motdepasse123" }\n``` |
+
+### `/api/utilisateur` (GET)
+Récupère tous les utilisateurs, sans leurs mots de passe, à des fins d'affichage ou de gestion.
+
+| Route                    | Méthode | Corps de la requête                                       |
+|--------------------------|---------|-----------------------------------------------------------|
+| `/api/utilisateur`       | GET     | Aucun corps de requête nécessaire.                         |
+
+### `/api/utilisateur/:id` (GET)
+Récupère un utilisateur par son ID, sans son mot de passe. Permet d'afficher les détails d'un utilisateur spécifique.
+
+| Route                    | Méthode | Corps de la requête                                       |
+|--------------------------|---------|-----------------------------------------------------------|
+| `/api/utilisateur/:id`   | GET     | Aucun corps de requête nécessaire.                         |
+
+### `/api/utilisateur/:id` (PUT)
+Met à jour les informations d'un utilisateur spécifique. Cette route peut être utilisée pour modifier les détails d'un utilisateur, comme son nom, son prénom ou son email.
+
+| Route                    | Méthode | Corps de la requête                                       |
+|--------------------------|---------|-----------------------------------------------------------|
+| `/api/utilisateur/:id`   | PUT     | ```json\n{ "nom": "NouveauNom", "prenom": "NouveauPrenom", "email": "nouveau@example.com" }\n``` |
+
+### `/api/utilisateur/:id` (DELETE)
+Supprime un utilisateur spécifique du système. Cela peut être utilisé pour désactiver ou supprimer définitivement un utilisateur.
+
+| Route                    | Méthode | Corps de la requête                                       |
+|--------------------------|---------|-----------------------------------------------------------|
+| `/api/utilisateur/:id`   | DELETE  | Aucun corps de requête nécessaire.                         |
 
 ## Routes des évaluations
 
-| Route                    | Méthode | Corps de la requête                                       | Réponse                                                  |
-|--------------------------|---------|-----------------------------------------------------------|----------------------------------------------------------|
-| `/api/evaluation`         | POST    | ```json\n{ "id_evalue": 2, "commentaire": "Évaluation de l'utilisateur.", "id_reponse": 3 }\n``` | ```json\n{ "message": "Évaluation créée avec succès", "evaluation": { "id": 1, "id_evaluateur": 1, "id_evalue": 2, "commentaire": "Évaluation de l'utilisateur.", "id_reponse": 3 } }\n``` |
-| `/api/evaluation`         | GET     | Aucun corps de requête nécessaire.                         | ```json\n{ "evaluations": [ { "id": 1, "evaluateur": { "id": 1, "nom": "Evaluateur", "prenom": "Prenom" }, "evalue": { "id": 2, "nom": "Évalué", "prenom": "Prenom" }, "reponse": { "id": 3, "rep": "Réponse" } } ] }\n``` |
-| `/api/evaluation/:id`     | GET     | Aucun corps de requête nécessaire.                         | ```json\n{ "evaluation": { "id": 1, "evaluateur": { "id": 1, "nom": "Evaluateur", "prenom": "Prenom" }, "evalue": { "id": 2, "nom": "Évalué", "prenom": "Prenom" }, "reponse": { "id": 3, "rep": "Réponse" } } }\n``` |
-| `/api/evaluation/:id`     | PUT     | ```json\n{ "commentaire": "Nouveau commentaire" }\n```     | ```json\n{ "message": "Évaluation mise à jour avec succès" }\n``` |
-| `/api/evaluation/:id`     | DELETE  | Aucun corps de requête nécessaire.                         | ```json\n{ "message": "Évaluation supprimée avec succès" }\n``` |
+### `/api/evaluation` (POST)
+Crée une évaluation pour un utilisateur spécifié. L'évaluation peut inclure un commentaire et une référence à une réponse spécifique.
+
+| Route                    | Méthode | Corps de la requête                                       |
+|--------------------------|---------|-----------------------------------------------------------|
+| `/api/evaluation`         | POST    | ```json\n{ "id_evalue": 2, "commentaire": "Évaluation de l'utilisateur.", "id_reponse": 3 }\n``` |
+
+### `/api/evaluation` (GET)
+Récupère toutes les évaluations existantes, avec les informations sur les évaluateurs, les évalués et les réponses associées.
+
+| Route                    | Méthode | Corps de la requête                                       |
+|--------------------------|---------|-----------------------------------------------------------|
+| `/api/evaluation`         | GET     | Aucun corps de requête nécessaire.                         |
+
+### `/api/evaluation/:id` (GET)
+Récupère une évaluation spécifique par ID, avec les détails de l'évaluateur, de l'évalué et de la réponse.
+
+| Route                    | Méthode | Corps de la requête                                       |
+|--------------------------|---------|-----------------------------------------------------------|
+| `/api/evaluation/:id`     | GET     | Aucun corps de requête nécessaire.                         |
+
+### `/api/evaluation/:id` (PUT)
+Met à jour une évaluation spécifique. Ce processus peut être utilisé pour modifier un commentaire ou les informations associées à l'évaluation.
+
+| Route                    | Méthode | Corps de la requête                                       |
+|--------------------------|---------|-----------------------------------------------------------|
+| `/api/evaluation/:id`     | PUT     | ```json\n{ "commentaire": "Nouveau commentaire" }\n```     |
+
+### `/api/evaluation/:id` (DELETE)
+Supprime une évaluation spécifique.
+
+| Route                    | Méthode | Corps de la requête                                       |
+|--------------------------|---------|-----------------------------------------------------------|
+| `/api/evaluation/:id`     | DELETE  | Aucun corps de requête nécessaire.                         |
 
 ## Routes des questions
 
-| Route                    | Méthode | Corps de la requête                                       | Réponse                                                  |
-|--------------------------|---------|-----------------------------------------------------------|----------------------------------------------------------|
-| `/api/question`          | POST    | ```json\n{ "titre": "Titre de la question", "description": "Description de la question", "id_questionnaire": 1 }\n``` | ```json\n{ "message": "Question créée avec succès", "question": { "id": 1, "titre": "Titre de la question", "description": "Description de la question" } }\n``` |
-| `/api/question`          | GET     | Aucun corps de requête nécessaire.                         | ```json\n{ "questions": [ { "id": 1, "titre": "Titre de la question", "description": "Description de la question" } ] }\n``` |
-| `/api/question/:id`      | GET     | Aucun corps de requête nécessaire.                         | ```json\n{ "question": { "id": 1, "titre": "Titre de la question", "description": "Description de la question" } }\n``` |
-| `/api/question/:id`      | PUT     | ```json\n{ "titre": "Nouveau titre", "description": "Nouvelle description", "id_questionnaire": 2 }\n``` | ```json\n{ "message": "Question mise à jour avec succès" }\n``` |
-| `/api/question/:id`      | DELETE  | Aucun corps de requête nécessaire.                         | ```json\n{ "message": "Question supprimée avec succès" }\n``` |
+### `/api/question` (POST)
+Crée une nouvelle question pour un questionnaire spécifique.
+
+| Route                    | Méthode | Corps de la requête                                       |
+|--------------------------|---------|-----------------------------------------------------------|
+| `/api/question`          | POST    | ```json\n{ "titre": "Titre de la question", "description": "Description de la question", "id_questionnaire": 1 }\n``` |
+
+### `/api/question` (GET)
+Récupère toutes les questions existantes.
+
+| Route                    | Méthode | Corps de la requête                                       |
+|--------------------------|---------|-----------------------------------------------------------|
+| `/api/question`          | GET     | Aucun corps de requête nécessaire.                         |
+
+### `/api/question/:id` (GET)
+Récupère une question spécifique par ID.
+
+| Route                    | Méthode | Corps de la requête                                       |
+|--------------------------|---------|-----------------------------------------------------------|
+| `/api/question/:id`      | GET     | Aucun corps de requête nécessaire.                         |
+
+### `/api/question/:id` (PUT)
+Met à jour les informations d'une question spécifique.
+
+| Route                    | Méthode | Corps de la requête                                       |
+|--------------------------|---------|-----------------------------------------------------------|
+| `/api/question/:id`      | PUT     | ```json\n{ "titre": "Nouveau titre", "description": "Nouvelle description", "id_questionnaire": 2 }\n``` |
+
+### `/api/question/:id` (DELETE)
+Supprime une question spécifique.
+
+| Route                    | Méthode | Corps de la requête                                       |
+|--------------------------|---------|-----------------------------------------------------------|
+| `/api/question/:id`      | DELETE  | Aucun corps de requête nécessaire.                         |
 
 ## Routes des réponses
 
-| Route                    | Méthode | Corps de la requête                                       | Réponse                                                  |
-|--------------------------|---------|-----------------------------------------------------------|----------------------------------------------------------|
-| `/api/reponse`           | POST    | ```json\n{ "rep": "Réponse", "id_question": 1 }\n```       | ```json\n{ "message": "Réponse créée avec succès", "reponse": { "id": 1, "rep": "Réponse" } }\n``` |
-| `/api/reponse`           | GET     | Aucun corps de requête nécessaire.                         | ```json\n{ "reponses": [ { "id": 1, "rep": "Réponse" } ] }\n``` |
-| `/api/reponse/:id`       | GET     | Aucun corps de requête nécessaire.                         | ```json\n{ "reponse": { "id": 1, "rep": "Réponse" } }\n``` |
-| `/api/reponse/:id`       | PUT     | ```json\n{ "rep": "Nouvelle réponse" }\n```                 | ```json\n{ "message": "Réponse mise à jour avec succès" }\n``` |
-| `/api/reponse/:id`       | DELETE  | Aucun corps de requête nécessaire.                         | ```json\n{ "message": "Réponse supprimée avec succès" }\n``` |
+### `/api/reponse` (POST)
+Crée une nouvelle réponse pour une question donnée.
+
+| Route                    | Méthode | Corps de la requête                                       |
+|--------------------------|---------|-----------------------------------------------------------|
+| `/api/reponse`           | POST    | ```json\n{ "rep": "Réponse", "id_question": 1 }\n```       |
+
+### `/api/reponse` (GET)
+Récupère toutes les réponses existantes.
+
+| Route                    | Méthode | Corps de la requête                                       |
+|--------------------------|---------|-----------------------------------------------------------|
+| `/api/reponse`           | GET     | Aucun corps de requête nécessaire.                         |
+
+### `/api/reponse/:id` (GET)
+Récupère une réponse spécifique par ID.
+
+| Route                    | Méthode | Corps de la requête                                       |
+|--------------------------|---------|-----------------------------------------------------------|
+| `/api/reponse/:id`       | GET     | Aucun corps de requête nécessaire.                         |
+
+### `/api/reponse/:id` (PUT)
+Met à jour une réponse spécifique.
+
+| Route                    | Méthode | Corps de la requête                                       |
+|--------------------------|---------|-----------------------------------------------------------|
+| `/api/reponse/:id`       | PUT     | ```json\n{ "rep": "Nouvelle réponse" }\n```                |
+
+### `/api/reponse/:id` (DELETE)
+Supprime une réponse spécifique.
+
+| Route                    | Méthode | Corps de la requête                                       |
+|--------------------------|---------|-----------------------------------------------------------|
+| `/api/reponse/:id`       | DELETE  | Aucun corps de requête nécessaire.                         |
