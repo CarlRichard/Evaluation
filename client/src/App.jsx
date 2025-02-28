@@ -5,7 +5,11 @@ import { Restricted } from "./pages/Restricted";
 import { Login } from "./pages/Login";
 import { Accueil } from "./pages/Accueil/Accueil.jsx";
 import { HomeStagiaire } from "./pages/Home-stagiaire/Home-stagiaire.jsx";
+<<<<<<< HEAD
 import { AccueilStagiaire } from "./pages/Stagiaire/AccueilStagiaire";
+=======
+
+>>>>>>> 82a5ece (home-stagiaire)
 function App() {
   const [authenticated, setAuthenticated] = useState(true);
 
