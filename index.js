@@ -33,7 +33,6 @@ app.use('/api', apiRouter);
 
 // Utilisation des routes 
 apiRouter.use('/utilisateur', utilisateur);
-apiRouter.use('/utilisateur', utilisateur);
 apiRouter.use('/questionnaire', questionnaire);
 apiRouter.use('/question', question);
 apiRouter.use('/reponse', reponse);
