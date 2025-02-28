@@ -27,6 +27,7 @@ const handleSinscrire = () => {
 }
     return(
         <>
+        <nav className='navVideVerte'></nav>
         <section className='section'>
             <h1>Bienvenue sur L'Evaluation</h1>
             <div className='fond'>
