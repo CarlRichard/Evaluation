@@ -7,8 +7,8 @@ Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-  "titre": "Comment vous sentez vous sur JS ?",
-  "description": "Une question sur JS.",
+  "titre": "Comment vous sentez vous sur Clash of Clan ?",
+  "description": "Une question sur clash.",
   "id_questionnaire": 1
 }
 

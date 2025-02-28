@@ -11,7 +11,7 @@ export const createUtilisateur = async (req, res) => {
       email,
       role,
       formation,
-      mot_de_passe,
+      mot_de_passe
     });
 
     res.status(201).json({ message: "Utilisateur créé avec succès", utilisateur });

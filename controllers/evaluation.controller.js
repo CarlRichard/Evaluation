@@ -10,7 +10,12 @@ export const createEvaluation = async (req, res) => {
     const id_evaluateur = req.user.id; 
 
     const {  id_evalue, commentaire , id_reponse } = req.body;
-    const evaluation = await Evaluation.create({ id_evaluateur, id_evalue, commentaire });
+    const evaluation = await Evaluation.create({
+      id_evaluateur, 
+      id_evalue, 
+      commentaire, 
+      id_reponse 
+    });
     res.status(201).json({ message: 'Évaluation créée avec succès', evaluation });
   } catch (error) {
     res.status(500).json({ message: 'Erreur lors de la création de l\'évaluation', error });
@@ -34,7 +39,7 @@ export const getAllEvaluation = async (req, res) => {
         },
         {
           model: Reponse,
-          as: 'rep',
+          as: 'reponse',
           attributes: ['rep']
         }
       ]
@@ -62,7 +67,7 @@ export const getEvaluation = async (req, res) => {
         },
         {
           model: Reponse,
-          as: 'rep',
+          as: 'reponse',
           attributes: ['rep']
         }
       ]

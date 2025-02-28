@@ -26,7 +26,6 @@ Question.hasMany(Reponse, {
 
 Reponse.hasMany(Evaluation, { 
   foreignKey: "id_reponse",
-  onDelete: "CASCADE",
   sourceKey: 'id'
 });
 

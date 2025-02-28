@@ -1,5 +1,5 @@
 ### Définir une variable globale pour le token
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsImVtYWlsIjoicGllcnJlQGEuYSIsImlhdCI6MTc0MDY2MDg1NiwiZXhwIjoxNzQwNjY0NDU2fQ.fkuyDruY0qepJb-k7c0J5hMXXPY8XEa8ZJE8kmh88M0
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJjYXJsQGEuYSIsImlhdCI6MTc0MDczOTI5NywiZXhwIjoxNzQwNzQyODk3fQ.BdiSZa5QL8Iu1ftW7x8Q9JDdxxDBg_8mN4UcGCe6ccg
 
 ### Création d'un questionnaire
 POST http://localhost:3000/api/questionnaire
@@ -7,7 +7,7 @@ Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-  "titre": "Nouveau Questionnaire 16",
+  "titre": "Quizz pour pierre",
   "description": "Description du questionnaire."
 }
 
@@ -16,7 +16,7 @@ GET http://localhost:3000/api/questionnaire
 Authorization: Bearer {{token}}
 
 ### Récupérer un questionnaire par ID
-GET http://localhost:3000/api/questionnaire/16
+GET http://localhost:3000/api/questionnaire/1
 Authorization: Bearer {{token}}
 
 ### Mise à jour d'un questionnaire
