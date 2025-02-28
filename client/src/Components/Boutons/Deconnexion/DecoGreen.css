@@ -1,0 +1,24 @@
+.deco-green {
+    all: unset;
+    border: 1px solid var(--med-green);
+    border-radius: 50px;
+    padding: 0.5em 2em;
+    color: var(--med-green);
+    background-color: var(--off-white);
+    font-family: var(--text);
+    cursor: pointer;
+}
+
+.deco-green:hover {
+    background-color: var(--med-green);
+    color: var(--off-white);
+}
+
+
+.deco-green:active:hover,
+.deco-green:focus:hover,
+.deco-green:focus {
+    background-color: var(--off-white);
+    box-shadow: rgba(0, 0, 0, 0.12) 0 1px 3px 0 inset;
+    color: var(--med-green);
+}

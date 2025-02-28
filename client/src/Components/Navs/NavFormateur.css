@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+:root {
+    --title: "Tinos", serif;
+    --text: "Nunito Sans", serif;
+    --orange: #ff8000;
+    --aston-green: #054A29;
+    --med-green: #418C56;
+    --light-green: #7DCE82;
+    --off-white: #FAFAFA;
+    --off-black: #272727;
+}
+
+.nav-formateur {
+    height: 3em;
+    background-color: var(--med-green);
+    display: flex;
+    justify-content: flex-end;
+    padding: 1em;
+    gap: 1em;
+}

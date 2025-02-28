@@ -1,0 +1,25 @@
+.confirm-button {
+    all: unset;
+    margin-top: 2em;
+    border: 1px solid var(--orange);
+    border-radius: 50px;
+    padding: 0.5em 2em;
+    color: var(--orange);
+    font-family: var(--text);
+    cursor: pointer;
+    margin: 2em;
+}
+
+
+.confirm-button:hover {
+    background-color: var(--orange);
+    color: var(--off-white);
+}
+
+.confirm-button:active:hover,
+.confirm-button:focus:hover,
+.confirm-button:focus {
+    background-color: var(--off-white);
+    box-shadow: rgba(0, 0, 0, 0.12) 0 1px 3px 0 inset;
+    color: var(--orange);
+}
