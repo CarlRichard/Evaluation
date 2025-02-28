@@ -1,0 +1,24 @@
+.deco-white {
+    all: unset;
+    border: 1px solid var(--orange);
+    border-radius: 50px;
+    padding: 0.5em 2em;
+    color: var(--orange);
+    background-color: var(--off-white);
+    font-family: var(--text);
+    cursor: pointer;
+}
+
+.deco-white:hover {
+    background-color: var(--orange);
+    color: var(--off-white);
+}
+
+
+.deco-white:active:hover,
+.deco-white:focus:hover,
+.deco-white:focus {
+    background-color: var(--off-white);
+    box-shadow: rgba(0, 0, 0, 0.12) 0 1px 3px 0 inset;
+    color: var(--orange);
+}

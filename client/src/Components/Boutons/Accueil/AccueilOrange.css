@@ -1,0 +1,29 @@
+.accueil-orange {
+    all: unset;
+    border: 1px solid var(--orange);
+    border-radius: 50px;
+    padding: 0.5em 2em;
+    color: var(--off-white);
+    background-color: var(--orange);
+    font-family: var(--text);
+    cursor: pointer;
+}
+
+.accueil-orange:active {
+    background-color: var(--off-white);
+    box-shadow: rgba(0, 0, 0, 0.12) 0 1px 3px 0 inset;
+    color: #FFFFFF;
+}
+
+.accueil-orange:hover {
+    background-color: var(--off-white);
+    color: var(--orange);
+}
+
+.accueil-orange:active:hover,
+.accueil-orange:focus:hover,
+.accueil-orange:focus {
+    background-color: var(--off-white);
+    box-shadow: rgba(0, 0, 0, 0.12) 0 1px 3px 0 inset;
+    color: var(--off-white);
+}
