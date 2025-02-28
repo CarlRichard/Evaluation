@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { NavStagiaire2 } from '../../Components/Navs/NavStagiaire2';
 
 //import "./Home-stagiaire.css"
 
@@ -35,6 +36,7 @@ const handleProfil = () => {
 }
     return(
         <>
+        <NavStagiaire2 />
         <section className='section'>
             <div className=''>
                 <button className='btnQuestionnaire' onClick={handleQuestionnaires}>Mes questionnaires</button>
