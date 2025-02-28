@@ -12,6 +12,7 @@ import { utilisateur } from './routes/utilisateur.route.js';
 
 
 import './models/association.js'; 
+
 const app = express();
 
 app.use(cors({

@@ -8,7 +8,8 @@ Authorization: Bearer {{token}}
 
 {
   "id_evalue": 4,
-  "commentaire": "Très bien !"
+  "commentaire": "Très bien !",
+  "id_question": 2
 }
 
 ### Récupérer toutes les évaluations

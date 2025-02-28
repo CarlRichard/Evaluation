@@ -1,9 +1,0 @@
-// template nodejs 
-// jwt , cors , nodemon, cookie parser
-
-// localhost:3000/login-header
-// => recup du token
-
-// localhost:3000/
-// -> recup le front 'hello' avec verif token
-

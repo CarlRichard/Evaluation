@@ -24,11 +24,11 @@ Question.hasMany(Reponse, {
   sourceKey: 'id'
 });
 
-// Evaluation.hasMany(Reponse, { 
-//   foreignKey: "id_evaluation",
-//   onDelete: "CASCADE",
-//   sourceKey: 'id'
-// });
+Reponse.hasMany(Evaluation, { 
+  foreignKey: "id_reponse",
+  onDelete: "CASCADE",
+  sourceKey: 'id'
+});
 
 //eval avec user 2 fois
 Utilisateur.hasMany(Evaluation, {

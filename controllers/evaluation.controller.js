@@ -1,4 +1,5 @@
 import Evaluation from '../models/evaluation.model.js';
+import Reponse from '../models/reponse.model.js';
 import Utilisateur from '../models/utilisateur.model.js';
 
 // Création d'une évaluation
@@ -8,7 +9,7 @@ export const createEvaluation = async (req, res) => {
     // Utiliser l'ID utilisateur du token
     const id_evaluateur = req.user.id; 
 
-    const {  id_evalue, commentaire } = req.body;
+    const {  id_evalue, commentaire , id_reponse } = req.body;
     const evaluation = await Evaluation.create({ id_evaluateur, id_evalue, commentaire });
     res.status(201).json({ message: 'Évaluation créée avec succès', evaluation });
   } catch (error) {
@@ -30,6 +31,11 @@ export const getAllEvaluation = async (req, res) => {
           model: Utilisateur,
           as: 'evalue',
           attributes: ['id', 'nom', 'prenom']
+        },
+        {
+          model: Reponse,
+          as: 'rep',
+          attributes: ['rep']
         }
       ]
     });
@@ -53,6 +59,11 @@ export const getEvaluation = async (req, res) => {
           model: Utilisateur,
           as: 'evalue',
           attributes: ['id', 'nom', 'prenom']
+        },
+        {
+          model: Reponse,
+          as: 'rep',
+          attributes: ['rep']
         }
       ]
     });
