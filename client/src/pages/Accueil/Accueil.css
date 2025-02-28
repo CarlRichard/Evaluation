@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+:root {
+    --title: "Tinos", serif;
+    --text: "Nunito Sans", serif;
+    --orange: #ff8000;
+    --aston-green: #054A29;
+    --med-green: #418C56;
+    --light-green: #7DCE82;
+    --off-white: #FAFAFA;
+    --off-black: #272727;
+}
+
+body {
+    background-color: var(--off-white);
+}
+
+.section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    font-family: var(--title);
+    color: var(--off-black);
+}
+
+.fond {
+    background-color: var(--med-green);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    padding: 7% 1%;
+    gap: 4em;
+    border-radius: 20px;
+}
+
+.btnSinscrire {
+    all: unset;
+    border: 2px solid var(--orange);
+    border-radius: 50px;
+    padding: 0.5em 1em;
+    color: var(--orange);
+    font-family: var(--title);
+    cursor: pointer;
+    background-color: var(--off-white);
+    width: 40%;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.btnSinscrire:active {
+    background-color: #D33A2C;
+    box-shadow: rgba(0, 0, 0, 0.12) 0 1px 3px 0 inset;
+    color: #FFFFFF;
+}
+
+.btnSinscrire:hover {
+    background-color: var(--orange);
+    color: var(--off-white);
+}
+
+.btnSinscrire:active:hover,
+.btnSinscrire:focus:hover,
+.btnSinscrire:focus {
+    background-color: var(--off-white);
+    box-shadow: rgba(0, 0, 0, 0.12) 0 1px 3px 0 inset;
+    color: var(--orange);
+}
+
+.btnConnexion {
+    all: unset;
+    border-radius: 50px;
+    padding: 0.5em 1em;
+    font-family: var(--title);
+    cursor: pointer;
+    background-color: var(--orange);
+    width: 40%;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.btnConnexion:active {
+    background-color: #D33A2C;
+    box-shadow: rgba(0, 0, 0, 0.12) 0 1px 3px 0 inset;
+    color: #FFFFFF;
+}
+
+.btnConnexion:hover {
+    color: var(--off-white);
+}
