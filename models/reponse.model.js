@@ -1,7 +1,6 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../database.js";
 import Question from "./question.model.js";
-import Evaluation from "./evaluation.model.js";
 
 const Reponse = sequelize.define("Reponse", {
   id: {
@@ -26,16 +25,6 @@ const Reponse = sequelize.define("Reponse", {
     },
     onDelete: "CASCADE",
   }
-  //,
-  // id_evaluation: { // Clé étrangère
-  //   type: DataTypes.INTEGER,
-  //   allowNull: false,
-  //   references: {
-  //     model: Evaluation,
-  //     key: "id",
-  //   },
-  //   onDelete: "CASCADE",
-  // }
 }, {
   tableName: "reponse",
   timestamps: true
@@ -43,6 +32,5 @@ const Reponse = sequelize.define("Reponse", {
 
 // Définition des relations
 Reponse.belongsTo(Question, { foreignKey: "id_question" });
-// Reponse.belongsTo(Evaluation, { foreignKey: "id_evaluation" });
 
 export default Reponse;

@@ -1,6 +1,7 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../database.js";
 import Utilisateur from "./utilisateur.model.js";
+import Reponse from "./reponse.model.js";
 
 const Evaluation = sequelize.define("Evaluation", {
   id: {
@@ -38,5 +39,6 @@ const Evaluation = sequelize.define("Evaluation", {
 // Définition des relations
 Evaluation.belongsTo(Utilisateur, { foreignKey: "id_evaluateur", as: "evaluateur" });
 Evaluation.belongsTo(Utilisateur, { foreignKey: "id_evalue", as: "evalue" });
+Evaluation.belongsTo(Reponse, { foreignKey: "id_reponse" });
 
 export default Evaluation;

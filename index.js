@@ -8,8 +8,8 @@ import { questionnaire } from './routes/questionnaire.route.js';
 import { question } from './routes/question.route.js';
 import { reponse } from './routes/reponse.route.js';
 import { evaluation } from './routes/evaluation.route.js';
-
 import './models/association.js'; 
+
 const app = express();
 
 app.use(cors({

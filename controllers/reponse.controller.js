@@ -6,13 +6,12 @@ import Reponse from "../models/reponse.model.js";
 //POST
 export const createReponse = async (req, res) => {
   try {
-    const { rep, id_question, id_evaluation } = req.body;
+    const { rep, id_question } = req.body;
 
     // Créer une nouvelle réponse
     const reponse = await Reponse.create({
       rep,
-      id_question,
-      id_evaluation,
+      id_question
     });
 
     res.status(201).json({ message: "Réponse créée avec succès", reponse });
@@ -27,9 +26,9 @@ export const getAllReponse = async (req, res) => {
     try {
       const reponses = await Reponse.findAll({
         include: [
-          { model: Question, attributes: ['titre'] },   // Inclure la question associée
-          { model: Evaluation, attributes: ['score'] }   // Inclure l'évaluation associée
+          { model: Question, attributes: ['titre'] }, 
         ]
+           // Inclure la question associée
       });
   
       res.status(200).json({ reponses });
@@ -45,9 +44,8 @@ export const getAllReponse = async (req, res) => {
       const { id } = req.params;
       const reponse = await Reponse.findByPk(id, {
         include: [
-          { model: Question, attributes: ['title'] },   // Inclure la question associée
-          { model: Evaluation, attributes: ['score'] }   // Inclure l'évaluation associée
-        ]
+          { model: Question, attributes: ['title'] }
+        ]   // Inclure la question associée
       });
   
       if (!reponse) {
@@ -65,7 +63,7 @@ export const getAllReponse = async (req, res) => {
   export const putReponse = async (req, res) => {
     try {
       const { id } = req.params;
-      const { rep, id_question, id_evaluation } = req.body;
+      const { rep, id_question } = req.body;
   
       const reponse = await Reponse.findByPk(id);
   
@@ -76,7 +74,6 @@ export const getAllReponse = async (req, res) => {
       // Mettre à jour la réponse
       reponse.rep = rep;
       reponse.id_question = id_question;
-      reponse.id_evaluation = id_evaluation;
   
       await reponse.save();
   
