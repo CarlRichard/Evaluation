@@ -1,0 +1,8 @@
+.vide-vert {
+    height: 3em;
+    background-color: var(--med-green);
+    display: flex;
+    justify-content: flex-end;
+    padding: 1em;
+    gap: 1em;
+}
