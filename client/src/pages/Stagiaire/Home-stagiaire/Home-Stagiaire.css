@@ -27,3 +27,26 @@
     box-shadow: rgba(0, 0, 0, 0.12) 0 1px 3px 0 inset;
     color: var(--off-white);
 }
+
+.div-btn {
+    margin: 70px 20px;
+    width: 90%;
+    display: flex;
+    justify-content: space-around;
+}
+
+
+.bouton-stagiaire {
+    all: unset;
+    background-color: var(--light-green);
+    padding: 1em;
+    font-family: var(--text);
+    font-size: 24px;
+    border: solid 2px var(--light-green);
+    border-radius: 20px;
+    width: 20%;
+}
+
+.bouton-stagiaire:hover {
+    border: solid 2px var(--aston-green);
+}

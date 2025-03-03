@@ -38,9 +38,9 @@ const handleProfil = () => {
         <>
         <NavStagiaire2 />
         <section className='section'>
-            <div className=''>
-                <button className='btnQuestionnaire' onClick={handleQuestionnaires}>Mes questionnaires</button>
-                <button className='btnGraphique' onClick={handleGraphique}>Mes graphiques</button>
+            <div className='div-btn'>
+                <button className='bouton-stagiaire' onClick={handleQuestionnaires}>Mes questionnaires</button>
+                <button className='bouton-stagiaire' onClick={handleGraphique}>Mes graphiques</button>
             </div>
             <div>
                 <button className='btnProfil' onClick={handleProfil}>Modifier le profil</button>
