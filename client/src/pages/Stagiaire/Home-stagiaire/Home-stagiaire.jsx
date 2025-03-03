@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
-import { NavStagiaire2 } from '../../Components/Navs/NavStagiaire2';
+import { NavStagiaire2 } from '../../../Components/Navs/NavStagiaire2';
 
-//import "./Home-stagiaire.css"
+import "./Home-Stagiaire.css"
 
 export const HomeStagiaire = () => {
 
