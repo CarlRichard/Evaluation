@@ -27,6 +27,14 @@ const Evaluation = sequelize.define("Evaluation", {
     },
     onDelete: "CASCADE",
   },
+  note_formateur: { 
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    validate: {
+      min: 0,
+      max: 16
+    }
+  },
   commentaire: {
     type: DataTypes.TEXT,
     allowNull: false,
@@ -39,6 +47,6 @@ const Evaluation = sequelize.define("Evaluation", {
 // Définition des relations
 Evaluation.belongsTo(Utilisateur, { foreignKey: "id_evaluateur", as: "evaluateur" });
 Evaluation.belongsTo(Utilisateur, { foreignKey: "id_evalue", as: "evalue" });
-Evaluation.belongsTo(Reponse, { foreignKey: "id_reponse",targetKey: "id", as: "reponse" });
+Evaluation.belongsTo(Reponse, { foreignKey: "id_reponse", targetKey: "id", as: "reponse" });
 
 export default Evaluation;

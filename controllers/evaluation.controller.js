@@ -10,7 +10,8 @@ export const createEvaluation = async (req, res) => {
     // Utiliser l'ID utilisateur du token
     const id_evaluateur = req.user.id;
 
-    const { commentaire, id_reponse } = req.body;
+    const { commentaire, id_reponse, note_formateur } = req.body;
+
 
     // Récupérer la réponse correspondant à id_reponse
     const reponse = await Reponse.findOne({ where: { id: id_reponse } });
@@ -27,7 +28,8 @@ export const createEvaluation = async (req, res) => {
       id_evaluateur,
       id_evalue,  // id_utilisateur récupéré depuis la réponse
       commentaire,
-      id_reponse
+      id_reponse,
+      note_formateur
     });
 
     res.status(201).json({ message: 'Évaluation créée avec succès', evaluation });

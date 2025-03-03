@@ -1,5 +1,5 @@
 ### Définir une variable globale pour le token
-@token = ''
+@token =eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJwaWVycmVAYS5hIiwiaWF0IjoxNzQxMDA4MjgzLCJleHAiOjE3NDEwMTE4ODN9.pzzovJD61kZwWb-ZdsQlHJjbSCp9EuA78ZzZDbP9vwU
 
 ### Création d'une question
 POST http://localhost:3000/api/question
@@ -7,7 +7,7 @@ Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-  "titre": "Comment vous sentez vous sur JS ?",
+  "titre": "Comment vous sentez vous sur css ?",
   "description": "Une question sur JS.",
   "id_questionnaire": 1
 }

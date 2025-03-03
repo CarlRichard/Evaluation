@@ -7,9 +7,9 @@ POST {{baseUrl}}/utilisateur
 Content-Type: application/json
 
 {
-    "nom": "G",
-    "prenom": "P",
-    "email": "pierre@a.a",
+    "nom": "p",
+    "prenom": "g",
+    "email": "pierre2@a.a",
     "formation":"CDA",
     "role": 0,
     "mot_de_passe": "123"
