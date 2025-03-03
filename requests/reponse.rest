@@ -1,5 +1,5 @@
 ### Définir une variable globale pour le token
-@token = ''
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJwaWVycmVAYS5hIiwiaWF0IjoxNzQwOTk3Mzc3LCJleHAiOjE3NDEwMDA5Nzd9.bdG0G8dWT6oZSBkaOzPS4_t27Aq7kTdglLjz6PGNC9k
 
 ### Création d'une réponse
 POST http://localhost:3000/api/reponse
@@ -7,8 +7,8 @@ Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-  "rep": 11,
-  "id_question": 3
+  "rep": 14.1,
+  "id_question": 2
 }
 
 ### Récupérer toutes les réponses

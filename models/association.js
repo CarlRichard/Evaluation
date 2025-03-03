@@ -36,8 +36,15 @@ Utilisateur.hasMany(Evaluation, {
   sourceKey: 'id' 
 });
 
-Utilisateur.hasMany(Evaluation, {
+Reponse.hasMany(Evaluation, {
   foreignKey: "id_evalue",
   onDelete: "CASCADE",
   sourceKey: 'id' 
+});
+
+// Relation entre Reponse et Utilisateur (qui a soumis la réponse)
+Utilisateur.hasMany(Reponse, {
+  foreignKey: "id_utilisateur",
+  sourceKey: "id",
+  onDelete: "CASCADE"
 });

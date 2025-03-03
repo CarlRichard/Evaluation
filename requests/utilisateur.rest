@@ -7,11 +7,12 @@ POST {{baseUrl}}/utilisateur
 Content-Type: application/json
 
 {
-    "nom": "Doe",
-    "prenom": "John",
-    "mail": "john.doe@example.com",
-    "role": 1,
-    "mot_de_passe": "monpassword123"
+    "nom": "G",
+    "prenom": "P",
+    "email": "pierre@a.a",
+    "formation":"CDA",
+    "role": 0,
+    "mot_de_passe": "123"
 }
 
 ### 🔹 Obtenir tous les utilisateur (nécessite un token)

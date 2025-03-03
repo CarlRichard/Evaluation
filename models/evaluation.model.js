@@ -22,7 +22,7 @@ const Evaluation = sequelize.define("Evaluation", {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {
-      model: Utilisateur,
+      model: Reponse,
       key: "id",
     },
     onDelete: "CASCADE",
@@ -39,6 +39,6 @@ const Evaluation = sequelize.define("Evaluation", {
 // Définition des relations
 Evaluation.belongsTo(Utilisateur, { foreignKey: "id_evaluateur", as: "evaluateur" });
 Evaluation.belongsTo(Utilisateur, { foreignKey: "id_evalue", as: "evalue" });
-Evaluation.belongsTo(Reponse, { foreignKey: "id_reponse", as: "reponse" });
+Evaluation.belongsTo(Reponse, { foreignKey: "id_reponse",targetKey: "id", as: "reponse" });
 
 export default Evaluation;
