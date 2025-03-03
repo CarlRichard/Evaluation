@@ -10,9 +10,12 @@ import { AccueilFormateur } from "./pages/Formateur/AccueilFormateur.jsx";
 import { ModifProfilS } from "./pages/Stagiaire/ModifProfilS/ModifProfilS.jsx";
 import { ModifProfilF } from "./pages/Formateur/ModifProfilF/ModifProfilF.jsx";
 import { Inscription } from "./pages/Inscription";
-import {  FeedbackProfilS } from "./pages/Stagiaire/FeedbackProfilS/FeedbackProfilS.jsx";
+import { FeedbackProfilS } from "./pages/Stagiaire/FeedbackProfilS/FeedbackProfilS.jsx";
 import { FeedbackProfilF } from "./pages/Formateur/FeedbackProfilF/FeedbackProfilF.jsx";
 import { FeedbackInscription } from "./pages/FeedbackInscription/FeedbackInscription.jsx";
+import { AccueilFormateur } from "./pages/Formateur/AccueilFormateur/AccueilFormateur.jsx";
+import { ListQuestionnaireFormateur } from "./pages/Formateur/ListeQuestionnaireFormateur/ListeQuestionnaireFormateur.jsx";
+
 
 function App() {
   const [authenticated, setAuthenticated] = useState(true);
@@ -32,6 +35,7 @@ function App() {
         <Route path="/feedback-profil-stagiaire" element={<FeedbackProfilS />} />
         <Route path="/feedback-profil-formateur" element={<FeedbackProfilF />} />
         <Route path="/feedback-creation-compte" element={<FeedbackInscription />} />
+        <Route path="/questionnaire-formateur" element={<ListQuestionnaireFormateur />} />
       </Routes>
     </BrowserRouter>
   );
