@@ -84,7 +84,6 @@ export const updateUtilisateur = async (req, res) => {
   }
 };
 
-
 // DELETE - Supprimer un utilisateur
 export const deleteUtilisateur = async (req, res) => {
   try {
@@ -103,26 +102,3 @@ export const deleteUtilisateur = async (req, res) => {
     res.status(500).json({ message: "Erreur lors de la suppression de l'utilisateur", error: error.message });
   }
 };
-
-
-// export function getUserProfile(req, res) {
-//     const userProfile = {
-//         id: req.utilisateur.id,
-//         nom: req.utilisateur.nom,
-//         prenom: req.utilisateur.prenom,
-//         email: req.utilisateur.email,
-//          formation: req.utilisateur.formation,
-//         role: req.utilisateur.role,
-//         permissions: req.utilisateur.permissions
-//     };
-//     res.json(userProfile);
-// }
-
-// export function updateUserProfile(req, res) {
-//     const updatedProfile = {
-//         nom: req.body.nom,
-//         prenom: req.body.prenom,
-//         email: req.body.email
-//     };
-//     res.json({ message: 'Profil mis à jour avec succès', profile: updatedProfile });
-// }

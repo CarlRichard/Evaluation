@@ -16,7 +16,6 @@ export const utilisateur = Router();
 // // Route pour mettre à jour le profil de l'utilisateur
 // utilisateur.put('/profile', checkPermission('edit_profile'), updateUserProfile);
 
-
 // Création Reponse
 utilisateur.post('/', createUtilisateur);
 

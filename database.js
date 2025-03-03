@@ -1,7 +1,6 @@
 import mysql from "mysql2/promise";
 import { Sequelize } from "sequelize";
 
-
 const DB_NAME = "Eval_db";
 const DB_USER = "root";
 const DB_PASSWORD = "mdp";
@@ -54,3 +53,4 @@ export const initDB = async () => {
 
 // Appel automatique de l'initialisation
 initDB();
+ 
