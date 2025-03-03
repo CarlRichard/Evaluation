@@ -6,6 +6,7 @@ import { Login } from "./pages/Login";
 import { Accueil } from "./pages/Accueil/Accueil.jsx";
 import { HomeStagiaire } from "./pages/Home-stagiaire/Home-stagiaire.jsx";
 import { AccueilStagiaire } from "./pages/Stagiaire/AccueilStagiaire";
+import { AccueilFormateur } from "./pages/Formateur/AccueilFormateur.jsx";
 
 function App() {
   const [authenticated, setAuthenticated] = useState(true);
@@ -18,6 +19,7 @@ function App() {
         <Route path="/accueil" element={<Accueil />} />
         <Route path="/homestagiaire" element={<HomeStagiaire />} />
         <Route path="/accueil-stagiaire" element={<AccueilStagiaire />} />
+        <Route path="/accueil-formateur" element={<AccueilFormateur />} />
       </Routes>
     </BrowserRouter>
   );
