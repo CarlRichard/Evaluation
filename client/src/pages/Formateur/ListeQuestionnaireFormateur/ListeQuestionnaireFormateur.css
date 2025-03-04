@@ -1,0 +1,11 @@
+.date-banner {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    border: solid 1px var(--off-black);
+    gap: 2em;
+    border-radius: 10px;
+    width: 60vw;
+    max-width: 90vw;
+    margin: 0px auto;
+}

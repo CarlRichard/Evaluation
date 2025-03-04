@@ -61,16 +61,16 @@ export const Login = ({ setAuthenticated }) => {
         <>
             <NavFormateur />
             <h1>Connexion</h1>
-            <form onSubmit={handleSubmit}>
+            <form className="template-form" onSubmit={handleSubmit}>
                 <div className="inputContainer">
-                    <input
+                    <input className="template-input"
                         name="email"
                         type="text"
                         required
                         placeholder="votre email"
                         onChange={handleInput}
                     />
-                    <input
+                    <input className="template-input"
                         name="mot_de_passe"
                         type="password"
                         required

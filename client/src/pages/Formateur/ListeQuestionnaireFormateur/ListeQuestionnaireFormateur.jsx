@@ -1,4 +1,6 @@
+import './ListeQuestionnaireFormateur.css'
 import { NavFormateur } from "../../../Components/Navs/NavFormateur"
+import { Valider } from '../../../Components/Boutons/Valider/Valider'
 
 export const ListQuestionnaireFormateur = () => {
     return (
@@ -7,10 +9,11 @@ export const ListQuestionnaireFormateur = () => {
 
             <h1>Les questionnaires</h1>
 
-            <div>
+            <div className="date-banner">
                 <p>Afficher par date de création du questionnaire:</p>
-                <span>du <input type="date" /></span>
-                <span>au <input type="date" /></span>
+                <p>du <input className="date-questionnaire" type="date" /></p>
+                <p>au <input className="date-questionnaire" type="date" /></p>
+                <Valider />
             </div>
         </>
     )
