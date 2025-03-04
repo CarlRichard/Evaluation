@@ -1,0 +1,22 @@
+.bouton-admin {
+    all: unset;
+    background-color: var(--light-green);
+    padding: 1em;
+    font-family: var(--title);
+    font-size: 24px;
+    border: solid 2px var(--light-green);
+    border-radius: 20px;
+    width: 20%;
+    margin: 10px 20px;
+
+}
+
+.bouton-admin:hover {
+    border: solid 2px var(--aston-green);
+}
+
+.lesbtn {
+    margin: 70px 20px;
+    display: flex;
+    flex-direction: column;
+}
