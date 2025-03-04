@@ -32,3 +32,14 @@ Authorization: Bearer {{token}}
 DELETE http://localhost:3000/api/questionnaire/3
 Authorization: Bearer {{token}}
 
+
+
+### jointure ( pas oublier le api/questionnaire/ devant )
+POST http://localhost:3000/api/questionnaire/add-question/1/2
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+### jointure get
+GET http://localhost:3000/api/questionnaire/recup-questions/1
+Authorization: Bearer {{token}}
+Content-Type: application/json

@@ -1,6 +1,58 @@
 import Question from "../models/question.model.js";
 import Questionnaire from "../models/questionnaire.model.js";
+import QuestionnaireQuestion from "../models/QuestionnaireQuestion.model.js";
 import Utilisateur from "../models/utilisateur.model.js";
+
+// 🔹 Associer une question à un questionnaire
+export const addQuestionToQuestionnaire = async (req, res) => {
+  try {
+      const { questionnaireId, questionId } = req.params;
+
+      // Vérifier si les deux existent
+      const questionnaire = await Questionnaire.findByPk(questionnaireId);
+      const question = await Question.findByPk(questionId);
+
+      if (!questionnaire || !question) {
+          return res.status(404).json({ message: "Questionnaire ou question introuvable." });
+      }
+
+      // Associer via la table de jointure
+      await QuestionnaireQuestion.create({
+          id_questionnaire: questionnaireId,
+          id_question: questionId,
+      });
+
+      res.status(201).json({ message: "Question associée au questionnaire avec succès !" });
+  } catch (error) {
+      console.error("Erreur lors de l'association :", error);
+      res.status(500).json({ message: "Erreur interne du serveur." });
+  }
+}; 
+
+//recup info table jointure
+export const getQuestionsByQuestionnaire = async (req, res) => {
+  try {
+      const { questionnaireId } = req.params;
+
+      const questionnaire = await Questionnaire.findByPk(questionnaireId, {
+          include: {
+              model: Question,
+              through: { attributes: [] } // Exclut les champs de la table de jointure
+          },
+      });
+
+      if (!questionnaire) {
+          return res.status(404).json({ message: "Questionnaire introuvable." });
+      }
+
+      res.json(questionnaire.Questions); // Sequelize stocke les résultats sous `questionnaire.Questions`
+  } catch (error) {
+      console.error("Erreur :", error);
+      res.status(500).json({ message: "Erreur interne du serveur." });
+  }
+};
+
+
 
 // post
 export const createQuestionnaire = async (req, res) => {
@@ -32,16 +84,14 @@ export const getAllQuestionnaire = async (req, res) => {
       include: [
         { 
           model: Utilisateur, 
-          attributes: ['nom','prenom', 'email'] // Inclure l'utilisateur qui a créé le questionnaire
+          attributes: ['nom','prenom', 'email'] 
         },
         { 
           model: Question, 
-          attributes: ['titre', 'description'] // Inclure les questions liées au questionnaire
+          attributes: ['titre', 'description'] 
         }
       ]
     });
-
-    console.log(questionnaires); // Vérifier la structure des questionnaires
 
     res.status(200).json({ questionnaires });
   } catch (error) {

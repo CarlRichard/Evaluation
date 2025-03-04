@@ -1,50 +1,39 @@
-import { sequelize } from '../database.js'; 
-import Utilisateur from './utilisateur.model.js';  
-import Questionnaire from './questionnaire.model.js';  
-import Question from './question.model.js';
-import Reponse from './reponse.model.js';
-import Evaluation from './evaluation.model.js';
+import Questionnaire from "./questionnaire.model.js";
+import Question from "./question.model.js";
+import QuestionnaireQuestion from "./QuestionnaireQuestion.model.js";
+import Utilisateur from "./utilisateur.model.js";
+import Reponse from "./reponse.model.js";
+import Evaluation from "./evaluation.model.js";
 
-// Relation entre Utilisateur et Questionnaire
-Utilisateur.hasMany(Questionnaire, {
-  foreignKey: 'id_utilisateur',
-  sourceKey: 'id'
+// 🔹 Un utilisateur peut créer plusieurs questionnaires
+Utilisateur.hasMany(Questionnaire, { foreignKey: "id_utilisateur" });
+Questionnaire.belongsTo(Utilisateur, { foreignKey: "id_utilisateur" });
+
+// 🔹 Relation entre Questionnaire et Question via la table de jointure
+Questionnaire.belongsToMany(Question, {
+  through: QuestionnaireQuestion,
+  foreignKey: "id_questionnaire",
+  otherKey: "id_question",
 });
 
-// Relation entre questionnaire et Question
-Questionnaire.hasMany(Question, {
-  foreignKey: 'id_questionnaire',
-  sourceKey: 'id'
+Question.belongsToMany(Questionnaire, {
+  through: QuestionnaireQuestion,
+  foreignKey: "id_question",
+  otherKey: "id_questionnaire",
 });
 
-//relation pour rponse avec question et eval
-Question.hasMany(Reponse, { 
-  foreignKey: "id_question", 
-  onDelete: "CASCADE",
-  sourceKey: 'id'
-});
+// 🔹 Une question peut avoir plusieurs réponses
+Question.hasMany(Reponse, { foreignKey: "id_question", onDelete: "CASCADE" });
+Reponse.belongsTo(Question, { foreignKey: "id_question" });
 
-Reponse.hasMany(Evaluation, { 
-  foreignKey: "id_reponse",
-  sourceKey: 'id'
-});
+// 🔹 Une réponse peut avoir plusieurs évaluations
+Reponse.hasMany(Evaluation, { foreignKey: "id_reponse" });
+Evaluation.belongsTo(Reponse, { foreignKey: "id_reponse" });
 
-//eval avec user 2 fois
-Utilisateur.hasMany(Evaluation, {
-  foreignKey: "id_evaluateur", 
-  onDelete: "CASCADE",
-  sourceKey: 'id' 
-});
+// 🔹 Un utilisateur peut évaluer plusieurs réponses
+Utilisateur.hasMany(Evaluation, { foreignKey: "id_evaluateur", onDelete: "CASCADE" });
+Evaluation.belongsTo(Utilisateur, { foreignKey: "id_evaluateur" });
 
-Reponse.hasMany(Evaluation, {
-  foreignKey: "id_evalue",
-  onDelete: "CASCADE",
-  sourceKey: 'id' 
-});
-
-// Relation entre Reponse et Utilisateur (qui a soumis la réponse)
-Utilisateur.hasMany(Reponse, {
-  foreignKey: "id_utilisateur",
-  sourceKey: "id",
-  onDelete: "CASCADE"
-});
+// 🔹 Une réponse est soumise par un utilisateur
+Utilisateur.hasMany(Reponse, { foreignKey: "id_utilisateur", onDelete: "CASCADE" });
+Reponse.belongsTo(Utilisateur, { foreignKey: "id_utilisateur" });
