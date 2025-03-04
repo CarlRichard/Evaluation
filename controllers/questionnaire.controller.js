@@ -52,8 +52,6 @@ export const getQuestionsByQuestionnaire = async (req, res) => {
   }
 };
 
-
-
 // post
 export const createQuestionnaire = async (req, res) => {
   try {
@@ -127,36 +125,32 @@ export const getQuestionnaire = async (req, res) => {
 };
 
 // put - Mettre à jour un questionnaire
+
 export const updateQuestionnaire = async (req, res) => {
+  const { id } = req.params;  // Récupération de l'ID depuis les paramètres de la requête
+  const { titre, description } = req.body;  // Récupération des données du corps de la requête
+
   try {
-    const { id } = req.params;
-    const { titre, description } = req.body;
+      // Trouver le questionnaire par ID
+      const questionnaire = await Questionnaire.findByPk(id);
 
-    // Trouver le questionnaire
-    const questionnaire = await Questionnaire.findByPk(id);
+      if (!questionnaire) {
+          return res.status(404).json({ message: "Questionnaire non trouvé" });
+      }
 
-    if (!questionnaire) {
-      return res.status(404).json({ message: "Questionnaire non trouvé" });
-    }
+      // Mettre à jour les champs du questionnaire
+      questionnaire.titre = titre || questionnaire.titre;  // Mettre à jour si un nouveau titre est fourni
+      questionnaire.description = description || questionnaire.description;  // Mettre à jour si une nouvelle description est fournie
 
-    // Vérifier si l'utilisateur a le droit de modifier ce questionnaire
-    if (questionnaire.id_utilisateur !== req.user.id) {
-      return res.status(403).json({ message: "Vous n'avez pas la permission de modifier ce questionnaire" });
-    }
+      // Sauvegarder les modifications dans la base de données
+      await questionnaire.save();
 
-    // Mettre à jour les informations du questionnaire
-    questionnaire.titre = titre;
-    questionnaire.description = description;
-
-    await questionnaire.save();
-
-    res.status(200).json({ message: "Questionnaire mis à jour avec succès", questionnaire });
+      res.status(200).json({ message: "Questionnaire mis à jour avec succès", questionnaire });
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: "Erreur lors de la mise à jour du questionnaire", error: error.message });
+      console.error(error);
+      res.status(500).json({ message: "Erreur lors de la mise à jour du questionnaire", error: error.message });
   }
 };
-
 
 // delete - Supprimer un questionnaire
 export const deleteQuestionnaire = async (req, res) => {

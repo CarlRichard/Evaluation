@@ -1,5 +1,6 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../database.js";
+import Utilisateur from "./utilisateur.model.js"; 
 
 const Questionnaire = sequelize.define("Questionnaire", {
   id: {
@@ -18,6 +19,10 @@ const Questionnaire = sequelize.define("Questionnaire", {
   id_utilisateur: {
     type: DataTypes.INTEGER,
     allowNull: false,
+    references: { 
+      model: Utilisateur,
+      key: "id",
+    }
   },
 }, {
   tableName: "questionnaire",

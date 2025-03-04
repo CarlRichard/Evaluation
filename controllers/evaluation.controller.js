@@ -1,20 +1,32 @@
 import Evaluation from '../models/evaluation.model.js';
 import Question from '../models/question.model.js';
+import Questionnaire from '../models/questionnaire.model.js';
 import Reponse from '../models/reponse.model.js';
 import Utilisateur from '../models/utilisateur.model.js';
 
 // Création d'une évaluation
-
 export const createEvaluation = async (req, res) => {
   try {
-    // Utiliser l'ID utilisateur du token
     const id_evaluateur = req.user.id;
-
     const { commentaire, id_reponse, note_formateur } = req.body;
 
-
     // Récupérer la réponse correspondant à id_reponse
-    const reponse = await Reponse.findOne({ where: { id: id_reponse } });
+    const reponse = await Reponse.findOne({
+      where: { id: id_reponse },
+      include: [
+        {
+          model: Question,
+          as: 'question',  // Alias correct si vous avez défini cette association dans Question
+          include: [
+            {
+              model: Questionnaire,
+              as: 'Questionnaires',  // Utilisez ici l'alias exact de l'association
+              attributes: ['id']
+            }
+          ]
+        }
+      ]
+    });
 
     if (!reponse) {
       return res.status(404).json({ message: 'Réponse non trouvée' });
@@ -23,88 +35,54 @@ export const createEvaluation = async (req, res) => {
     // Utiliser l'id_utilisateur de la réponse comme id_evalue
     const id_evalue = reponse.id_utilisateur;
 
+    // Récupérer l'id_questionnaire à partir de la question associée à la réponse
+    const id_questionnaire = reponse.question.Questionnaires[0]?.id;
+
+    if (!id_questionnaire) {
+      return res.status(404).json({ message: 'Questionnaire non trouvé' });
+    }
+
     // Créer l'évaluation
     const evaluation = await Evaluation.create({
       id_evaluateur,
-      id_evalue,  // id_utilisateur récupéré depuis la réponse
+      id_evalue,
       commentaire,
       id_reponse,
-      note_formateur
+      note_formateur,
+      id_questionnaire
     });
 
     res.status(201).json({ message: 'Évaluation créée avec succès', evaluation });
   } catch (error) {
+    console.error(error);  // Afficher l'erreur pour le débogage
     res.status(500).json({ message: 'Erreur lors de la création de l\'évaluation', error });
   }
 };
 
-// Récup les évaluations
+// Récupérer toutes les évaluations
 export const getAllEvaluation = async (req, res) => {
   try {
-    const evaluations = await Evaluation.findAll({
+    const evaluation = await Evaluation.findAll(req.params.id, {
       include: [
         {
           model: Utilisateur,
-          as: 'evaluateur',
-          attributes: ['id', 'nom', 'prenom'],
-        },
-        {
-          model: Utilisateur,
-          as: 'evalue',
-          attributes: ['id', 'nom', 'prenom'],
-        },
-        {
-          model: Reponse,
-          as: 'reponse',  // Utilisation de l'alias "reponse"
-          attributes: ['rep'],
-          include: [
-            {
-              model: Question,
-              as: 'question',  // Vérifie que cet alias correspond à celui dans ton modèle
-              attributes: ['id', 'titre', 'description'],  // Inclure les informations de la question
-            }
-          ]
-        }
-      ]
-    });
-
-    // Si aucune évaluation n'est trouvée
-    if (!evaluations.length) {
-      return res.status(404).json({ message: 'Aucune évaluation trouvée' });
-    }
-
-    res.status(200).json({ evaluations });
-  } catch (error) {
-    console.error(error);  // Afficher l'erreur pour déboguer
-    res.status(500).json({ message: 'Erreur lors de la récupération des évaluations', error });
-  }
-};
-
-
-// Récupérer par ID
-export const getEvaluation = async (req, res) => {
-  try {
-    const evaluation = await Evaluation.findByPk(req.params.id, {
-      include: [
-        {
-          model: Utilisateur,
-          as: 'evaluateur',
+          as: 'evaluateur', // Utiliser l'alias exact défini dans l'association
           attributes: ['id', 'nom', 'prenom']
         },
         {
           model: Utilisateur,
-          as: 'evalue',
+          as: 'evalue', // Utiliser l'alias exact défini dans l'association
           attributes: ['id', 'nom', 'prenom']
         },
         {
           model: Reponse,
-          as: 'reponse',  // Utilisation de l'alias "reponse"
+          as: 'reponse',  
           attributes: ['rep'],
           include: [
             {
               model: Question,
-              as: 'question',  // Assurez-vous que l'alias correspond à celui défini dans le modèle Reponse
-              attributes: ['titre']  // Nous incluons le titre de la question
+              as: 'question',  
+              attributes: ['titre']  
             }
           ]
         }
@@ -122,6 +100,47 @@ export const getEvaluation = async (req, res) => {
   }
 };
 
+
+// Récupérer par ID
+export const getEvaluation = async (req, res) => {
+  try {
+    const evaluation = await Evaluation.findByPk(req.params.id, {
+      include: [
+        {
+          model: Utilisateur,
+          as: 'evaluateur', // Utiliser l'alias exact défini dans l'association
+          attributes: ['id', 'nom', 'prenom']
+        },
+        {
+          model: Utilisateur,
+          as: 'evalue', // Utiliser l'alias exact défini dans l'association
+          attributes: ['id', 'nom', 'prenom']
+        },
+        {
+          model: Reponse,
+          as: 'reponse',  
+          attributes: ['rep'],
+          include: [
+            {
+              model: Question,
+              as: 'question',  
+              attributes: ['titre']  
+            }
+          ]
+        }
+      ]
+    });
+
+    if (!evaluation) {
+      return res.status(404).json({ message: 'Évaluation non trouvée' });
+    }
+
+    res.status(200).json({ evaluation });
+  } catch (error) {
+    console.error(error);  // Afficher l'erreur dans les logs pour plus de détails
+    res.status(500).json({ message: 'Erreur lors de la récupération de l\'évaluation', error });
+  }
+};
 
 
 // Maj d'une éval

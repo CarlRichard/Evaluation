@@ -1,5 +1,5 @@
 ### Définir une variable globale pour le token
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJwaWVycmVAYS5hIiwiaWF0IjoxNzQxMDA4MjgzLCJleHAiOjE3NDEwMTE4ODN9.pzzovJD61kZwWb-ZdsQlHJjbSCp9EuA78ZzZDbP9vwU
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiZW1haWwiOiJwaWVycmVAYS5hIiwiaWF0IjoxNzQxMDgyOTAzLCJleHAiOjE3NDEwODY1MDN9.eeqdk-uY9D6AkEsE8l3ZQDQcHhtJmwuuE1alnetmP0s
 ### Création d'une évaluation
 POST http://localhost:3000/api/evaluation 
 Content-Type: application/json
@@ -7,8 +7,8 @@ Authorization: Bearer {{token}}
 
 {
   "commentaire": "Tes nul !",
-  "id_reponse": 2,
-  "note_formateur": 2
+  "id_reponse": 7,
+  "note_formateur": 12
 }
 
 ### Récupérer toutes les évaluations
@@ -16,11 +16,11 @@ GET http://localhost:3000/api/evaluation
 Authorization: Bearer {{token}}
 
 ### Récupérer une évaluation par ID
-GET http://localhost:3000/api/evaluation/2
+GET http://localhost:3000/api/evaluation/7
 Authorization: Bearer {{token}}
 
 ### Récupérer tout par ID (test)
-GET http://localhost:3000/api/evaluation/test/2
+GET http://localhost:3000/api/evaluation/test/3
 Authorization: Bearer {{token}}
 
 ### Mettre à jour une évaluation

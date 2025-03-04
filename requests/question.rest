@@ -1,5 +1,5 @@
 ### Définir une variable globale pour le token
-@token =eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJwaWVycmVAYS5hIiwiaWF0IjoxNzQxMDA4MjgzLCJleHAiOjE3NDEwMTE4ODN9.pzzovJD61kZwWb-ZdsQlHJjbSCp9EuA78ZzZDbP9vwU
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiZW1haWwiOiJwaWVycmVAYS5hIiwiaWF0IjoxNzQxMDgyOTAzLCJleHAiOjE3NDEwODY1MDN9.eeqdk-uY9D6AkEsE8l3ZQDQcHhtJmwuuE1alnetmP0s
 
 ### Création d'une question
 POST http://localhost:3000/api/question
@@ -7,9 +7,8 @@ Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-  "titre": "Comment vous sentez vous sur css ?",
-  "description": "Une question sur JS.",
-  "id_questionnaire": 1
+  "titre": "Comment vous sentez vous sur python ?",
+  "description": "Une question sur python."
 }
 
 ### Récupérer toutes les questions
@@ -17,7 +16,7 @@ GET http://localhost:3000/api/question
 Authorization: Bearer {{token}}
 
 ### Récupérer une question par ID
-GET http://localhost:3000/api/question/1
+GET http://localhost:3000/api/question/6
 Authorization: Bearer {{token}}
 
 ### Mise à jour d'une question
@@ -31,5 +30,5 @@ Authorization: Bearer {{token}}
 }
 
 ### Supprimer une question
-DELETE http://localhost:3000/api/question/1
+DELETE http://localhost:3000/api/question/6
 Authorization: Bearer {{token}}

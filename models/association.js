@@ -37,3 +37,7 @@ Evaluation.belongsTo(Utilisateur, { foreignKey: "id_evaluateur" });
 // 🔹 Une réponse est soumise par un utilisateur
 Utilisateur.hasMany(Reponse, { foreignKey: "id_utilisateur", onDelete: "CASCADE" });
 Reponse.belongsTo(Utilisateur, { foreignKey: "id_utilisateur" });
+
+// 🔹 Une évaluation appartient à un questionnaire
+Evaluation.belongsTo(Questionnaire, { foreignKey: "id_questionnaire", onDelete: "CASCADE" });
+Questionnaire.hasMany(Evaluation, { foreignKey: "id_questionnaire", onDelete: "CASCADE" });

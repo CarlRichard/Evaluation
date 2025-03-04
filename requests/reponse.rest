@@ -1,13 +1,13 @@
 ### Définir une variable globale pour le token
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiZW1haWwiOiJwaWVycmUyQGEuYSIsImlhdCI6MTc0MTAwODQxNSwiZXhwIjoxNzQxMDEyMDE1fQ.-evILRjGSiaFORfjPumVeHOY7ouYevt_B8pg0_JMcLA
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiZW1haWwiOiJjYXJsQGEuYSIsImlhdCI6MTc0MTA4MzM4NCwiZXhwIjoxNzQxMDg2OTg0fQ.CFth63bWlzFuzltYZo37Vm5IdA1eUfsKAEUtz_Bji8g
 ### Création d'une réponse
 POST http://localhost:3000/api/reponse
 Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-  "rep": 16,
-  "id_question": 2
+  "rep": 12,
+  "id_question": 5
 }
 
 ### Récupérer toutes les réponses
@@ -15,17 +15,17 @@ GET http://localhost:3000/api/reponse
 Authorization: Bearer {{token}}
 
 ### Récupérer une réponse par ID
-GET http://localhost:3000/api/reponse/1
+GET http://localhost:3000/api/reponse/6
 Authorization: Bearer {{token}}
 
 ### Mise à jour d'une réponse
-PUT http://localhost:3000/api/reponse/1
+PUT http://localhost:3000/api/reponse/5
 Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-  "rep": "Réponse mise à jour.",
-  "id_question": 2
+  "rep": 2,
+  "id_question": 4
 }
 
 ### Supprimer une réponse

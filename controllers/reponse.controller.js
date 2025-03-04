@@ -48,7 +48,7 @@ export const getAllReponse = async (req, res) => {
       const { id } = req.params;
       const reponse = await Reponse.findByPk(id, {
         include: [
-          { model: Question, attributes: ['title'] }
+          { model: Question, attributes: ['titre'] }
         ]   // Inclure la question associée
       });
   

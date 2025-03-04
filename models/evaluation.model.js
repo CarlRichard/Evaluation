@@ -2,6 +2,7 @@ import { DataTypes } from "sequelize";
 import { sequelize } from "../database.js";
 import Utilisateur from "./utilisateur.model.js";
 import Reponse from "./reponse.model.js";
+import Questionnaire from "./questionnaire.model.js"; // Import du modèle Questionnaire
 
 const Evaluation = sequelize.define("Evaluation", {
   id: {
@@ -9,7 +10,7 @@ const Evaluation = sequelize.define("Evaluation", {
     autoIncrement: true,
     primaryKey: true,
   },
-  id_evaluateur: { // Clé étrangère
+  id_evaluateur: {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {
@@ -18,7 +19,7 @@ const Evaluation = sequelize.define("Evaluation", {
     },
     onDelete: "CASCADE",
   },
-  id_evalue: { // Clé étrangère
+  id_reponse: {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {
@@ -27,13 +28,23 @@ const Evaluation = sequelize.define("Evaluation", {
     },
     onDelete: "CASCADE",
   },
-  note_formateur: { 
+  // Ajouter le champ id_questionnaire pour la relation avec le questionnaire
+  id_questionnaire: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    references: {
+      model: Questionnaire,
+      key: "id",
+    },
+    onDelete: "CASCADE",
+  },
+  note_formateur: {
     type: DataTypes.INTEGER,
     allowNull: false,
     validate: {
       min: 0,
-      max: 16
-    }
+      max: 16,
+    },
   },
   commentaire: {
     type: DataTypes.TEXT,
@@ -41,12 +52,16 @@ const Evaluation = sequelize.define("Evaluation", {
   },
 }, {
   tableName: "evaluation",
-  timestamps: true
+  timestamps: true,
 });
+
 
 // Définition des relations
 Evaluation.belongsTo(Utilisateur, { foreignKey: "id_evaluateur", as: "evaluateur" });
-Evaluation.belongsTo(Utilisateur, { foreignKey: "id_evalue", as: "evalue" });
-Evaluation.belongsTo(Reponse, { foreignKey: "id_reponse", targetKey: "id", as: "reponse" });
+Evaluation.belongsTo(Reponse, { foreignKey: "id_reponse", as: "reponse" });
+Evaluation.belongsTo(Questionnaire, { foreignKey: "id_questionnaire", as: "questionnaire" }); // Nouvelle relation
+// Ajoutez ceci dans votre modèle Evaluation
+Evaluation.belongsTo(Utilisateur, { foreignKey: "id_utilisateur", as: "evalue" });
+
 
 export default Evaluation;

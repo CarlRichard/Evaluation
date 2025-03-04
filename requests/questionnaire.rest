@@ -1,5 +1,5 @@
 ### Définir une variable globale pour le token
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJwaWVycmVAYS5hIiwiaWF0IjoxNzQxMDA4MjgzLCJleHAiOjE3NDEwMTE4ODN9.pzzovJD61kZwWb-ZdsQlHJjbSCp9EuA78ZzZDbP9vwU
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiZW1haWwiOiJwaWVycmVAYS5hIiwiaWF0IjoxNzQxMDgyOTAzLCJleHAiOjE3NDEwODY1MDN9.eeqdk-uY9D6AkEsE8l3ZQDQcHhtJmwuuE1alnetmP0s
 ### Création d'un questionnaire
 POST http://localhost:3000/api/questionnaire
 Content-Type: application/json
@@ -15,11 +15,11 @@ GET http://localhost:3000/api/questionnaire
 Authorization: Bearer {{token}}
 
 ### Récupérer un questionnaire par ID
-GET http://localhost:3000/api/questionnaire/1
+GET http://localhost:3000/api/questionnaire/2
 Authorization: Bearer {{token}}
 
 ### Mise à jour d'un questionnaire
-PUT http://localhost:3000/api/questionnaire/5
+PUT http://localhost:3000/api/questionnaire/2
 Content-Type: application/json
 Authorization: Bearer {{token}}
 
@@ -35,11 +35,11 @@ Authorization: Bearer {{token}}
 
 
 ### jointure ( pas oublier le api/questionnaire/ devant )
-POST http://localhost:3000/api/questionnaire/add-question/1/2
+POST http://localhost:3000/api/questionnaire/add-question/3/5
 Authorization: Bearer {{token}}
 Content-Type: application/json
 
 ### jointure get
-GET http://localhost:3000/api/questionnaire/recup-questions/1
+GET http://localhost:3000/api/questionnaire/recup-questions/2
 Authorization: Bearer {{token}}
 Content-Type: application/json
