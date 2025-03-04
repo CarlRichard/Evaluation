@@ -13,8 +13,12 @@ import { Inscription } from "./pages/Inscription";
 import { FeedbackProfilS } from "./pages/Stagiaire/FeedbackProfilS/FeedbackProfilS.jsx";
 import { FeedbackProfilF } from "./pages/Formateur/FeedbackProfilF/FeedbackProfilF.jsx";
 import { FeedbackInscription } from "./pages/FeedbackInscription/FeedbackInscription.jsx";
-import { AccueilFormateur } from "./pages/Formateur/AccueilFormateur/AccueilFormateur.jsx";
-import { ListQuestionnaireFormateur } from "./pages/Formateur/ListeQuestionnaireFormateur/ListeQuestionnaireFormateur.jsx";
+import { AccueilAdmin } from "./pages/Administrateur/AccueilAdmin/AccueilAdmin.jsx";
+import { FeedbackUtilisateur } from "./pages/Administrateur/FeedbackUtilisateurAjoute/FeedbackUtilisateur.jsx";
+import { FeedbackSupprimer } from "./pages/Administrateur/FeedbackSupprimer/FeedbackSupprimer.jsx";
+import { ConfirmationSupprimer } from "./pages/Administrateur/ConfirmationSupprimer/ConfirmationSupprimer.jsx";
+import { FeedbackQuestionnaires } from "./pages/Stagiaire/FeedbackQuestionnaires/FeedbackQuestionnaires.jsx";
+import { FeedbackQuestionnairesF } from "./pages/Formateur/FeedbackQuestionnairesF/FeedbackQuestionnairesF.jsx";
 
 
 function App() {
@@ -35,7 +39,12 @@ function App() {
         <Route path="/feedback-profil-stagiaire" element={<FeedbackProfilS />} />
         <Route path="/feedback-profil-formateur" element={<FeedbackProfilF />} />
         <Route path="/feedback-creation-compte" element={<FeedbackInscription />} />
-        <Route path="/questionnaire-formateur" element={<ListQuestionnaireFormateur />} />
+        <Route path="/accueil-admin" element={<AccueilAdmin />} />
+        <Route path="/feedback-utilisateur" element={<FeedbackUtilisateur />} />
+        <Route path="/feedback-supprimer" element={<FeedbackSupprimer />} />
+        <Route path="/confirmation-supprimer" element={<ConfirmationSupprimer />} />
+        <Route path="/feedback-questionnaire" element={<FeedbackQuestionnaires />} />
+        <Route path="/feedback-questionnairesf" element={<FeedbackQuestionnairesF />} />
       </Routes>
     </BrowserRouter>
   );

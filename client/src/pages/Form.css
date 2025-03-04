@@ -1,4 +1,4 @@
-form {
+.template-form {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -16,7 +16,7 @@ form {
     margin-top: 50px;
 }
 
-input {
+.template-input {
     width: 90%;
     padding: 2% 1%;
     font-family: var(--text)
