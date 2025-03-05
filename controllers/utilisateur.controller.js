@@ -99,16 +99,15 @@ export const PutUtilisateur = async (req, res) => {
     }
 
     // Mettre à jour les informations de l'utilisateur
-    utilisateur.nom = nom || utilisateur.nom;  // Si une valeur est fournie, on met à jour, sinon on garde l'ancienne
+    utilisateur.nom = nom || utilisateur.nom;  
     utilisateur.prenom = prenom || utilisateur.prenom;
     utilisateur.email = email || utilisateur.email;
-    utilisateur.role = role !== undefined ? role : utilisateur.role;  // Vérifie si 'role' est défini avant de l'affecter
+    utilisateur.role = role !== undefined ? role : utilisateur.role; 
     utilisateur.formation = formation || utilisateur.formation;
     
     // Si un mot de passe est fourni, le hacher et le mettre à jour
     if (mot_de_passe) {
-      const hashedPassword = await bcrypt.hash(mot_de_passe, 10);
-      utilisateur.mot_de_passe = hashedPassword;
+      utilisateur.mot_de_passe = mot_de_passe;
     }
 
     // Sauvegarder les modifications dans la base de données
