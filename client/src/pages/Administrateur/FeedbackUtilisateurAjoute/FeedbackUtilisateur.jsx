@@ -10,7 +10,7 @@ export const FeedbackUtilisateur = ({ setAuthenticated }) => {
        <div className="fond-vert">
             <p className="text-feedback">L'utilisateur à bien été ajouté.</p>
        </div>
-       <Valider />
+       <Link to={'/'}><Valider /></Link>
         </>
     );
 };

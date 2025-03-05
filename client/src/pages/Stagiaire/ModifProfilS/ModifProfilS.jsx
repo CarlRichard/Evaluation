@@ -1,6 +1,6 @@
-
 import { Valider } from "../../../Components/Boutons/Valider/Valider";
 import { NavStagiaire } from "../../../Components/Navs/NavStagiaire";
+import { Link } from 'react-router-dom';
 
 
 export const ModifProfilS = ({ setAuthenticated }) => {
@@ -39,7 +39,7 @@ export const ModifProfilS = ({ setAuthenticated }) => {
                     // onChange={handleInput}
                     />
                 </div>
-                <Valider />
+                <Link to={'/feedback-profil-stagiaire'}><Valider /></Link>
             </form>
         </>
     );

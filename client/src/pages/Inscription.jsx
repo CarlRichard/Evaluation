@@ -83,7 +83,7 @@ export const Inscription = () => {
                         onChange={handleInput}
                     />
                 </div>
-                <Valider />
+                <Link to={'/connexion'}><Valider /></Link>
             </form>
 
             {/* Affichage du message sous le formulaire */}

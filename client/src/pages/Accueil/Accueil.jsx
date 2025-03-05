@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom';
 
 import "./Accueil.css"
 
@@ -31,8 +32,8 @@ const handleSinscrire = () => {
         <section className='section'>
             <h1>Bienvenue sur L'Evaluation</h1>
             <div className='fond'>
-                <button className='btnConnexion' onClick={handleConnexion}>Connexion</button>
-                <button className='btnSinscrire' onClick={handleSinscrire}>S'inscrire</button>
+                <Link to={'/connexion'}><button className='btnConnexion' onClick={handleConnexion}>Connexion</button></Link>
+                <Link to={'/inscription'}><button className='btnSinscrire' onClick={handleSinscrire}>S'inscrire</button></Link>
             </div>
         </section>
         </>

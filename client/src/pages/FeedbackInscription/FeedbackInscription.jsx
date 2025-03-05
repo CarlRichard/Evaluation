@@ -1,5 +1,6 @@
 import { Valider } from "../../Components/Boutons/Valider/Valider";
 import "./FeedbackInscription.css"
+import { Link } from 'react-router-dom';
 
 
 export const FeedbackInscription = ({ setAuthenticated }) => {
@@ -10,7 +11,7 @@ export const FeedbackInscription = ({ setAuthenticated }) => {
        <div className="fond-vert">
             <p className="text-feedback">Votre compte à bien été créé.</p>
        </div>
-       <Valider />
+       <Link to={'/accueil'}><Valider /></Link>
         </>
     );
 };
