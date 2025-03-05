@@ -1,6 +1,7 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../database.js";
 import Question from "./question.model.js";
+import Utilisateur from "./utilisateur.model.js"; // Import du modèle Utilisateur
 
 const Reponse = sequelize.define("Reponse", {
   id: {
@@ -16,7 +17,7 @@ const Reponse = sequelize.define("Reponse", {
       max: 16
     }
   },
-  id_question: { // Clé étrangère
+  id_question: { // Clé étrangère vers Question
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {
@@ -24,6 +25,15 @@ const Reponse = sequelize.define("Reponse", {
       key: "id",
     },
     onDelete: "CASCADE",
+  },
+  id_utilisateur: { // Nouvelle clé étrangère vers Utilisateur
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    references: {
+      model: Utilisateur,
+      key: "id"
+    },
+    onDelete: "CASCADE"
   }
 }, {
   tableName: "reponse",
@@ -31,6 +41,7 @@ const Reponse = sequelize.define("Reponse", {
 });
 
 // Définition des relations
-Reponse.belongsTo(Question, { foreignKey: "id_question" });
+Reponse.belongsTo(Question, { foreignKey: "id_question", as: 'question' });
+Reponse.belongsTo(Utilisateur, { foreignKey: "id_utilisateur", as: "utilisateur" }); // Ajout de la relation avec Utilisateur
 
 export default Reponse;

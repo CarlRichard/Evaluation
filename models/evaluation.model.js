@@ -2,43 +2,49 @@ import { DataTypes } from "sequelize";
 import { sequelize } from "../database.js";
 import Utilisateur from "./utilisateur.model.js";
 import Reponse from "./reponse.model.js";
+import Questionnaire from "./questionnaire.model.js"; 
 
-const Evaluation = sequelize.define("Evaluation", {
+const Evaluation = sequelize.define('Evaluation', {
   id: {
     type: DataTypes.INTEGER,
-    autoIncrement: true,
     primaryKey: true,
+    autoIncrement: true
   },
-  id_evaluateur: { // Clé étrangère
+  id_evaluateur: {
     type: DataTypes.INTEGER,
-    allowNull: false,
-    references: {
-      model: Utilisateur,
-      key: "id",
-    },
-    onDelete: "CASCADE",
+    allowNull: false
   },
-  id_evalue: { // Clé étrangère
+  id_reponse: {
     type: DataTypes.INTEGER,
-    allowNull: false,
-    references: {
-      model: Utilisateur,
-      key: "id",
-    },
-    onDelete: "CASCADE",
+    allowNull: false
+  },
+  note_formateur: {
+    type: DataTypes.INTEGER,
+    allowNull: false
   },
   commentaire: {
-    type: DataTypes.TEXT,
-    allowNull: false,
+    type: DataTypes.STRING,
+    allowNull: true
+  },
+  id_questionnaire: {
+    type: DataTypes.INTEGER,
+    allowNull: false
+  },
+  id_evalue: {  
+    type: DataTypes.INTEGER,
+    allowNull: true
   },
 }, {
   tableName: "evaluation",
-  timestamps: true
+  timestamps: true,
 });
 
 // Définition des relations
 Evaluation.belongsTo(Utilisateur, { foreignKey: "id_evaluateur", as: "evaluateur" });
-Evaluation.belongsTo(Utilisateur, { foreignKey: "id_evalue", as: "evalue" });
 Evaluation.belongsTo(Reponse, { foreignKey: "id_reponse", as: "reponse" });
+Evaluation.belongsTo(Questionnaire, { foreignKey: "id_questionnaire", as: "questionnaire" }); // Nouvelle relation
+// Ajoutez ceci dans votre modèle Evaluation
+Evaluation.belongsTo(Utilisateur, { foreignKey: "id_evalue", as: "evalue" });
 
-export default Evaluation;
+
+export default Evaluation; 

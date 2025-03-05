@@ -7,11 +7,12 @@ POST {{baseUrl}}/utilisateur
 Content-Type: application/json
 
 {
-    "nom": "Doe",
-    "prenom": "John",
-    "mail": "john.doe@example.com",
-    "role": 1,
-    "mot_de_passe": "monpassword123"
+    "nom": "r",
+    "prenom": "c",
+    "email": "carl@a.a",
+    "formation":"CDA",
+    "role": 0,
+    "mot_de_passe": "123"
 }
 
 ### 🔹 Obtenir tous les utilisateur (nécessite un token)
@@ -19,27 +20,41 @@ GET {{baseUrl}}/utilisateur
 Authorization: {{token}}
 
 ### 🔹 Obtenir un utilisateur par ID
-GET {{baseUrl}}/utilisateur/1
+GET {{baseUrl}}/utilisateur/3
 Authorization: {{token}}
 
 ### 🔹 Modifier un utilisateur (ex: changer l'email)
-PUT {{baseUrl}}/utilisateur/1
+Patch {{baseUrl}}/utilisateur/3
 Authorization: {{token}}
 Content-Type: application/json
 
 {
-    "mail": "john.doe@update.com"
+    "mail": "pierre@a.a"
 }
 
 ### 🔹 Modifier le mot de passe d'un utilisateur
-PUT {{baseUrl}}/utilisateur/1
+Patch {{baseUrl}}/utilisateur/3
 Authorization: {{token}}
 Content-Type: application/json
 
 {
-    "mot_de_passe": "nouveaupassword123"
+    "mot_de_passe": "123"
+}
+
+### modifier entierement via put
+PUT {{baseUrl}}/utilisateur/modifier/3
+Authorization: {{token}}
+Content-Type: application/json
+
+{
+    "nom": "Dupont",
+    "prenom": "Pierre",
+    "email": "pierre@a.a",
+    "role": 1,
+    "formation": "CDA",
+    "mot_de_passe": "123"
 }
 
 ### 🔹 Supprimer un utilisateur
-DELETE {{baseUrl}}/utilisateur/5
+DELETE {{baseUrl}}/utilisateur/4
 Authorization: {{token}}

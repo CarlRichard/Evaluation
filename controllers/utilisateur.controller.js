@@ -1,4 +1,5 @@
 import Utilisateur from "../models/utilisateur.model.js";
+import bcrypt from "bcryptjs";
 
 // POST - Créer un utilisateur
 export const createUtilisateur = async (req, res) => {
@@ -84,6 +85,49 @@ export const updateUtilisateur = async (req, res) => {
   }
 };
 
+// Méthode pour mettre à jour un utilisateur
+export const PutUtilisateur = async (req, res) => {
+  try {
+    const { nom, prenom, email, role, formation, mot_de_passe } = req.body;
+    const utilisateurId = req.params.id;
+
+    // Vérifier si l'utilisateur existe
+    const utilisateur = await Utilisateur.findByPk(utilisateurId);
+
+    if (!utilisateur) {
+      return res.status(404).json({ message: 'Utilisateur non trouvé' });
+    }
+
+    // Mettre à jour les informations de l'utilisateur
+    utilisateur.nom = nom || utilisateur.nom;  // Si une valeur est fournie, on met à jour, sinon on garde l'ancienne
+    utilisateur.prenom = prenom || utilisateur.prenom;
+    utilisateur.email = email || utilisateur.email;
+    utilisateur.role = role !== undefined ? role : utilisateur.role;  // Vérifie si 'role' est défini avant de l'affecter
+    utilisateur.formation = formation || utilisateur.formation;
+    
+    // Si un mot de passe est fourni, le hacher et le mettre à jour
+    if (mot_de_passe) {
+      const hashedPassword = await bcrypt.hash(mot_de_passe, 10);
+      utilisateur.mot_de_passe = hashedPassword;
+    }
+
+    // Sauvegarder les modifications dans la base de données
+    await utilisateur.save();
+
+    // Retourner la réponse avec les informations de l'utilisateur mis à jour
+    res.status(200).json({
+      message: 'Utilisateur mis à jour avec succès',
+      utilisateur
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      message: 'Erreur lors de la mise à jour de l\'utilisateur',
+      error
+    });
+  }
+};
+
 
 // DELETE - Supprimer un utilisateur
 export const deleteUtilisateur = async (req, res) => {
@@ -103,26 +147,3 @@ export const deleteUtilisateur = async (req, res) => {
     res.status(500).json({ message: "Erreur lors de la suppression de l'utilisateur", error: error.message });
   }
 };
-
-
-// export function getUserProfile(req, res) {
-//     const userProfile = {
-//         id: req.utilisateur.id,
-//         nom: req.utilisateur.nom,
-//         prenom: req.utilisateur.prenom,
-//         email: req.utilisateur.email,
-//          formation: req.utilisateur.formation,
-//         role: req.utilisateur.role,
-//         permissions: req.utilisateur.permissions
-//     };
-//     res.json(userProfile);
-// }
-
-// export function updateUserProfile(req, res) {
-//     const updatedProfile = {
-//         nom: req.body.nom,
-//         prenom: req.body.prenom,
-//         email: req.body.email
-//     };
-//     res.json({ message: 'Profil mis à jour avec succès', profile: updatedProfile });
-// }

@@ -1,9 +1,6 @@
 import jsonwebtoken from 'jsonwebtoken';
 // auth.controller.js
 import Utilisateur from '../models/utilisateur.model.js'; // Utilisation de l'export par défaut
-
-import e from 'express';
-
 import bcrypt from 'bcryptjs'; // Assurez-vous d'importer bcryptjs
 
 export const register = async (req, res) => {
@@ -51,7 +48,7 @@ export const login = async (req, res) => {
         // Ajouter le refresh token dans un cookie sécurisé
         res.cookie("refreshToken", refreshToken, {
             sameSite: 'Strict',
-            secure: process.env.NODE_ENV === 'production', // Sécurisé en production
+            secure: false,
             httpOnly: true
         });
 
@@ -61,7 +58,6 @@ export const login = async (req, res) => {
         res.status(500).json({ message: "Erreur lors de la connexion", error });
     }
 };
-
 
 export const logout = (req, res) => {
     res.clearCookie("refreshToken");

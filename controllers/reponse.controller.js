@@ -8,10 +8,14 @@ export const createReponse = async (req, res) => {
   try {
     const { rep, id_question } = req.body;
 
+        // Utiliser l'ID utilisateur du token
+        const id_utilisateur = req.user.id; 
+
     // Créer une nouvelle réponse
     const reponse = await Reponse.create({
       rep,
-      id_question
+      id_question,
+      id_utilisateur
     });
 
     res.status(201).json({ message: "Réponse créée avec succès", reponse });
@@ -44,7 +48,7 @@ export const getAllReponse = async (req, res) => {
       const { id } = req.params;
       const reponse = await Reponse.findByPk(id, {
         include: [
-          { model: Question, attributes: ['title'] }
+          { model: Question, attributes: ['titre'] }
         ]   // Inclure la question associée
       });
   

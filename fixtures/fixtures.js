@@ -1,66 +1,61 @@
-import { Utiliateur, Questionnaire, Question, Evaluation, Reponse } from './models'; // Importe tes modèles
+import { sequelize } from "../database.js";
+import Utilisateur from "../models/utilisateur.model.js";
+import Questionnaire from "../models/questionnaire.model.js";
+import Question from "../models/question.model.js";
+import Reponse from "../models/reponse.model.js";
+import Evaluation from "../models/evaluation.model.js";
+import QuestionnaireQuestion from "../models/QuestionnaireQuestion.model.js";
 
-export const createFixtures = async () => {
-  try {
-    // Création de 10 utilisateurs
-    const Utiliateurs = [];
-    for (let i = 0; i < 10; i++) {
-      const user = await Utiliateur.create({
-        username: `Utiliateur${i + 1}`,
-        email: `Utiliateur${i + 1}@example.com`,
-        password: 'password',
-      });
-      Utiliateurs.push(user);
-    }
+(async () => {
+  await sequelize.sync({ force: true }); // Réinitialiser la base de données
 
-    // Création de 3 questionnaires
-    const questionnaires = [];
-    for (let i = 0; i < 3; i++) {
-      const questionnaire = await Questionnaire.create({
-        titre: `Questionnaire ${i + 1}`,
-        description: `Description for questionnaire ${i + 1}`,
-        id_utilisateur: Utiliateurs[i].id, 
-      });
-      questionnaires.push(questionnaire);
-    }
+  // Création des utilisateurs
+  const utilisateurs = await Utilisateur.bulkCreate([
+    { nom: "Dupont", prenom: "Alice", email: "alice@example.com", role: 0, formation: "Back-End", mot_de_passe: "password" },
+    { nom: "Martin", prenom: "Bob", email: "bob@example.com", role: 1, formation: "Front-End", mot_de_passe: "password" },
+    { nom: "Leroy", prenom: "Charlie", email: "charlie@example.com", role: 0, formation: "CDA", mot_de_passe: "password" },
+    { nom: "Durand", prenom: "Diana", email: "diana@example.com", role: 1, formation: "PrépaNum", mot_de_passe: "password" },
+    { nom: "Bernard", prenom: "Eve", email: "eve@example.com", role: 0, formation: "POA", mot_de_passe: "password" },
+  ]);
 
-    // Création de 15 questions, 5 par questionnaire
-    const questions = [];
-    for (let i = 0; i < 3; i++) {
-      for (let j = 0; j < 5; j++) {
-        const question = await Question.create({
-          titre: `Question ${j + 1} for Questionnaire ${i + 1}`,
-          description: `Description for question ${j + 1}`,
-          id_questionnaire: questionnaires[i].id,
-        });
-        questions.push(question);
-      }
-    }
+  // Création des questionnaires
+  const questionnaires = await Questionnaire.bulkCreate([
+    { titre: "Questionnaire 1", description: "Description 1", id_utilisateur: utilisateurs[1].id },
+    { titre: "Questionnaire 2", description: "Description 2", id_utilisateur: utilisateurs[3].id },
+  ]);
 
-    // Création de 2 évaluations pour les utilisateurs
-    const evaluations = [];
-    for (let i = 0; i < 2; i++) {
-      const evaluation = await Evaluation.create({
-        id_utilisateur_evaluateur: Utiliateurs[i].id, // Utilisateur évaluateur
-        id_utilisateur_evalue: Utiliateurs[(i + 1) % 10].id, // Utilisateur évalué
-        commentaire: `Commentaire de l'évaluation ${i + 1}`,
-      });
-      evaluations.push(evaluation);
-    }
+  // Création des questions
+  const questions = await Question.bulkCreate([
+    { titre: "Question A", description: "Desc A" },
+    { titre: "Question B", description: "Desc B" },
+    { titre: "Question C", description: "Desc C" },
+    { titre: "Question D", description: "Desc D" },
+    { titre: "Question E", description: "Desc E" },
+  ]);
 
-    // Création de réponses pour les questions et les évaluations
-    for (let i = 0; i < 2; i++) {
-      for (let j = 0; j < 5; j++) {
-        const response = await Reponse.create({
-          texte: `Réponse ${j + 1} pour la question ${j + 1} dans le questionnaire ${i + 1}`,
-          id_question: questions[j + i * 5].id, // Lier la question correspondante
-          id_evaluation: evaluations[i].id, // Lier à l'évaluation correspondante
-        });
-      }
-    }
+  // Association des questions aux questionnaires (avec une question commune)
+  await QuestionnaireQuestion.bulkCreate([
+    { id_questionnaire: questionnaires[0].id, id_question: questions[0].id },
+    { id_questionnaire: questionnaires[0].id, id_question: questions[1].id },
+    { id_questionnaire: questionnaires[0].id, id_question: questions[2].id },
+    { id_questionnaire: questionnaires[1].id, id_question: questions[2].id },
+    { id_questionnaire: questionnaires[1].id, id_question: questions[3].id },
+    { id_questionnaire: questionnaires[1].id, id_question: questions[4].id },
+  ]);
 
-    console.log('Fixtures créées avec succès!');
-  } catch (error) {
-    console.error('Erreur lors de la création des fixtures:', error);
-  }
-};
+  // Un utilisateur répond à une question
+  const reponse = await Reponse.create({ rep: 10, id_question: questions[0].id, id_utilisateur: utilisateurs[2].id });
+
+  // Un formateur évalue la réponse
+  await Evaluation.create({
+    id_evaluateur: utilisateurs[1].id,
+    id_reponse: reponse.id,
+    note_formateur: 8,
+    commentaire: "Bonne réponse",
+    id_questionnaire: questionnaires[0].id,
+    id_evalue: utilisateurs[2].id,
+  });
+
+  console.log("Fixtures insérées avec succès");
+  process.exit();
+})();
