@@ -21,6 +21,7 @@ import { FeedbackQuestionnairesF } from "./pages/Formateur/FeedbackQuestionnaire
 import { AccueilFormateur } from "./pages/Formateur/AccueilFormateur/AccueilFormateur.jsx";
 import { ListeQuestionnaireFormateur } from "./pages/Formateur/ListeQuestionnaireFormateur/ListeQuestionnaireFormateur.jsx";
 import { GraphFormateur } from "./pages/Formateur/GraphFormateur/GraphFormateur.jsx";
+import { ListeStagiaire } from "./pages/Formateur/ListeStagiaire/ListeStagiaire.jsx";
 
 
 
@@ -50,6 +51,7 @@ function App() {
         <Route path="/feedback-questionnairesf" element={<FeedbackQuestionnairesF />} />
         <Route path="/questionnaire-formateur" element={<ListeQuestionnaireFormateur />} />
         <Route path="/graph-formateur" element={<GraphFormateur />} />
+        <Route path="/liste-stagiaire" element={<ListeStagiaire />} />
       </Routes>
     </BrowserRouter>
   );

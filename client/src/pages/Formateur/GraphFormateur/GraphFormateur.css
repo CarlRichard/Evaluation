@@ -1,0 +1,10 @@
+.graph-selection {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.select-label {
+    font-family: var(--text);
+}
