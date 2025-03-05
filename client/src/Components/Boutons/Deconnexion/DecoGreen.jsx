@@ -1,7 +1,8 @@
+import { Link } from 'react-router-dom'
 import './DecoGreen.css'
 
 export const DecoGreen = () => {
     return (
-        <button className='deco-green'>Deconnexion</button>
+        <Link to={'/connexion'}><button className='deco-green'>Deconnexion</button></Link>
     )
 }

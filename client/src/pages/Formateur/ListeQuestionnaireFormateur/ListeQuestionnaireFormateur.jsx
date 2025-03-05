@@ -2,7 +2,7 @@ import './ListeQuestionnaireFormateur.css'
 import { NavFormateur } from "../../../Components/Navs/NavFormateur"
 import { Valider } from '../../../Components/Boutons/Valider/Valider'
 
-export const ListQuestionnaireFormateur = () => {
+export const ListeQuestionnaireFormateur = () => {
     return (
         <>
             <NavFormateur />
