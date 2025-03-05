@@ -5,17 +5,23 @@ import Question from "../models/question.model.js";
 import Reponse from "../models/reponse.model.js";
 import Evaluation from "../models/evaluation.model.js";
 import QuestionnaireQuestion from "../models/QuestionnaireQuestion.model.js";
+import bcrypt from "bcryptjs";
 
 (async () => {
   await sequelize.sync({ force: true }); // Réinitialiser la base de données
 
+  const hashPassword = async (password) => {
+    const salt = await bcrypt.genSalt(10);
+    return bcrypt.hash(password, salt);
+  };
+
   // Création des utilisateurs
   const utilisateurs = await Utilisateur.bulkCreate([
-    { nom: "Dupont", prenom: "Alice", email: "alice@example.com", role: 0, formation: "Back-End", mot_de_passe: "password" },
-    { nom: "Martin", prenom: "Bob", email: "bob@example.com", role: 1, formation: "Front-End", mot_de_passe: "password" },
-    { nom: "Leroy", prenom: "Charlie", email: "charlie@example.com", role: 0, formation: "CDA", mot_de_passe: "password" },
-    { nom: "Durand", prenom: "Diana", email: "diana@example.com", role: 1, formation: "PrépaNum", mot_de_passe: "password" },
-    { nom: "Bernard", prenom: "Eve", email: "eve@example.com", role: 0, formation: "POA", mot_de_passe: "password" },
+    { nom: "Dupont", prenom: "Alice", email: "alice@example.com", role: 0, formation: "Back-End",mot_de_passe: await hashPassword("password") },
+    { nom: "Martin", prenom: "Bob", email: "bob@example.com", role: 1, formation: "Front-End", mot_de_passe: await hashPassword("password") },
+    { nom: "Leroy", prenom: "Charlie", email: "charlie@example.com", role: 0, formation: "CDA", mot_de_passe: await hashPassword("password") },
+    { nom: "Durand", prenom: "Diana", email: "diana@example.com", role: 1, formation: "PrépaNum", mot_de_passe: await hashPassword("password") },
+    { nom: "Bernard", prenom: "Eve", email: "eve@example.com", role: 0, formation: "POA", mot_de_passe: await hashPassword("password") },
   ]);
 
   // Création des questionnaires
