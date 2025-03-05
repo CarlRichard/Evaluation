@@ -1,6 +1,7 @@
 
 import { Valider } from "../../../Components/Boutons/Valider/Valider";
 import { NavFormateur } from "../../../Components/Navs/NavFormateur";
+import { Link } from 'react-router-dom';
 
 
 export const ModifProfilF = ({ setAuthenticated }) => {
@@ -10,7 +11,7 @@ export const ModifProfilF = ({ setAuthenticated }) => {
             <NavFormateur />
             <form className="template-form">
                 <div className="inputContainer">
-                    <input
+                    <input className="template-input"
                         name="nom"
                         type="text"
                         required
@@ -39,7 +40,7 @@ export const ModifProfilF = ({ setAuthenticated }) => {
                     // onChange={handleInput}
                     />
                 </div>
-                <Valider />
+                <Link to={'/feedback-profil-formateur'}><Valider /></Link>
             </form>
         </>
     );

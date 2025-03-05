@@ -1,5 +1,6 @@
 import { Valider } from "../../../Components/Boutons/Valider/Valider";
 import "./FeedbackProfilS.css"
+import { Link } from 'react-router-dom';
 
 
 export const FeedbackProfilS = ({ setAuthenticated }) => {
@@ -10,7 +11,7 @@ export const FeedbackProfilS = ({ setAuthenticated }) => {
        <div className="fond-vert">
             <p className="text-feedback">Votre profil à bien été modifié.</p>
        </div>
-       <Valider />
+       <Link to={'/homestagiaire'}><Valider /></Link>
         </>
     );
 };

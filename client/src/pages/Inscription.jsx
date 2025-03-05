@@ -38,7 +38,7 @@ export const Inscription = ({ setAuthenticated }) => {
                     // onChange={handleInput}
                     />
                 </div>
-                <Valider />
+                <Link to={'/connexion'}><Valider /></Link>
             </form>
         </>
     );

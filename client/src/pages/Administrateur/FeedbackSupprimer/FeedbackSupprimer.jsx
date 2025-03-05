@@ -1,4 +1,5 @@
 import { Valider } from "../../../Components/Boutons/Valider/Valider";
+import { Link } from 'react-router-dom';
 
 
 export const FeedbackSupprimer = ({ setAuthenticated }) => {
@@ -9,7 +10,7 @@ export const FeedbackSupprimer = ({ setAuthenticated }) => {
        <div className="fond-vert">
             <p className="text-feedback">L'utilisateur à bien été supprimé.</p>
        </div>
-       <Valider />
+       <Link to={'/'}><Valider /></Link>
         </>
     );
 };

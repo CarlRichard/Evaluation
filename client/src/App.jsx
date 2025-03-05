@@ -5,7 +5,6 @@ import { Restricted } from "./pages/Restricted";
 import { Login } from "./pages/Login";
 import { Accueil } from "./pages/Accueil/Accueil.jsx";
 import { HomeStagiaire } from "./pages/Stagiaire/Home-stagiaire/Home-stagiaire.jsx";
-import { AccueilStagiaire } from "./pages/Stagiaire/AccueilStagiaire/AccueilStagiaire.jsx";
 import { ModifProfilS } from "./pages/Stagiaire/ModifProfilS/ModifProfilS.jsx";
 import { ModifProfilF } from "./pages/Formateur/ModifProfilF/ModifProfilF.jsx";
 import { Inscription } from "./pages/Inscription";
@@ -34,7 +33,6 @@ function App() {
         <Route path="/connexion" element={<Login setAuthenticated={setAuthenticated} />} />
         <Route path="/accueil" element={<Accueil />} />
         <Route path="/homestagiaire" element={<HomeStagiaire />} />
-        <Route path="/accueil-stagiaire" element={<AccueilStagiaire />} />
         <Route path="/accueil-formateur" element={<AccueilFormateur />} />
         <Route path="/modification-du-profil-stagiaire" element={<ModifProfilS />} />
         <Route path="/modification-du-profil-formateur" element={<ModifProfilF />} />
