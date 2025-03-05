@@ -6,7 +6,6 @@ import { Login } from "./pages/Login";
 import { Accueil } from "./pages/Accueil/Accueil.jsx";
 import { HomeStagiaire } from "./pages/Stagiaire/Home-stagiaire/Home-stagiaire.jsx";
 import { AccueilStagiaire } from "./pages/Stagiaire/AccueilStagiaire/AccueilStagiaire.jsx";
-import { AccueilFormateur } from "./pages/Formateur/AccueilFormateur.jsx";
 import { ModifProfilS } from "./pages/Stagiaire/ModifProfilS/ModifProfilS.jsx";
 import { ModifProfilF } from "./pages/Formateur/ModifProfilF/ModifProfilF.jsx";
 import { Inscription } from "./pages/Inscription";
@@ -19,6 +18,10 @@ import { FeedbackSupprimer } from "./pages/Administrateur/FeedbackSupprimer/Feed
 import { ConfirmationSupprimer } from "./pages/Administrateur/ConfirmationSupprimer/ConfirmationSupprimer.jsx";
 import { FeedbackQuestionnaires } from "./pages/Stagiaire/FeedbackQuestionnaires/FeedbackQuestionnaires.jsx";
 import { FeedbackQuestionnairesF } from "./pages/Formateur/FeedbackQuestionnairesF/FeedbackQuestionnairesF.jsx";
+import { AccueilFormateur } from "./pages/Formateur/AccueilFormateur/AccueilFormateur.jsx";
+import { ListeQuestionnaireFormateur } from "./pages/Formateur/ListeQuestionnaireFormateur/ListeQuestionnaireFormateur.jsx";
+import { GraphFormateur } from "./pages/Formateur/GraphFormateur/GraphFormateur.jsx";
+
 
 
 function App() {
@@ -45,6 +48,8 @@ function App() {
         <Route path="/confirmation-supprimer" element={<ConfirmationSupprimer />} />
         <Route path="/feedback-questionnaire" element={<FeedbackQuestionnaires />} />
         <Route path="/feedback-questionnairesf" element={<FeedbackQuestionnairesF />} />
+        <Route path="/questionnaire-formateur" element={<ListeQuestionnaireFormateur />} />
+        <Route path="/graph-formateur" element={<GraphFormateur />} />
       </Routes>
     </BrowserRouter>
   );

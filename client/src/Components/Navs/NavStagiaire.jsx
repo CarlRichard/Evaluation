@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { AccueilGreen } from '../Boutons/Accueil/AccueilGreen'
 import { DecoGreen } from '../Boutons/Deconnexion/DecoGreen'
 
@@ -7,8 +8,8 @@ export const NavStagiaire = () => {
     return (
         <>
             <nav className='nav-stagiaire'>
-                <AccueilGreen />
-                <DecoGreen />
+                <Link to={'/accueil-stagiaire'}><AccueilGreen /></Link>
+                <Link to={'/connexion'}><DecoGreen /></Link>
             </nav>
         </>
     )
