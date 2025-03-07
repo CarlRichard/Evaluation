@@ -23,7 +23,7 @@ export const ListeStagiaire = () => {
                 setStagiaires(data.utilisateurs)
             })
             .catch(console.error)
-    }, [])
+    }, [tokenUser])
 
     return (
         <>
@@ -38,4 +38,3 @@ export const ListeStagiaire = () => {
         </>
     )
 }
-
