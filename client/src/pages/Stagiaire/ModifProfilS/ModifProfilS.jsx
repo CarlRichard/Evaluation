@@ -157,7 +157,7 @@ export const ModifProfilS = ({ setAuthenticated }) => {
                     />
                 </div>
                 {error && <p style={{ color: "red" }}>{error}</p>}
-                {successMessage && <p style={{ color: "green" }}>{successMessage}</p>} {/* Affiche le message de succès */}
+                {successMessage && <p style={{ color: "green" }}>{successMessage}</p>}
                 <Valider />
             </form>
         </>

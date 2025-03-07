@@ -21,6 +21,7 @@ import { AccueilFormateur } from "./pages/Formateur/AccueilFormateur/AccueilForm
 import { ListeQuestionnaireFormateur } from "./pages/Formateur/ListeQuestionnaireFormateur/ListeQuestionnaireFormateur.jsx";
 import { GraphFormateur } from "./pages/Formateur/GraphFormateur/GraphFormateur.jsx";
 import { ListeStagiaire } from "./pages/Formateur/ListeStagiaire/ListeStagiaire.jsx";
+import { GestionAdmin } from "./pages/Administrateur/GestionAdmin/GestionAdmin.jsx";
 
 
 
@@ -42,6 +43,7 @@ function App() {
         <Route path="/feedback-profil-formateur" element={<FeedbackProfilF />} />
         <Route path="/feedback-creation-compte" element={<FeedbackInscription />} />
         <Route path="/accueil-admin" element={<AccueilAdmin />} />
+        <Route path="/gestion-admin" element={<GestionAdmin />} />
         <Route path="/feedback-utilisateur" element={<FeedbackUtilisateur />} />
         <Route path="/feedback-supprimer" element={<FeedbackSupprimer />} />
         <Route path="/confirmation-supprimer" element={<ConfirmationSupprimer />} />
