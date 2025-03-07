@@ -59,7 +59,7 @@ export const getUtilisateur = async (req, res) => {
 // Patch - Mettre à jour un utilisateur
 export const updateUtilisateur = async (req, res) => {
   const { id } = req.params;
-  const { email, mot_de_passe } = req.body;
+  const { email, mot_de_passe, role, formation  } = req.body;
   
   try {
     const utilisateur = await Utilisateur.findByPk(id);
@@ -75,6 +75,14 @@ export const updateUtilisateur = async (req, res) => {
     
     if (mot_de_passe) {
       utilisateur.mot_de_passe = mot_de_passe;
+    }
+
+    if (role) {
+      utilisateur.role = role;
+    }
+
+    if (formation) {
+      utilisateur.formation = formation;
     }
 
     await utilisateur.save();

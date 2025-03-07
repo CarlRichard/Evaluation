@@ -1,6 +1,6 @@
 @baseUrl = http://localhost:3000/api
 
-@token = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiZW1haWwiOiJqb2huLmRvZUB1cGRhdGUuY29tIiwiaWFff0IjoxNzQwNjUwOTkzLCJleHAiOjE3NDA2NTQ1OTN9.e78DkCZElIHYaK7u-a1jhIKOSB7JDNjKgS9Shbb85YI
+@token = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhbGljZUBleGFtcGxlLmNvbSIsImlhdCI6MTc0MTM0MjMxMiwiZXhwIjoxNzQxMzQ1OTEyfQ.TGutG9uOe6hG5e9Hpzy6eflA9jlUtHqEvLUJ1epQpAg
 
 ### 🔹 Créer un utilisateur
 POST {{baseUrl}}/utilisateur
@@ -20,7 +20,7 @@ GET {{baseUrl}}/utilisateur
 Authorization: {{token}}
 
 ### 🔹 Obtenir un utilisateur par ID
-GET {{baseUrl}}/utilisateur/3
+GET {{baseUrl}}/utilisateur/1
 Authorization: {{token}}
 
 ### 🔹 Modifier un utilisateur (ex: changer l'email)
@@ -41,6 +41,23 @@ Content-Type: application/json
     "mot_de_passe": "123"
 }
 
+### 🔹 Modifier un utilisateur (ex: changer )role
+Patch {{baseUrl}}/utilisateur/1
+Authorization: {{token}}
+Content-Type: application/json
+
+{
+    "role": 1
+}
+
+### 🔹 Modifier un utilisateur (ex: changer la formation)
+Patch {{baseUrl}}/utilisateur/1
+Authorization: {{token}}
+Content-Type: application/json
+
+{
+    "formation": "Front-End"
+}
 ### modifier entierement via put
 PUT {{baseUrl}}/utilisateur/modifier/3
 Authorization: {{token}}
