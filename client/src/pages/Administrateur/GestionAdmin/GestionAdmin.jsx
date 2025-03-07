@@ -56,17 +56,22 @@ export const GestionAdmin = () => {
     };
 
     const handleUpdateStagiaire = (id, field, value) => {
-        fetch(`http://localhost:3000/api/utilisateur/modifier/${id}`, {
-            method: "Patch",
+        fetch(`http://localhost:3000/api/utilisateur/${id}`, {
+            method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${tokenUser}`,
             },
             body: JSON.stringify({ [field]: value }),
         })
-            .then(() => fetchStagiaires())
-            .catch(() => setError("Erreur lors de la mise à jour"));
-    };
+        .then((res) => {
+            if (!res.ok) {
+                throw new Error("Erreur lors de la mise à jour");
+            }
+            fetchStagiaires(); 
+        })
+        .catch(() => setError("Erreur lors de la mise à jour"));
+    };        
 
     const handleDeleteStagiaire = (id) => {
         fetch(`http://localhost:3000/api/utilisateur/${id}`, {
