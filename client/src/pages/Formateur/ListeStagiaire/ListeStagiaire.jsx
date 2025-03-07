@@ -1,10 +1,13 @@
-import { useEffect } from "react"
+import './ListeStagiaire.css'
+import { useEffect, useState } from "react"
 import { NavFormateur } from "../../../Components/Navs/NavFormateur"
 
 
 export const ListeStagiaire = () => {
 
     let tokenUser = localStorage.getItem("token");
+
+    const [stagiaires, setStagiaires] = useState([])
 
     useEffect(() => {
         fetch('http://localhost:3000/api/utilisateur', {
@@ -15,16 +18,23 @@ export const ListeStagiaire = () => {
             },
         })
             .then(res => res.json())
-            .then(data => console.log(data))
+            .then(data => {
+                console.log(data.utilisateurs)
+                setStagiaires(data.utilisateurs)
+            })
             .catch(console.error)
-    })
+    }, [])
 
     return (
         <>
             <NavFormateur />
             <h1>Stagiaires</h1>
-
-
+            <section className="stagiaire-list">
+                {stagiaires.map(stagiaire => <div className="stagiaire-card">
+                    <p>{stagiaire.prenom}</p>
+                    <p>{stagiaire.nom}</p>
+                </div>)}
+            </section>
         </>
     )
 }
