@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Valider } from "../Components/Boutons/Valider/Valider";
 import './Inscription.css';
+import { Link } from 'react-router-dom';
 
 export const Inscription = () => {
     const [inputs, setInputs] = useState({

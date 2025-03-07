@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState } from 'react';
 import './App.css';
-import { Restricted } from "./pages/Restricted";
+// import { Restricted } from "./pages/Restricted";
 import { Login } from "./pages/Login";
 import { Accueil } from "./pages/Accueil/Accueil.jsx";
 import { HomeStagiaire } from "./pages/Stagiaire/Home-stagiaire/Home-stagiaire.jsx";
@@ -31,9 +31,9 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Restricted authenticated={authenticated} setAuthenticated={setAuthenticated} />} />
+        <Route path="/accueil" element={<Accueil authenticated={authenticated} setAuthenticated={setAuthenticated} />} />
         <Route path="/connexion" element={<Login setAuthenticated={setAuthenticated} />} />
-        <Route path="/accueil" element={<Accueil />} />
+        {/* <Route path="/accueil" element={<Accueil />} /> */}
         <Route path="/homestagiaire" element={<HomeStagiaire />} />
         <Route path="/accueil-formateur" element={<AccueilFormateur />} />
         <Route path="/modification-du-profil-stagiaire" element={<ModifProfilS />} />

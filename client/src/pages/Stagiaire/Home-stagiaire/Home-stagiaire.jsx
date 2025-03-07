@@ -10,11 +10,11 @@ export const HomeStagiaire = () => {
         <NavStagiaire2 />
         <section className='section'>
             <div className='div-btn'>
-                <Link to={'/'}><button className='bouton-stagiaire'>Mes questionnaires</button></Link>
-                <Link to={'/'}><button className='bouton-stagiaire'>Mes graphiques</button></Link>
+                <button className='bouton-stagiaire'><Link to={'/'}>Mes questionnaires</Link></button>
+                <button className='bouton-stagiaire'><Link to={'/'}>Mes graphiques</Link></button>
             </div>
             <div>
-                <Link to={'/modification-du-profil-stagiaire'}><button className='btnProfil'>Modifier le profil</button></Link>
+                <button className='btnProfil'><Link to={'/modification-du-profil-stagiaire'}>Modifier le profil</Link></button>
             </div>
         </section>
         </>

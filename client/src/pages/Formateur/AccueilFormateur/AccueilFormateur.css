@@ -40,3 +40,7 @@
 .bouton-formateur:hover {
     border: solid 2px var(--aston-green);
 }
+
+.bouton-formateur>a{
+    color: black;
+}

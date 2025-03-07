@@ -28,6 +28,14 @@
     color: var(--off-white);
 }
 
+.btnProfil>a{
+    color: var(--off-white);
+}
+
+.btnProfil:hover>a{
+    color: var(--orange);
+}
+
 .div-btn {
     margin: 70px 20px;
     width: 90%;
@@ -49,4 +57,12 @@
 
 .bouton-stagiaire:hover {
     border: solid 2px var(--aston-green);
+}
+
+.bouton-stagiaire>a{
+    color: black;
+}
+
+.bouton-stagiaire:hover>a{
+    color: black;
 }

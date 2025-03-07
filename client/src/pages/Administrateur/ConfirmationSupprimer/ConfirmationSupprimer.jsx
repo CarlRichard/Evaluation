@@ -11,7 +11,7 @@ export const ConfirmationSupprimer = ({ setAuthenticated }) => {
             <p className="text-feedback">Êtes-vous sûr de vouloir<br/> supprimer l'utilisateur ?</p>
        </div>
        <Link to={'/feedback-supprimer'}><Valider /></Link>
-       <Link to={'/'}><button className="confirm-button" type="submit" >Annuler</button></Link>
+       <button className="confirm-button" type="submit" ><Link to={'/'}>Annuler</Link></button>
         </>
     );
 };

@@ -1,3 +1,7 @@
 h1 {
     font-family: var(--title);
 }
+
+a{
+    text-decoration: none;
+}
