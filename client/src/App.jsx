@@ -42,8 +42,8 @@ function App() {
         <Route path="/feedback-profil-stagiaire" element={<FeedbackProfilS />} />
         <Route path="/feedback-profil-formateur" element={<FeedbackProfilF />} />
         <Route path="/feedback-creation-compte" element={<FeedbackInscription />} />
-        <Route path="/accueil-admin" element={<AccueilAdmin />} />
-        <Route path="/gestion-admin" element={<GestionAdmin />} />
+        <Route path="/accueil-admin" element={<AccueilAdmin authenticated={authenticated} setAuthenticated={setAuthenticated} />} />
+        <Route path="/gestion-admin" element={<GestionAdmin authenticated={authenticated} setAuthenticated={setAuthenticated}/>} />
         <Route path="/feedback-utilisateur" element={<FeedbackUtilisateur />} />
         <Route path="/feedback-supprimer" element={<FeedbackSupprimer />} />
         <Route path="/confirmation-supprimer" element={<ConfirmationSupprimer />} />
