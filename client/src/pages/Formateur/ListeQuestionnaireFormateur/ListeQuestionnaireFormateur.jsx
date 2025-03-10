@@ -10,7 +10,7 @@ export const ListeQuestionnaireFormateur = () => {
     const [questionnaires, setQuestionnaires] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:3000/api/evaluation', {
+        fetch('http://localhost:3000/api/questionnaire', {
             method: "GET",
             headers: {
                 "content-type": "application/json",
@@ -18,9 +18,12 @@ export const ListeQuestionnaireFormateur = () => {
             },
         })
             .then(res => res.json())
-            .then(data => console.log(data))
+            .then(data => {
+                console.log(data.questionnaires)
+                setQuestionnaires(data.questionnaires)
+            })
             .catch(console.error)
-    })
+    }, [])
 
     return (
         <>
@@ -34,6 +37,14 @@ export const ListeQuestionnaireFormateur = () => {
                 <p>au <input className="date-questionnaire" type="date" /></p>
                 <Valider />
             </div>
+
+            <section className='list-questionnaire'>
+                {questionnaires.map(questionnaire =>
+                    <div className='questionnaire'>
+                        <p className='titre-questionnaire'>{questionnaire.titre}</p>
+                    </div>
+                )}
+            </section>
         </>
     )
 }

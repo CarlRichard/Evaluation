@@ -9,3 +9,20 @@
     max-width: 90vw;
     margin: 0px auto;
 }
+
+.list-questionnaire {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+    margin-top: 1em;
+}
+
+.questionnaire {
+    width: 90%;
+    background-color: var(--light-green);
+}
+
+.titre-questionnaire {
+    margin: 0.5em;
+}
