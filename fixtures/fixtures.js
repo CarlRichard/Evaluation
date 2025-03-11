@@ -28,21 +28,21 @@ import bcrypt from "bcryptjs";
 
   // Création des questionnaires
   const questionnaires = await Questionnaire.bulkCreate([
-    { titre: "Questionnaire 1", description: "Description 1", id_utilisateur: utilisateurs[1].id, formation: "Back-End" },
-    { titre: "Questionnaire 2", description: "Description 2", id_utilisateur: utilisateurs[3].id, formation: "Front-End" },
-    { titre: "Questionnaire 3", description: "Description 3", id_utilisateur: utilisateurs[4].id, formation: "CDA" },
-    { titre: "Questionnaire 4", description: "Description 4", id_utilisateur: utilisateurs[2].id, formation: "PrépaNum" },
+    { titre: "Questionnaire 1 : Evaluer son niveau", description: "Description 1", id_utilisateur: utilisateurs[1].id, formation: "Back-End" },
+    { titre: "Questionnaire 2 : Mes aquis", description: "Description 2", id_utilisateur: utilisateurs[3].id, formation: "Front-End" },
+    { titre: "Questionnaire 3 : Points à revoir", description: "Description 3", id_utilisateur: utilisateurs[4].id, formation: "CDA" },
+    { titre: "Questionnaire 4: Mes projets", description: "Description 4", id_utilisateur: utilisateurs[2].id, formation: "PrépaNum" },
   ]);
 
   // Création des questions
   const questions = await Question.bulkCreate([
-    { titre: "Question A", description: "Desc A" },
-    { titre: "Question B", description: "Desc B" },
-    { titre: "Question C", description: "Desc C" },
-    { titre: "Question D", description: "Desc D" },
-    { titre: "Question E", description: "Desc E" },
-    { titre: "Question F", description: "Desc F" },
-    { titre: "Question G", description: "Desc G" },
+    { titre: "Quelle note te donnerais tu sur JS", description: "Description JS" },
+    { titre: "Quelle note te donnerais tu sur node", description: "Description node" },
+    { titre: "Quelle note te donnerais tu sur CCS", description: "Description CCS" },
+    { titre: "Quelle note te donnerais tu sur React", description: "Description React" },
+    { titre: "Quelle note te donnerais tu sur HTML", description: "Description HTML" },
+    { titre: "Quelle note te donnerais tu sur Php", description: "Description Php" },
+    { titre: "Quelle note te donnerais tu sur Synfony", description: "Description Synfony" },
   ]);
 
   // Association des questions aux questionnaires
@@ -71,12 +71,12 @@ import bcrypt from "bcryptjs";
 
   // Création des évaluations
   await Evaluation.bulkCreate([
-    { id_evaluateur: utilisateurs[1].id, id_reponse: reponses[0].id, note_formateur: 8, commentaire: "Bonne réponse", id_questionnaire: questionnaires[0].id, id_evalue: utilisateurs[2].id },
-    { id_evaluateur: utilisateurs[2].id, id_reponse: reponses[1].id, note_formateur: 7, commentaire: "Réponse correcte", id_questionnaire: questionnaires[1].id, id_evalue: utilisateurs[3].id },
-    { id_evaluateur: utilisateurs[3].id, id_reponse: reponses[2].id, note_formateur: 6, commentaire: "Réponse acceptable", id_questionnaire: questionnaires[2].id, id_evalue: utilisateurs[4].id },
-    { id_evaluateur: utilisateurs[4].id, id_reponse: reponses[3].id, note_formateur: 9, commentaire: "Réponse parfaite", id_questionnaire: questionnaires[3].id, id_evalue: utilisateurs[1].id },
-    { id_evaluateur: utilisateurs[5].id, id_reponse: reponses[4].id, note_formateur: 10, commentaire: "Excellente réponse", id_questionnaire: questionnaires[0].id, id_evalue: utilisateurs[2].id },
-    { id_evaluateur: utilisateurs[6].id, id_reponse: reponses[5].id, note_formateur: 5, commentaire: "Réponse moyenne", id_questionnaire: questionnaires[1].id, id_evalue: utilisateurs[3].id },
+    { id_evaluateur: utilisateurs[1].id, id_reponse: reponses[0].id, note_formateur: 8, commentaire: "De bonnes bases , continue !", id_questionnaire: questionnaires[0].id, id_evalue: utilisateurs[2].id },
+    { id_evaluateur: utilisateurs[2].id, id_reponse: reponses[1].id, note_formateur: 7, commentaire: "d'accord avec l'auto evualuation", id_questionnaire: questionnaires[1].id, id_evalue: utilisateurs[3].id },
+    { id_evaluateur: utilisateurs[3].id, id_reponse: reponses[2].id, note_formateur: 6, commentaire: "Encore besoin de travailler ", id_questionnaire: questionnaires[2].id, id_evalue: utilisateurs[4].id },
+    { id_evaluateur: utilisateurs[4].id, id_reponse: reponses[3].id, note_formateur: 9, commentaire: " pas mal!", id_questionnaire: questionnaires[3].id, id_evalue: utilisateurs[1].id },
+    { id_evaluateur: utilisateurs[5].id, id_reponse: reponses[4].id, note_formateur: 10, commentaire: "sujet acquis", id_questionnaire: questionnaires[0].id, id_evalue: utilisateurs[2].id },
+    { id_evaluateur: utilisateurs[6].id, id_reponse: reponses[5].id, note_formateur: 5, commentaire: " Partie a revoir ", id_questionnaire: questionnaires[1].id, id_evalue: utilisateurs[3].id },
   ]);
 
   console.log("Fixtures insérées avec succès");
