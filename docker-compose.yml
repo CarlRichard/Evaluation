@@ -28,6 +28,10 @@ services:
     image: mysql
     environment:
       - MYSQL_ROOT_PASSWORD=mdp
+      - MYSQL_DATABASE=Eval_db  # Assurer la création automatique de la DB
+    volumes:
+      - mysql_data:/var/lib/mysql  # Volume pour persister les données
+
 
   adm:
     image: phpmyadmin
@@ -35,3 +39,6 @@ services:
       - "8080:80"
     environment:
       - PMA_ARBITRARY=1
+
+volumes:
+  mysql_data:

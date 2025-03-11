@@ -34,7 +34,7 @@ export const getAllUtilisateur = async (req, res) => {
         console.error(error);
         res.status(500).json({ message: "Erreur lors de la récupération des utilisateurs", error: error.message });
     }
-};
+}; 
 
 // Récupérer un utilisateur par ID sans afficher le mot de passe
 export const getUtilisateur = async (req, res) => {
