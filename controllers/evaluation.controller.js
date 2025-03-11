@@ -3,6 +3,8 @@ import Question from '../models/question.model.js';
 import Questionnaire from '../models/questionnaire.model.js';
 import Reponse from '../models/reponse.model.js';
 import Utilisateur from '../models/utilisateur.model.js';
+import jwt from 'jsonwebtoken';
+
 
 // Création d'une évaluation
 export const createEvaluation = async (req, res) => {
@@ -223,29 +225,44 @@ export const getReponsesParQuestionnaire = async (req, res) => {
     res.status(500).json({ message: 'Erreur lors de la récupération des réponses', error });
   }
 };
-
 export const getEvaluationsByUser = async (req, res) => {
   try {
-      // Récupérer le token depuis l'en-tête Authorization
       const token = req.headers.authorization?.split(" ")[1];
 
       if (!token) {
           return res.status(401).json({ message: "Token manquant" });
       }
 
-      // Décoder le token pour récupérer l'ID de l'utilisateur
-      const decoded = jwt.verify(token, "jetonTKN"); // Remplace par ta clé secrète
+      const decoded = jwt.verify(token, "jetonTKN");
       const userId = decoded.id;
 
-      // Vérifier que l'utilisateur existe
       const utilisateur = await Utilisateur.findByPk(userId);
       if (!utilisateur) {
           return res.status(404).json({ message: "Utilisateur non trouvé" });
       }
 
-      // Récupérer les évaluations où id_evalue = userId
+      // Récupérer les évaluations avec les informations supplémentaires
       const evaluations = await Evaluation.findAll({
           where: { id_evalue: userId },
+          include: [
+              {
+                  model: Questionnaire,
+                  attributes: ['id', 'titre'], // Inclure l'id et le titre du questionnaire
+                  include: [
+                      {
+                        model: Question,
+                        attributes: ['titre'], // Inclure l'id et le titre de chaque question
+                        include: [
+                          {
+                            model: Reponse, // Représente la table des réponses
+                            attributes: ['rep'], // Inclure l'id et la réponse
+                          }
+                        ]
+                      }
+                  ]
+              }
+
+          ]
       });
 
       return res.status(200).json(evaluations);

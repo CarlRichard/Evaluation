@@ -15,7 +15,6 @@ questionnaire.post('/', verifyToken, createQuestionnaire);
 // Lecture d'un questionnaire 
 questionnaire.get('/', verifyToken, getAllQuestionnaire);
 
-// Correction : on utilise la fonction du contrôleur, et non une redéfinition
 questionnaire.get("/filtre/formation", verifyToken, getQuestionnairesByUserFormation);
 
 questionnaire.get('/:id', verifyToken, getQuestionnaire);

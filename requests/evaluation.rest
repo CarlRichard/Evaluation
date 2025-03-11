@@ -1,5 +1,5 @@
 ### Définir une variable globale pour le token
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJib2JAZXhhbXBsZS5jb20iLCJpYXQiOjE3NDE2ODgzNTUsImV4cCI6MTc0MTY5MTk1NX0.zVa8ih5iVvkmJcwR4e9HARTO11qTv_OYoC6BmHA6Tug
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJib2JAZXhhbXBsZS5jb20iLCJpYXQiOjE3NDE2OTUxMTAsImV4cCI6MTc0MTY5ODcxMH0.KZrHPxlppVyhMU9IcV9hx55hvUX_V2QUgLjf2g9M5ug
 
 ### Création d'une évaluation
 POST http://localhost:3000/api/evaluation 

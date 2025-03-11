@@ -7,6 +7,8 @@ export const GraphiquesStagiaire = () => {
 
     useEffect(() => {
         (async () => {
+            console.log("Début de la requête API...");
+
             const response = await fetch("http://localhost:3000/api/evaluation", {
                 method: "GET",
                 headers: {
@@ -15,11 +17,15 @@ export const GraphiquesStagiaire = () => {
             });
 
             if (!response.ok) {
+                console.error("Erreur dans la réponse de l'API:", response.status, response.statusText);
                 setError("Erreur lors du chargement des graphiques");
                 return;
             }
 
-            setEvaluations((await response.json()).evaluation);
+            const data = await response.json();
+            console.log("Données reçues de l'API:", data);
+
+            setEvaluations(data.evaluations || []); // Assure-toi que 'evaluation' existe dans la réponse
         })();
     }, []);
 
@@ -27,13 +33,17 @@ export const GraphiquesStagiaire = () => {
         <>
             {error && <p style={{ color: "red" }}>{error}</p>}
             <ul>
-                {evaluations.map(evaluation => (
-                    <li key={evaluation.id}>
-                        <h2>{evaluation.titre}</h2>
-                        <Link to={`/le-graphique/${evaluation.id}`}>link</Link>
-                    </li>
-                ))}
+                {evaluations.length === 0 ? (
+                    <p>Aucune évaluation disponible</p>
+                ) : (
+                    evaluations.map(evaluation => (
+                        <li key={evaluation.id}>
+                            <h2>{evaluation.titre}</h2>
+                            <Link to={`/le-graphique/${evaluation.id}`}>link</Link>
+                        </li>
+                    ))
+                )}
             </ul>
         </>
-    )
+    );
 };
