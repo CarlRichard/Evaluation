@@ -62,41 +62,43 @@ export const createEvaluation = async (req, res) => {
 // Récupérer toutes les évaluations
 export const getAllEvaluation = async (req, res) => {
   try {
-    const evaluation = await Evaluation.findAll(req.params.id, {
+    const evaluations = await Evaluation.findAll({
       include: [
         {
           model: Utilisateur,
-          as: 'evaluateur', // Utiliser l'alias exact défini dans l'association
+          as: 'evaluateur', // Vérifie que cet alias est bien défini dans ton modèle
           attributes: ['id', 'nom', 'prenom']
         },
         {
           model: Utilisateur,
-          as: 'evalue', // Utiliser l'alias exact défini dans l'association
+          as: 'evalue', // Vérifie que cet alias est bien défini
           attributes: ['id', 'nom', 'prenom']
         },
         {
           model: Reponse,
           as: 'reponse',  
-          attributes: ['rep'],
+          attributes: ['id', 'rep'],
           include: [
             {
               model: Question,
               as: 'question',  
-              attributes: ['titre']  
+              attributes: ['id', 'titre']  // Ajout du titre ici
             }
           ]
         }
       ]
     });
 
-    if (!evaluation) {
-      return res.status(404).json({ message: 'Évaluation non trouvée' });
+    if (!evaluations || evaluations.length === 0) {
+      return res.status(404).json({ message: 'Aucune évaluation trouvée' });
     }
 
-    res.status(200).json({ evaluation });
+    console.log(JSON.stringify(evaluations, null, 2)); // Affiche le résultat dans la console
+
+    res.status(200).json({ evaluations });
   } catch (error) {
-    console.error(error);  // Afficher l'erreur dans les logs pour plus de détails
-    res.status(500).json({ message: 'Erreur lors de la récupération de l\'évaluation', error });
+    console.error(error);  // Afficher l'erreur pour le débogage
+    res.status(500).json({ message: 'Erreur lors de la récupération des évaluations', error });
   }
 };
 
