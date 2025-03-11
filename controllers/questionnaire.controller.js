@@ -2,6 +2,7 @@ import Question from "../models/question.model.js";
 import Questionnaire from "../models/questionnaire.model.js";
 import QuestionnaireQuestion from "../models/QuestionnaireQuestion.model.js";
 import Utilisateur from "../models/utilisateur.model.js";
+import jwt from "jsonwebtoken";
 
 // 🔹 Associer une question à un questionnaire
 export const addQuestionToQuestionnaire = async (req, res) => {
@@ -55,7 +56,7 @@ export const getQuestionsByQuestionnaire = async (req, res) => {
 // post
 export const createQuestionnaire = async (req, res) => {
   try {
-    const { titre, description } = req.body;
+    const { titre, description, formation } = req.body;
 
     // Utiliser l'ID utilisateur du token
     const id_utilisateur = req.user.id; 
@@ -64,7 +65,8 @@ export const createQuestionnaire = async (req, res) => {
     const questionnaire = await Questionnaire.create({
       titre,
       description,
-      id_utilisateur
+      id_utilisateur,
+      formation
     });
 
     res.status(201).json({ message: "Questionnaire créé avec succès", questionnaire });
@@ -128,7 +130,7 @@ export const getQuestionnaire = async (req, res) => {
 
 export const updateQuestionnaire = async (req, res) => {
   const { id } = req.params;  // Récupération de l'ID depuis les paramètres de la requête
-  const { titre, description } = req.body;  // Récupération des données du corps de la requête
+  const { titre, description, formation } = req.body;  // Récupération des données du corps de la requête
 
   try {
       // Trouver le questionnaire par ID
@@ -141,6 +143,7 @@ export const updateQuestionnaire = async (req, res) => {
       // Mettre à jour les champs du questionnaire
       questionnaire.titre = titre || questionnaire.titre;  // Mettre à jour si un nouveau titre est fourni
       questionnaire.description = description || questionnaire.description;  // Mettre à jour si une nouvelle description est fournie
+      questionnaire.formation = formation || questionnaire.formation;  // Mettre à jour si une nouvelle formation est fournie
 
       // Sauvegarder les modifications dans la base de données
       await questionnaire.save();
@@ -169,4 +172,39 @@ export const deleteQuestionnaire = async (req, res) => {
     console.error(error);
     res.status(500).json({ message: "Erreur lors de la suppression du questionnaire", error: error.message });
   }
+};
+
+
+export const getQuestionnairesByUserFormation = async (req, res) => {
+    try {
+        // Récupérer le token de l'en-tête Authorization
+        const token = req.headers.authorization?.split(" ")[1];
+
+        if (!token) {
+            return res.status(401).json({ message: "Token manquant" });
+        }
+
+        // Décoder le token pour récupérer l'ID de l'utilisateur
+        const decoded = jwt.verify(token, "jetonTKN"); // Remplace par ta clé secrète JWT
+        const userId = decoded.id;
+
+        // Récupérer l'utilisateur et sa formation
+        const utilisateur = await Utilisateur.findByPk(userId);
+
+        if (!utilisateur) {
+            return res.status(404).json({ message: "Utilisateur non trouvé" });
+        }
+
+        const formation = utilisateur.formation;
+
+        // Récupérer les questionnaires avec la même formation
+        const questionnaires = await Questionnaire.findAll({
+            where: { formation },
+        });
+
+        return res.status(200).json(questionnaires);
+    } catch (error) {
+        console.error("Erreur lors de la récupération des questionnaires :", error);
+        return res.status(500).json({ message: "Erreur interne du serveur" });
+    }
 };

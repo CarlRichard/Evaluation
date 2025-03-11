@@ -16,6 +16,11 @@ const Questionnaire = sequelize.define("Questionnaire", {
     type: DataTypes.TEXT,
     allowNull: true,
   },
+  formation: {
+    type: DataTypes.ENUM('Back-End', 'Front-End', 'CDA', 'PrépaNum', 'PrépaNum2', 'POA', ''),
+    defaultValue: '',
+    allowNull: true
+  },
   id_utilisateur: {
     type: DataTypes.INTEGER,
     allowNull: false,

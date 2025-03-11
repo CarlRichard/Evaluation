@@ -1,5 +1,6 @@
 ### Définir une variable globale pour le token
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiZW1haWwiOiJwaWVycmVAYS5hIiwiaWF0IjoxNzQxMDgyOTAzLCJleHAiOjE3NDEwODY1MDN9.eeqdk-uY9D6AkEsE8l3ZQDQcHhtJmwuuE1alnetmP0s
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJib2JAZXhhbXBsZS5jb20iLCJpYXQiOjE3NDE2ODY0MDQsImV4cCI6MTc0MTY5MDAwNH0.3VlRLVdJnGnGIeX9NWshQ-nCsaSkD1udoSn_BqSgAsg
+
 ### Création d'un questionnaire
 POST http://localhost:3000/api/questionnaire
 Content-Type: application/json
@@ -25,7 +26,8 @@ Authorization: Bearer {{token}}
 
 {
   "titre": "Questionnaire Mis à Jour",
-  "description": "Nouvelle description."
+  "description": "Nouvelle description.",
+  "formation":"CDA"
 }
 
 ### Supprimer un questionnaire
@@ -43,3 +45,7 @@ Content-Type: application/json
 GET http://localhost:3000/api/questionnaire/recup-questions/2
 Authorization: Bearer {{token}}
 Content-Type: application/json
+
+### filtrer par formation
+GET http://localhost:3000/api/questionnaire/filtre/formation
+Authorization: Bearer {{token}}
