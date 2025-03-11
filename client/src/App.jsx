@@ -22,6 +22,10 @@ import { ListeQuestionnaireFormateur } from "./pages/Formateur/ListeQuestionnair
 import { GraphFormateur } from "./pages/Formateur/GraphFormateur/GraphFormateur.jsx";
 import { ListeStagiaire } from "./pages/Formateur/ListeStagiaire/ListeStagiaire.jsx";
 import { GestionAdmin } from "./pages/Administrateur/GestionAdmin/GestionAdmin.jsx";
+import { QuestionnaireStagiaire } from "./pages/Stagiaire/QuestionnaireStagiaire/QuestionnaireStagiaire.jsx";
+import { FormulaireQuestionnaire } from "./pages/Stagiaire/FormulaireQuestionnaire/FormulaireQuestionnaire.jsx";
+import { GraphiquesStagiaire } from "./pages/Stagiaire/GraphiquesStagiaire/GraphiquesStagiaire.jsx";
+import { LeGraphique } from "./pages/Stagiaire/LeGraphique/LeGraphique.jsx";
 
 
 
@@ -52,6 +56,10 @@ function App() {
         <Route path="/questionnaire-formateur" element={<ListeQuestionnaireFormateur />} />
         <Route path="/graph-formateur" element={<GraphFormateur />} />
         <Route path="/liste-stagiaire" element={<ListeStagiaire />} />
+        <Route path="/questionnaires-stagiaire" element={<QuestionnaireStagiaire />} />
+        <Route path="/formulaire-questionnaire/:id" element={<FormulaireQuestionnaire />} />
+        <Route path="/graphiques-stagiaire" element={<GraphiquesStagiaire />} />
+        <Route path="/le-graphique/:id" element={<LeGraphique />} />
       </Routes>
     </BrowserRouter>
   );

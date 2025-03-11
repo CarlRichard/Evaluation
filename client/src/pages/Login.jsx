@@ -43,7 +43,7 @@ export const Login = ({ setAuthenticated }) => {
                 if (data.accessToken) {
                     localStorage.setItem('token', data.accessToken);
                     setAuthenticated(true);
-                    navigate("/accueil");
+                    navigate("/homestagiaire");
 
                 } else {
                     console.log("Token is missing or invalid.");
