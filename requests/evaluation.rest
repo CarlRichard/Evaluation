@@ -1,5 +1,6 @@
 ### Définir une variable globale pour le token
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiZW1haWwiOiJwaWVycmVAYS5hIiwiaWF0IjoxNzQxMDgyOTAzLCJleHAiOjE3NDEwODY1MDN9.eeqdk-uY9D6AkEsE8l3ZQDQcHhtJmwuuE1alnetmP0s
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJib2JAZXhhbXBsZS5jb20iLCJpYXQiOjE3NDE2ODgzNTUsImV4cCI6MTc0MTY5MTk1NX0.zVa8ih5iVvkmJcwR4e9HARTO11qTv_OYoC6BmHA6Tug
+
 ### Création d'une évaluation
 POST http://localhost:3000/api/evaluation 
 Content-Type: application/json
@@ -36,5 +37,6 @@ Authorization: Bearer {{token}}
 DELETE http://localhost:3000/api/evaluation/1 
 Authorization: Bearer {{token}}
 
-###
-
+### mes evaluations
+GET http://localhost:3000/api/evaluation/mes-evaluations
+Authorization: Bearer {{token}}

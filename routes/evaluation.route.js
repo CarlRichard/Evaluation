@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { verifyToken } from '../middlewares/verifyToken.js';
-import { createEvaluation, getEvaluation, getAllEvaluation, updateEvaluation, deleteEvaluation, getReponsesParQuestionnaire } from '../controllers/evaluation.controller.js';
+import { createEvaluation, getEvaluation, getAllEvaluation, updateEvaluation, deleteEvaluation, getReponsesParQuestionnaire, getEvaluationsByUser } from '../controllers/evaluation.controller.js';
 
 export const evaluation = Router(); 
 
@@ -12,6 +12,8 @@ evaluation.get('/', verifyToken, getAllEvaluation);
 
 //recuperer tous le questionnaire
 evaluation.get('/test/:id', verifyToken, getReponsesParQuestionnaire);
+
+evaluation.get('/mes-evaluations', verifyToken, getEvaluationsByUser);
 
 // Récupérer une évaluation par ID
 evaluation.get('/:id', verifyToken, getEvaluation);

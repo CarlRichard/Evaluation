@@ -223,3 +223,34 @@ export const getReponsesParQuestionnaire = async (req, res) => {
     res.status(500).json({ message: 'Erreur lors de la récupération des réponses', error });
   }
 };
+
+export const getEvaluationsByUser = async (req, res) => {
+  try {
+      // Récupérer le token depuis l'en-tête Authorization
+      const token = req.headers.authorization?.split(" ")[1];
+
+      if (!token) {
+          return res.status(401).json({ message: "Token manquant" });
+      }
+
+      // Décoder le token pour récupérer l'ID de l'utilisateur
+      const decoded = jwt.verify(token, "jetonTKN"); // Remplace par ta clé secrète
+      const userId = decoded.id;
+
+      // Vérifier que l'utilisateur existe
+      const utilisateur = await Utilisateur.findByPk(userId);
+      if (!utilisateur) {
+          return res.status(404).json({ message: "Utilisateur non trouvé" });
+      }
+
+      // Récupérer les évaluations où id_evalue = userId
+      const evaluations = await Evaluation.findAll({
+          where: { id_evalue: userId },
+      });
+
+      return res.status(200).json(evaluations);
+  } catch (error) {
+      console.error("Erreur lors de la récupération des évaluations :", error);
+      return res.status(500).json({ message: "Erreur interne du serveur" });
+  }
+};
