@@ -1,0 +1,76 @@
+.grid-admin {
+    background-color: var(--med-green);
+    width: 80vw
+}
+
+.div-grid-admin {
+    display: flex;
+    justify-content: center;
+}
+
+.admin-element {
+    background-color: var(--off-white);
+    resize: both;
+    overflow: auto;
+}
+
+.admin-select-cell {
+    background-color: var(--off-white);
+}
+
+.nostyle {
+    border: none;
+    background-color: var(--off-white);
+}
+
+.grid-cath {
+    color: var(--off-white);
+    font-family: var(--text);
+}
+
+td {
+    font-family: var(--text);
+}
+
+.add-btn {
+    all: unset;
+    border: 1px solid var(--orange);
+    border-radius: 50px;
+    padding: 0.1em 1em;
+    color: var(--off-white);
+    background-color: var(--orange);
+    font-family: var(--text);
+    cursor: pointer;
+    text-decoration: none;
+    margin-top: 1em;
+}
+
+.add-btn:active {
+    background-color: var(--off-white);
+    box-shadow: rgba(0, 0, 0, 0.12) 0 1px 3px 0 inset;
+    color: #FFFFFF;
+}
+
+.add-btn:hover {
+    background-color: var(--off-white);
+    color: var(--orange);
+}
+
+.add-btn:active:hover,
+.add-btn:focus:hover,
+.add-btn:focus {
+    background-color: var(--off-white);
+    box-shadow: rgba(0, 0, 0, 0.12) 0 1px 3px 0 inset;
+    color: var(--off-white);
+}
+
+.add-stagiaire {
+    display: flex;
+    justify-content: center;
+    gap: 2em;
+}
+
+.add-input {
+    color: var(--med-green);
+    border-color: var(--med-green);
+}

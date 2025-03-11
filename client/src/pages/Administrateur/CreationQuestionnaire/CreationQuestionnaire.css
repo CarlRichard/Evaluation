@@ -1,0 +1,61 @@
+.main-form {
+    background-color: var(--light-green);
+    padding: 3%;
+}
+
+.title-questionnaire {
+    margin-top: 0;
+}
+
+.create-form {
+    border: 1px solid var(--faded-black);
+    width: 65vw;
+    margin: auto;
+    background-color: var(--off-white);
+
+}
+
+.form-section {
+    display: flex;
+    justify-content: space-between;
+    padding: 2% 4%;
+    border-bottom: 1px solid var(--faded-black);
+}
+
+label {
+    font-family: var(--text);
+}
+
+.form-input {
+    width: 50%;
+    height: 1.5em;
+}
+
+.form-input2 {
+    width: 50%;
+    height: 10vh;
+}
+
+.radio-formation {
+    display: flex;
+    flex-direction: column;
+    width: 50.5%;
+    gap: 1em;
+}
+
+.formation {
+    border: 1px solid var(--faded-black);
+    background-color: white;
+    display: flex;
+    justify-content: flex-start;
+    padding: 0.2em 0.5em;
+    gap: 1em;
+}
+
+.date-div {
+    width: 50.9%;
+}
+
+.date-input {
+    border: 1px solid var(--faded-black);
+}

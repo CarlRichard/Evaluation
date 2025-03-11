@@ -9,6 +9,7 @@
     --light-green: #7DCE82;
     --off-white: #FAFAFA;
     --off-black: #272727;
+    --faded-black: rgba(39, 39, 39, .3);
 }
 
 body {

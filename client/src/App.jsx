@@ -22,6 +22,7 @@ import { ListeQuestionnaireFormateur } from "./pages/Formateur/ListeQuestionnair
 import { GraphFormateur } from "./pages/Formateur/GraphFormateur/GraphFormateur.jsx";
 import { ListeStagiaire } from "./pages/Formateur/ListeStagiaire/ListeStagiaire.jsx";
 import { GestionAdmin } from "./pages/Administrateur/GestionAdmin/GestionAdmin.jsx";
+import { CreationQuestionnaire } from "./pages/Administrateur/CreationQuestionnaire/CreationQuestionnaire.jsx";
 import { QuestionnaireStagiaire } from "./pages/Stagiaire/QuestionnaireStagiaire/QuestionnaireStagiaire.jsx";
 import { FormulaireQuestionnaire } from "./pages/Stagiaire/FormulaireQuestionnaire/FormulaireQuestionnaire.jsx";
 import { GraphiquesStagiaire } from "./pages/Stagiaire/GraphiquesStagiaire/GraphiquesStagiaire.jsx";
@@ -47,7 +48,7 @@ function App() {
         <Route path="/feedback-profil-formateur" element={<FeedbackProfilF />} />
         <Route path="/feedback-creation-compte" element={<FeedbackInscription />} />
         <Route path="/accueil-admin" element={<AccueilAdmin authenticated={authenticated} setAuthenticated={setAuthenticated} />} />
-        <Route path="/gestion-admin" element={<GestionAdmin authenticated={authenticated} setAuthenticated={setAuthenticated}/>} />
+        <Route path="/gestion-admin" element={<GestionAdmin authenticated={authenticated} setAuthenticated={setAuthenticated} />} />
         <Route path="/feedback-utilisateur" element={<FeedbackUtilisateur />} />
         <Route path="/feedback-supprimer" element={<FeedbackSupprimer />} />
         <Route path="/confirmation-supprimer" element={<ConfirmationSupprimer />} />
@@ -56,6 +57,7 @@ function App() {
         <Route path="/questionnaire-formateur" element={<ListeQuestionnaireFormateur />} />
         <Route path="/graph-formateur" element={<GraphFormateur />} />
         <Route path="/liste-stagiaire" element={<ListeStagiaire />} />
+        <Route path="/creation-questionnaire" element={<CreationQuestionnaire />} />
         <Route path="/questionnaires-stagiaire" element={<QuestionnaireStagiaire />} />
         <Route path="/formulaire-questionnaire/:id" element={<FormulaireQuestionnaire />} />
         <Route path="/graphiques-stagiaire" element={<GraphiquesStagiaire />} />

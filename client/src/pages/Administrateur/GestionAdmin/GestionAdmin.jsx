@@ -2,8 +2,9 @@ import { useState, useEffect } from "react";
 import { useLocation, Navigate } from "react-router-dom";
 import { NavFormateur } from "../../../Components/Navs/NavFormateur";
 
-export const GestionAdmin = ({ authenticated, setAuthenticated }) => {
-    const location = useLocation();
+import './GestionAdmin.css'
+
+export const GestionAdmin = () => {
     const [stagiaires, setStagiaires] = useState([]);
     const [newStagiaire, setNewStagiaire] = useState({
         nom: "",
@@ -22,14 +23,14 @@ export const GestionAdmin = ({ authenticated, setAuthenticated }) => {
             credentials: 'include',
             headers: { 'Authorization': `Bearer ${tokenUser}` }
         })
-        .then(res => res.json())
-        .then(data => {
-            if (data.accessToken) {
-                localStorage.setItem('token', data.accessToken);
-            }
-            setAuthenticated(data.connected);
-        })
-        .catch(() => setError("Erreur d'authentification"));
+            .then(res => res.json())
+            .then(data => {
+                if (data.accessToken) {
+                    localStorage.setItem('token', data.accessToken);
+                }
+                setAuthenticated(data.connected);
+            })
+            .catch(() => setError("Erreur d'authentification"));
     }, [location, tokenUser, setAuthenticated]);
 
     // Chargement des stagiaires
@@ -46,15 +47,15 @@ export const GestionAdmin = ({ authenticated, setAuthenticated }) => {
                 Authorization: `Bearer ${tokenUser}`,
             },
         })
-        .then((res) => res.json())
-        .then((data) => {
-            setStagiaires(data.utilisateurs);
-            setLoading(false);
-        })
-        .catch(() => {
-            setError("Erreur lors du chargement des stagiaires");
-            setLoading(false);
-        });
+            .then((res) => res.json())
+            .then((data) => {
+                setStagiaires(data.utilisateurs);
+                setLoading(false);
+            })
+            .catch(() => {
+                setError("Erreur lors du chargement des stagiaires");
+                setLoading(false);
+            });
     };
 
     const handleAddStagiaire = (e) => {
@@ -70,13 +71,13 @@ export const GestionAdmin = ({ authenticated, setAuthenticated }) => {
             },
             body: JSON.stringify(newStagiaire),
         })
-        .then((res) => res.json())
-        .then(() => {
-            setSuccess("Stagiaire ajouté avec succès !");
-            fetchStagiaires();
-            setNewStagiaire({ nom: "", prenom: "", email: "", mot_de_passe: "" });
-        })
-        .catch(() => setError("Erreur lors de l'ajout du stagiaire"));
+            .then((res) => res.json())
+            .then(() => {
+                setSuccess("Stagiaire ajouté avec succès !");
+                fetchStagiaires();
+                setNewStagiaire({ nom: "", prenom: "", email: "", mot_de_passe: "" });
+            })
+            .catch(() => setError("Erreur lors de l'ajout du stagiaire"));
     };
 
     const handleUpdateStagiaire = (id, field, value) => {
@@ -88,13 +89,13 @@ export const GestionAdmin = ({ authenticated, setAuthenticated }) => {
             },
             body: JSON.stringify({ [field]: value }),
         })
-        .then((res) => {
-            if (!res.ok) {
-                throw new Error("Erreur lors de la mise à jour");
-            }
-            fetchStagiaires();
-        })
-        .catch(() => setError("Erreur lors de la mise à jour"));
+            .then((res) => {
+                if (!res.ok) {
+                    throw new Error("Erreur lors de la mise à jour");
+                }
+                fetchStagiaires();
+            })
+            .catch(() => setError("Erreur lors de la mise à jour"));
     };
 
     const handleDeleteStagiaire = (id) => {
@@ -102,8 +103,8 @@ export const GestionAdmin = ({ authenticated, setAuthenticated }) => {
             method: "DELETE",
             headers: { Authorization: `Bearer ${tokenUser}` },
         })
-        .then(() => fetchStagiaires())
-        .catch(() => setError("Erreur lors de la suppression"));
+            .then(() => fetchStagiaires())
+            .catch(() => setError("Erreur lors de la suppression"));
     };
 
     const handleInputChange = (e) => {
@@ -122,53 +123,73 @@ export const GestionAdmin = ({ authenticated, setAuthenticated }) => {
 
             <form onSubmit={handleAddStagiaire}>
                 <h2>Ajouter un Stagiaire</h2>
-                <input type="text" name="nom" placeholder="Nom" value={newStagiaire.nom} onChange={handleInputChange} required />
-                <input type="text" name="prenom" placeholder="Prénom" value={newStagiaire.prenom} onChange={handleInputChange} required />
-                <input type="email" name="email" placeholder="Email" value={newStagiaire.email} onChange={handleInputChange} required />
-                <input type="password" name="mot_de_passe" placeholder="Mot de passe" value={newStagiaire.mot_de_passe} onChange={handleInputChange} required />
-                <button type="submit">Ajouter</button>
+                <div className="add-stagiaire">
+                    <input className="add-input" type="text" name="nom" placeholder="Nom" value={newStagiaire.nom} onChange={handleInputChange} required />
+                    <input className="add-input" type="text" name="prenom" placeholder="Prénom" value={newStagiaire.prenom} onChange={handleInputChange} required />
+                    <input className="add-input" type="email" name="email" placeholder="Email" value={newStagiaire.email} onChange={handleInputChange} required />
+                    <input className="add-input" type="password" name="mot_de_passe" placeholder="Mot de passe" value={newStagiaire.mot_de_passe} onChange={handleInputChange} required />
+                </div>
+                <button className="add-btn" type="submit">Ajouter</button>
             </form>
 
             <h2>Liste des Stagiaires</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Nom</th>
-                        <th>Prénom</th>
-                        <th>Email</th>
-                        <th>Rôle</th>
-                        <th>Formation</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {stagiaires.length > 0 ? stagiaires.map((stagiaire) => (
-                        <tr key={stagiaire.id}>
-                            <td>{stagiaire.nom}</td>
-                            <td>{stagiaire.prenom}</td>
-                            <td>{stagiaire.email}</td>
-                            <td>
-                                <select value={stagiaire.role} onChange={(e) => handleUpdateStagiaire(stagiaire.id, "role", e.target.value)}>
-                                    <option value="0">Étudiant</option>
-                                    <option value="1">Formateur</option>
-                                </select>
-                            </td>
-                            <td>
-                                <select value={stagiaire.formation || ""} onChange={(e) => handleUpdateStagiaire(stagiaire.id, "formation", e.target.value)}>
-                                    <option value="">Non assignée</option>
-                                    <option value="Back-End">Back-End</option>
-                                    <option value="Front-End">Front-End</option>
-                                    <option value="CDA">CDA</option>
-                                    <option value="PrépaNum">PrépaNum</option>
-                                    <option value="PrépaNum2">PrépaNum2</option>
-                                    <option value="POA">POA</option>
-                                </select>
-                            </td>
-                            <td><button onClick={() => handleDeleteStagiaire(stagiaire.id)}>Supprimer</button></td>
+            <div className="div-grid-admin">
+                <table className="grid-admin">
+                    <thead>
+                        <tr className="grid-cath">
+                            <th>Nom</th>
+                            <th>Prénom</th>
+                            <th>Email</th>
+                            <th>Rôle</th>
+                            <th>Formation</th>
+                            <th>Actions</th>
                         </tr>
-                    )) : <tr><td colSpan="6">Aucun stagiaire trouvé</td></tr>}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        {stagiaires.length > 0 ? (
+                            stagiaires.map((stagiaire) => (
+                                <tr key={stagiaire.id}>
+                                    <td className="admin-element">{stagiaire.nom}</td>
+                                    <td className="admin-element">{stagiaire.prenom}</td>
+                                    <td className="admin-element">{stagiaire.email}</td>
+                                    <td className="admin-select-cell">
+                                        <select
+                                            className="nostyle"
+                                            value={stagiaire.role}
+                                            onChange={(e) => handleUpdateStagiaire(stagiaire.id, "role", e.target.value)}
+                                        >
+                                            <option value="0">Étudiant</option>
+                                            <option value="1">Formateur</option>
+                                        </select>
+                                    </td>
+                                    <td className="admin-select-cell">
+                                        <select
+                                            className="nostyle"
+                                            value={stagiaire.formation || ""}
+                                            onChange={(e) => handleUpdateStagiaire(stagiaire.id, "formation", e.target.value)}
+                                        >
+                                            <option value="">Non assignée</option>
+                                            <option value="Back-End">Back-End</option>
+                                            <option value="Front-End">Front-End</option>
+                                            <option value="CDA">CDA</option>
+                                            <option value="PrépaNum">PrépaNum</option>
+                                            <option value="PrépaNum2">PrépaNum2</option>
+                                            <option value="POA">POA</option>
+                                        </select>
+                                    </td>
+                                    <td className="admin-select-cell">
+                                        <button className="nostyle" onClick={() => handleDeleteStagiaire(stagiaire.id)} >Supprimer</button>
+                                    </td>
+                                </tr>
+                            ))
+                        ) : (
+                            <tr>
+                                <td colSpan="6">Aucun stagiaire trouvé</td>
+                            </tr>
+                        )}
+                    </tbody>
+                </table>
+            </div>
         </>
     );
 };
