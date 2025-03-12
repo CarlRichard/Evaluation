@@ -13,8 +13,8 @@ export const CreationQuestionnaire = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-    
-        
+
+
         const data = {
             titre,
             description,
@@ -51,21 +51,22 @@ export const CreationQuestionnaire = () => {
                 <form className="create-form" onSubmit={handleSubmit}>
                     <div className="form-section">
                         <label htmlFor="">Titre du questionnaire</label>
-                        <input 
-                            className="form-input" 
-                            type="text" 
-                            value={titre} 
-                            onChange={(e) => setTitre(e.target.value)} 
+                        <input
+                            placeholder=''
+                            className="form-input"
+                            type="text"
+                            value={titre}
+                            onChange={(e) => setTitre(e.target.value)}
                         />
                     </div>
 
                     <div className="form-section">
                         <label htmlFor="">Description du questionnaire</label>
-                        <input 
-                            className="form-input2" 
-                            type="text" 
-                            value={description} 
-                            onChange={(e) => setDescription(e.target.value)} 
+                        <input
+                            className="form-input2"
+                            type="text"
+                            value={description}
+                            onChange={(e) => setDescription(e.target.value)}
                         />
                     </div>
 
@@ -73,51 +74,51 @@ export const CreationQuestionnaire = () => {
                         <label htmlFor="">Formations concernées par ce questionnaire</label>
                         <div className="radio-formation">
                             <div className="formation">
-                                <input 
-                                    type="radio" 
-                                    name="formation" 
+                                <input
+                                    type="radio"
+                                    name="formation"
                                     value="POA"
-                                    onChange={(e) => setFormation(e.target.value)} 
+                                    onChange={(e) => setFormation(e.target.value)}
                                 />
                                 <label>ERA / POA</label>
                             </div>
 
                             <div className="formation">
-                                <input 
-                                    type="radio" 
-                                    name="formation" 
+                                <input
+                                    type="radio"
+                                    name="formation"
                                     value="PrepaNum"
-                                    onChange={(e) => setFormation(e.target.value)} 
+                                    onChange={(e) => setFormation(e.target.value)}
                                 />
                                 <label>Prepa Num</label>
                             </div>
 
                             <div className="formation">
-                                <input 
-                                    type="radio" 
-                                    name="formation" 
+                                <input
+                                    type="radio"
+                                    name="formation"
                                     value="Front-End"
-                                    onChange={(e) => setFormation(e.target.value)} 
+                                    onChange={(e) => setFormation(e.target.value)}
                                 />
                                 <label>Front-end</label>
                             </div>
 
                             <div className="formation">
-                                <input 
-                                    type="radio" 
-                                    name="formation" 
+                                <input
+                                    type="radio"
+                                    name="formation"
                                     value="Back-End"
-                                    onChange={(e) => setFormation(e.target.value)} 
+                                    onChange={(e) => setFormation(e.target.value)}
                                 />
                                 <label>Back-end</label>
                             </div>
 
                             <div className="formation">
-                                <input 
-                                    type="radio" 
-                                    name="formation" 
+                                <input
+                                    type="radio"
+                                    name="formation"
                                     value="CDA"
-                                    onChange={(e) => setFormation(e.target.value)} 
+                                    onChange={(e) => setFormation(e.target.value)}
                                 />
                                 <label>CDA</label>
                             </div>
@@ -128,19 +129,19 @@ export const CreationQuestionnaire = () => {
                         <label htmlFor="">Dates</label>
                         <div className="date-div">
                             <div className="dates-field">
-                                <input 
-                                    className="date-input" 
-                                    type="date" 
-                                    value={startDate} 
-                                    onChange={(e) => setStartDate(e.target.value)} 
+                                <input
+                                    className="date-input"
+                                    type="date"
+                                    value={startDate}
+                                    onChange={(e) => setStartDate(e.target.value)}
                                 />
                             </div>
                             <div className="dates-f">
-                                <input 
-                                    className="date-input" 
-                                    type="date" 
-                                    value={endDate} 
-                                    onChange={(e) => setEndDate(e.target.value)} 
+                                <input
+                                    className="date-input"
+                                    type="date"
+                                    value={endDate}
+                                    onChange={(e) => setEndDate(e.target.value)}
                                 />
                             </div>
                         </div>
@@ -148,12 +149,21 @@ export const CreationQuestionnaire = () => {
 
                     <div className="form-section">
                         <label htmlFor="">Questions</label>
-                        <input 
-                            className="form-input" 
-                            type="text" 
-                            value={question} 
-                            onChange={(e) => setQuestion(e.target.value)} 
-                        />
+                        <div className='div-questions'>
+                            <select
+                                className="form-input"
+                                type="text"
+                                value={question}
+                                onChange={(e) => setQuestion(e.target.value)}
+                            >
+                                <option value="HTML">HTML</option>
+                                <option value="CSS">CSS</option>
+                                <option value="JavaScript">JavaScript</option>
+                                <option value="WordPress">WordPress</option>
+                                <option value="React">React</option>
+                            </select>
+                            <button>Ajouter une question</button>
+                        </div>
                     </div>
 
                     <Valider />

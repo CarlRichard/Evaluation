@@ -59,3 +59,9 @@ label {
 .date-input {
     border: 1px solid var(--faded-black);
 }
+
+.div-questions {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}

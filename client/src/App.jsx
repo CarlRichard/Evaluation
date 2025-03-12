@@ -27,6 +27,7 @@ import { QuestionnaireStagiaire } from "./pages/Stagiaire/QuestionnaireStagiaire
 import { FormulaireQuestionnaire } from "./pages/Stagiaire/FormulaireQuestionnaire/FormulaireQuestionnaire.jsx";
 import { GraphiquesStagiaire } from "./pages/Stagiaire/GraphiquesStagiaire/GraphiquesStagiaire.jsx";
 import { LeGraphique } from "./pages/Stagiaire/LeGraphique/LeGraphique.jsx";
+import { ResponseStagiaire } from "./pages/Stagiaire/ReponseStagiaire/ReponseStagaire.jsx";
 
 
 
@@ -62,6 +63,7 @@ function App() {
         <Route path="/formulaire-questionnaire/:id" element={<FormulaireQuestionnaire />} />
         <Route path="/graphiques-stagiaire" element={<GraphiquesStagiaire />} />
         <Route path="/le-graphique/:id" element={<LeGraphique />} />
+        <Route path="/reponse-stagiaire" element={<ResponseStagiaire />} />
       </Routes>
     </BrowserRouter>
   );

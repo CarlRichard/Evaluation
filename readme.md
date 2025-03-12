@@ -104,6 +104,14 @@ Supprime une évaluation spécifique.
 |--------------------------|---------|-----------------------------------------------------------|
 | `/api/evaluation/:id`     | DELETE  | Aucun corps de requête nécessaire.                         |
 
+
+### `/api/evaluation/mes-evaluations` (GET)
+Recupere les evaluation lié a l'id de la personne connecté
+
+| Route                    | Méthode | Corps de la requête                                       |
+|--------------------------|---------|-----------------------------------------------------------|
+| `/api/evaluation/:id`     | GET  | Aucun corps de requête nécessaire.                         |
+
 ## Routes des questions
 
 ### `/api/question` (POST)
@@ -177,3 +185,84 @@ Supprime une réponse spécifique.
 | Route                    | Méthode | Corps de la requête                                       |
 |--------------------------|---------|-----------------------------------------------------------|
 | `/api/reponse/:id`       | DELETE  | Aucun corps de requête nécessaire.                         |
+
+
+
+## Routes des questionnaires
+
+### `/api/questionnaire` (POST)
+Crée un nouveau questionnaire.
+
+| Route                    | Méthode | Corps de la requête                                       |
+|--------------------------|---------|-----------------------------------------------------------|
+| `/api/questionnaire`     | POST    | ```json
+{ "titre": "Quizz pour pierre", "description": "Description du questionnaire." }
+
+
+### `/api/questionnaire` (GET)
+Récupère tous les questionnaires existants.
+
+| Route                    | Méthode | Corps de la requête                                       |
+|--------------------------|---------|-----------------------------------------------------------|
+| `/api/questionnaire`     | GET     | Aucun corps de requête nécessaire.                         |
+
+### `/api/questionnaire/:id` (GET)
+Récupère un questionnaire spécifique par ID.
+
+| Route                    | Méthode | Corps de la requête                                       |
+|--------------------------|---------|-----------------------------------------------------------|
+| `/api/questionnaire/:id` | GET     | Aucun corps de requête nécessaire.                         |
+
+### `/api/questionnaire/:id` (PUT)
+Met à jour un questionnaire spécifique.
+
+| Route                    | Méthode | Corps de la requête                                       |
+|--------------------------|---------|-----------------------------------------------------------|
+| `/api/questionnaire/:id` | PUT     | ```json
+{ "titre": "Questionnaire Mis à Jour", "description": "Nouvelle description.", "formation": "CDA" }
+
+
+### `/api/questionnaire/:id` (DELETE)
+Supprime un questionnaire spécifique.
+
+| Route                    | Méthode | Corps de la requête                                       |
+|--------------------------|---------|-----------------------------------------------------------|
+| `/api/questionnaire/:id` | DELETE  | Aucun corps de requête nécessaire.                         |
+
+### `/api/questionnaire/add-question/:questionnaireId/:questionId` (POST)
+Ajoute une question à un questionnaire via une relation de jointure.
+
+| Route                                                    | Méthode | Corps de la requête |
+|----------------------------------------------------------|---------|---------------------|
+| `/api/questionnaire/add-question/:questionnaireId/:questionId` | POST    | Aucun corps nécessaire. |
+
+### `/api/questionnaire/recup-questions/:id` (GET)
+Récupère toutes les questions d'un questionnaire spécifique.
+
+| Route                                         | Méthode | Corps de la requête |
+|-----------------------------------------------|---------|---------------------|
+| `/api/questionnaire/recup-questions/:id`     | GET     | Aucun corps nécessaire. |
+
+### `/api/questionnaire/filtre/formation` (GET)
+Filtre les questionnaires par formation.
+
+| Route                                     | Méthode | Corps de la requête |
+|-------------------------------------------|---------|---------------------|
+| `/api/questionnaire/filtre/formation`     | GET     | Aucun corps nécessaire. |
+
+
+### `/api/questionnaire/add-question/:id_questionnaire/:id_question` (POST)
+
+Ajoute une question existante à un questionnaire (jointure).
+
+| Route                                              | Méthode | Corps de la requête |
+|----------------------------------------------------|---------|---------------------|
+| `/api/questionnaire/add-question/:id_questionnaire/:id_question` | POST    | Aucun corps de requête nécessaire. |
+
+### `/api/questionnaire/recup-questions/:id_questionnaire` (GET)
+
+Récupère toutes les questions associées à un questionnaire.
+
+| Route                                              | Méthode | Corps de la requête |
+|----------------------------------------------------|---------|---------------------|
+| `/api/questionnaire/recup-questions/:id_questionnaire` | GET     | Aucun corps de requête nécessaire. |
