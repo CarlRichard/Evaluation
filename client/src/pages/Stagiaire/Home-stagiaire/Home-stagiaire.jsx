@@ -10,8 +10,8 @@ export const HomeStagiaire = () => {
         <NavStagiaire2 />
         <section className='section'>
             <div className='div-btn'>
-                <button className='bouton-stagiaire'><Link to={'/'}>Mes questionnaires</Link></button>
-                <button className='bouton-stagiaire'><Link to={'/'}>Mes graphiques</Link></button>
+                <button className='bouton-stagiaire'><Link to={'/questionnaires-stagiaire'}>Mes questionnaires</Link></button>
+                <button className='bouton-stagiaire'><Link to={'/graphiques-stagiaire'}>Mes graphiques</Link></button>
             </div>
             <div>
                 <button className='btnProfil'><Link to={'/modification-du-profil-stagiaire'}>Modifier le profil</Link></button>
