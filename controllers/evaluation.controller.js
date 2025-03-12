@@ -247,15 +247,15 @@ export const getEvaluationsByUser = async (req, res) => {
           include: [
               {
                   model: Questionnaire,
-                  attributes: ['id', 'titre'], // Inclure l'id et le titre du questionnaire
+                  attributes: ['id', 'titre'], 
                   include: [
                       {
                         model: Question,
-                        attributes: ['titre'], // Inclure l'id et le titre de chaque question
+                        attributes: ['id', 'titre'], 
                         include: [
                           {
-                            model: Reponse, // Représente la table des réponses
-                            attributes: ['rep'], // Inclure l'id et la réponse
+                            model: Reponse, 
+                            attributes: ['id', 'rep'],
                           }
                         ]
                       }
