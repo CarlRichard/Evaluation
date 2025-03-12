@@ -25,11 +25,11 @@
 }
 
 .button-questionnaire>a {
-    color: black;
+    color: var(--orange);
 }
 
 .button-questionnaire:hover>a {
-    color: black;
+    color: var(--off-white);
 }
 
 .button-graphique {
@@ -58,9 +58,9 @@
 }
 
 .button-graphique>a {
-    color: black;
+    color: var(--orange);
 }
 
 .button-graphique:hover>a {
-    color: black;
+    color: var(--off-white);
 }
