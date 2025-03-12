@@ -1,0 +1,43 @@
+.graphique-contenaire {
+    margin: auto;
+    width: 60%;
+}
+
+.btnRetour {
+    all: unset;
+    border: 1px solid var(--orange);
+    border-radius: 50px;
+    padding: 0.5em 2em;
+    color: var(--off-white);
+    background-color: var(--orange);
+    font-family: var(--text);
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+.btnRetour:active {
+    background-color: var(--off-white);
+    box-shadow: rgba(0, 0, 0, 0.12) 0 1px 3px 0 inset;
+    color: #FFFFFF;
+}
+
+.btnRetour:hover {
+    background-color: var(--off-white);
+    color: var(--orange);
+}
+
+.btnRetour:active:hover,
+.btnRetour:focus:hover,
+.btnRetour:focus {
+    background-color: var(--off-white);
+    box-shadow: rgba(0, 0, 0, 0.12) 0 1px 3px 0 inset;
+    color: var(--off-white);
+}
+
+.btnRetour>a {
+    color: var(--off-white);
+}
+
+.btnRetour:hover>a {
+    color: var(--orange);
+}

@@ -1,0 +1,23 @@
+.list-questionnaire {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+    margin-top: 1em;
+}
+
+.questionnaire {
+    width: 90%;
+    background-color: var(--light-green);
+    font-family: var(--title);
+}
+
+h2 {
+    text-align: left;
+    padding-left: 15px;
+    color: var(--off-black);
+}
+
+ul {
+    list-style: none;
+}

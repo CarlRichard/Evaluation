@@ -59,7 +59,7 @@ export const Login = ({ setAuthenticated }) => {
     };
     return (
         <>
-            <NavFormateur />
+            <nav className="vide-vert"></nav>
             <h1>Connexion</h1>
             <form className="template-form" onSubmit={handleSubmit}>
                 <div className="inputContainer">

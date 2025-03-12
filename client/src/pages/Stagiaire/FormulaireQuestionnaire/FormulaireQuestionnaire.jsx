@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
+import { NavStagiaire } from "../../../Components/Navs/NavStagiaire";
+import { Valider } from "../../../Components/Boutons/Valider/Valider";
 
 export const FormulaireQuestionnaire = () => {
     const params = useParams();
@@ -26,6 +28,7 @@ export const FormulaireQuestionnaire = () => {
 
     return (
         <>
+            <NavStagiaire />
             {error && <p style={{ color: "red" }}>{error}</p>}
             {questionnaire && <>
                 <h2>{questionnaire.titre}</h2>
@@ -38,6 +41,7 @@ export const FormulaireQuestionnaire = () => {
                     ))}
                 </ul>
             </>}
+            <Link to={'/feedback-questionnaire'}><Valider /></Link>
         </>
     )
 }

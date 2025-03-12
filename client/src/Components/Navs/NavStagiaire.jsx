@@ -8,7 +8,7 @@ export const NavStagiaire = () => {
     return (
         <>
             <nav className='nav-stagiaire'>
-                <Link to={'/accueil-stagiaire'}><AccueilGreen /></Link>
+                <Link to={'/homestagiaire'}><AccueilGreen /></Link>
                 <Link to={'/connexion'}><DecoGreen /></Link>
             </nav>
         </>

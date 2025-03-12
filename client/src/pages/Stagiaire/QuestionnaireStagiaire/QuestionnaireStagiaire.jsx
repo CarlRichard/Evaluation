@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { NavStagiaire } from "../../../Components/Navs/NavStagiaire";
 
 export const QuestionnaireStagiaire = () => {
     const [questionnaires, setQuestionnaires] = useState([]);
@@ -25,12 +26,12 @@ export const QuestionnaireStagiaire = () => {
 
     return (
         <>
+            <NavStagiaire />
             {error && <p style={{ color: "red" }}>{error}</p>}
-            <ul>
+            <ul className="list-questionnaire">
                 {questionnaires.map(questionnaire => (
-                    <li key={questionnaire.id}>
-                        <h2>{questionnaire.titre}</h2>
-                        <Link to={`/formulaire-questionnaire/${questionnaire.id}`}>link</Link>
+                    <li className='questionnaire' key={questionnaire.id}>
+                        <Link to={`/formulaire-questionnaire/${questionnaire.id}`}><h2>{questionnaire.titre}</h2></Link>
                     </li>
                 ))}
             </ul>
