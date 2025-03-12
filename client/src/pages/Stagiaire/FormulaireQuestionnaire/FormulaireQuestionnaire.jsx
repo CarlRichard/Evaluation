@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom"
 import { NavStagiaire } from "../../../Components/Navs/NavStagiaire";
 import { Valider } from "../../../Components/Boutons/Valider/Valider";
+import './FormulaireQuestionnaire.css';
 
 export const FormulaireQuestionnaire = () => {
     const params = useParams();
@@ -32,11 +33,18 @@ export const FormulaireQuestionnaire = () => {
             {error && <p style={{ color: "red" }}>{error}</p>}
             {questionnaire && <>
                 <h2>{questionnaire.titre}</h2>
-                <ul>
+                <ul className="encadrer-vert">
                     {questionnaire.Questions.map(question => (
                         <li key={question.titre}>
-                            <h2>{question.titre}</h2>
-                            <p>{question.description}</p>
+                            <h3 className="titre-question">{question.titre} : {question.description}</h3>
+                            <div className="radio-contenaire">
+                                {[...Array(10)].map((e, i) =>
+                                    <label className="radio">
+                                        {i}
+                                        <input type="radio" name={`reponse-${question.QuestionnaireQuestion.id_question}`} key={i} />
+                                    </label>
+                                )}
+                            </div>
                         </li>
                     ))}
                 </ul>

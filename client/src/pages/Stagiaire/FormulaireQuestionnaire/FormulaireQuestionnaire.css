@@ -1,0 +1,19 @@
+.encadrer-vert {
+    background-color: var(--light-green);
+    margin: 20px;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.titre-question {
+    text-align: left;
+    margin: 15px;
+}
+
+.radio-contenaire {
+    margin-bottom: 25px;
+}
+
+.radio {
+    margin: 0 12px;
+}
