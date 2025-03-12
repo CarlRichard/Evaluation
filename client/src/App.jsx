@@ -36,7 +36,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/accueil" element={<Accueil authenticated={authenticated} setAuthenticated={setAuthenticated} />} />
+        <Route path="/" element={<Accueil authenticated={authenticated} setAuthenticated={setAuthenticated} />} />
         <Route path="/connexion" element={<Login setAuthenticated={setAuthenticated} />} />
         {/* <Route path="/accueil" element={<Accueil />} /> */}
         <Route path="/homestagiaire" element={<HomeStagiaire />} />
