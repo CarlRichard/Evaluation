@@ -17,21 +17,6 @@ export const GestionAdmin = () => {
     const [loading, setLoading] = useState(true);
     const tokenUser = localStorage.getItem("token");
 
-    // Token qui se refresh toutes les heures
-    useEffect(() => {
-        fetch('http://localhost:3000/auth/authenticated', {
-            credentials: 'include',
-            headers: { 'Authorization': `Bearer ${tokenUser}` }
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data.accessToken) {
-                    localStorage.setItem('token', data.accessToken);
-                }
-                setAuthenticated(data.connected);
-            })
-            .catch(() => setError("Erreur d'authentification"));
-    }, [location, tokenUser, setAuthenticated]);
 
     // Chargement des stagiaires
     useEffect(() => {
